@@ -245,7 +245,7 @@ const CONFIG = {
   },
 
   // Optional Footer. Supports plain text or HTML.
-  footer: `Made with ❤️ by M Mostagir Bhuiyan`,
+  footer: `Made with ❤️ by Mostagir`,
 
   enablePWA: false,
 };
