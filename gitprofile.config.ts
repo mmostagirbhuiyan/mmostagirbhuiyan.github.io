@@ -25,30 +25,17 @@ const CONFIG = {
       },
       manual: {
         // Properties for manually specifying projects
-        projects: ['arifszn/gitprofile', 'arifszn/pandora'], // List of repository names to display. example: ['arifszn/my-project1', 'arifszn/my-project2']
+        projects: [
+          'mmostagirbhuiyan/studentcentral-1 ',
+          'mmostagirbhuiyan/ZtM-Job-Board ',
+          'mmostagirbhuiyan/udemy-docker-mastery',
+          'mmostagirbhuiyan/Ecommerce-Nodejs',
+        ], // List of repository names to display. example: ['arifszn/my-project1', 'arifszn/my-project2']
       },
     },
     external: {
       header: 'My Projects',
       // To hide the `External Projects` section, keep it empty.
-      projects: [
-        {
-          title: 'Project Name',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut.',
-          imageUrl:
-            'https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg',
-          link: 'https://example.com',
-        },
-        {
-          title: 'Project Name',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut.',
-          imageUrl:
-            'https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg',
-          link: 'https://example.com',
-        },
-      ],
     },
   },
   seo: {
@@ -79,88 +66,112 @@ const CONFIG = {
     email: '',
   },
   resume: {
-    fileUrl:
-      'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', // Empty fileUrl will hide the `Download Resume` button.
+    fileUrl: '', // Empty fileUrl will hide the `Download Resume` button.
   },
   skills: [
-    'PHP',
-    'Laravel',
+    'Docker',
+    'Kubernetes',
+    'DevOps',
+    'Site Reliability Engineering',
+    'CI/CD',
+    'Jenkins',
+    'AWS',
+    'Engineering Management',
+    'Java',
     'JavaScript',
-    'React.js',
-    'Node.js',
-    'Nest.js',
+    'Python',
     'MySQL',
     'PostgreSQL',
     'Git',
-    'Docker',
-    'PHPUnit',
-    'CSS',
-    'Antd',
-    'Tailwind',
+    'Cloud Computing',
+    'Azure',
+    'Scripting',
+    'Software Development',
+    'SDLC',
+    'Project Management',
+    'Agile',
+    'Datadog',
+    'New Relic',
+    'Change Management',
+    'Disaster Recovery',
+    'System Architecture',
   ],
-  experiences: [
-    {
-      company: 'Company Name',
-      position: 'Position',
-      from: 'September 2021',
-      to: 'Present',
-      companyLink: 'https://example.com',
-    },
-    {
-      company: 'Company Name',
-      position: 'Position',
-      from: 'July 2019',
-      to: 'August 2021',
-      companyLink: 'https://example.com',
-    },
-  ],
+  experiences: [],
   certifications: [
     {
-      name: 'Lorem ipsum',
-      body: 'Lorem ipsum dolor sit amet',
-      year: 'March 2022',
-      link: 'https://example.com',
+      name: 'Leading with Finance',
+      body: 'Harvard Business School Online',
+      year: '',
+      link: 'https://online.hbs.edu/verify-certificate?dvid=BF6WTYU5',
+    },
+    {
+      name: 'AWS Certified DevOps Engineer – Professional',
+      body: 'Amazon Web Services',
+      year: '',
+      link: 'https://www.credly.com/badges/cb055a51-0868-4cd4-85ba-ed14921a1d33/public_url',
+    },
+    {
+      name: 'AWS Certified Solutions Architect – Professional',
+      body: 'Amazon Web Services',
+      year: '',
+      link: 'https://www.credly.com/badges/09a2027b-2777-44b3-ad0e-64b3174545f3/public_url',
+    },
+    {
+      name: 'AWS Certified Developer – Associate',
+      body: 'Amazon Web Services',
+      year: '',
+      link: 'https://www.credly.com/badges/d56cffb4-2c50-4af0-83eb-0edb37056411/public_url',
+    },
+    {
+      name: 'AWS Certified Solutions Architect – Associate',
+      body: 'Amazon Web Services',
+      year: '',
+      link: 'https://www.credly.com/badges/6d27b665-72cf-4a8c-984e-fd2d2e64065e/public_url',
+    },
+    {
+      name: 'AWS Certified SysOps Administrator – Associate',
+      body: 'Amazon Web Services',
+      year: '',
+      link: 'https://www.credly.com/badges/2f716c65-0a8b-4eef-9771-7cd9376034e9/public_url',
     },
   ],
   educations: [
     {
-      institution: 'Institution Name',
-      degree: 'Degree',
-      from: '2015',
-      to: '2019',
+      institution: 'Cornell University',
+      degree: 'Master of Business Administration (MBA)',
     },
     {
-      institution: 'Institution Name',
-      degree: 'Degree',
-      from: '2012',
-      to: '2014',
+      institution: 'Pennsylvania State University',
+      degree: 'Bachelor of Science in Software Engineering',
     },
   ],
   publications: [
     {
-      title: 'Publication Title',
+      title:
+        'Hypothetical Framework for CPU Micro Containerization: Bridging the Performance Gap with GPUs in AI',
       conferenceName: '',
-      journalName: 'Journal Name',
-      authors: 'John Doe, Jane Smith',
-      link: 'https://example.com',
+      journalName: 'TechRxiv',
+      authors: 'M Mostagir Bhuiyan',
+      link: 'https://doi.org/10.36227/techrxiv.171617385.50532539/v1',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        "The growing body of Artificial Intelligence (AI) and Machine Learning (ML) models increases the necessity for computational needs that put the onus on looking for new approaches so as to stray from the traditional reliance on Graphics Processing Units (GPUs). This paper introduces a new method to maximize Central Processing Units (CPUs) through the use of a micro-containerization concept. The proposed approach theoretically dissects the CPU cores into isolated, efficient processing units called 'micro containers', making an effort to simulate GPU capabilities for parallel processing in order to enhance processing efficiencies to supposedly compete with GPU-based environments. Through a theoretical study of the possibilities in architecture and dynamics of operations, the paper shows how micro containerization can contribute to the democratization of advanced computational resources. The presented micro containerization model has the potential to revolutionize the landscape of machine learning workloads for the same very reasons: it is scalable, cost-effective, and holds a promise of maybe even changing the way computation strategies currently deal with tasks that are data-intensive. This bridges the current constraints with the future needs of computation, making micro containerization the new paradigm in accessibility and sustainability of high-performance computing innovation for a wide class of AI applications.",
     },
     {
-      title: 'Publication Title',
-      conferenceName: 'Conference Name',
-      journalName: '',
-      authors: 'John Doe, Jane Smith',
-      link: 'https://example.com',
+      title:
+        'The Illusion of Boundless AI: Analyzing Limitations and Ethical Concerns',
+      conferenceName: '',
+      journalName: 'TechRxiv',
+      authors: 'M Mostagir Bhuiyan',
+      link: 'https://doi.org/10.36227/techrxiv.171742375.53309794/v1',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        "The narrative that emerges from the current development and training of the artificial intelligence models has a rhetoric of unlimited potential of AI in its current state. This paper argues against that very point and will be looking at the serious constraints currently facing models of AI and machine learning, particularly the finitude of the data on which they rely. Its not just that the results are limited by the data at hand, but also by a host of other constraints: diminishing returns in scaling up model size, imposing costs on training, and making models harder to run. These are increasingly observed when AI is clad upon complex, real-world tasks that involve genuine generalization and adaptability. The paper also critically examines the commercial motivations driving the focus on automating white-collar jobs, highlighting that such priorities often stem from immediate financial incentives rather than a comprehensive evaluation of AI's broader applications. These practices raise profound ethical issues, including concerns about transparency and the responsible deployment of AI technologies. By dispelling the myth of AI's unlimited potential, this paper advocates for a more grounded and ethical approach to AI development, stressing the urgent need for breakthrough technological advancements that move us closer to achieving artificial general intelligence (AGI).",
     },
   ],
   // Display articles from your medium or dev account. (Optional)
   blog: {
-    source: 'dev', // medium | dev
-    username: 'arifszn', // to hide blog section, keep it empty
-    limit: 2, // How many articles to display. Max is 10.
+    source: 'medium', // medium | dev
+    username: 'mmostagirbhuiyan', // to hide blog section, keep it empty
+    limit: 4, // How many articles to display. Max is 10.
   },
   googleAnalytics: {
     id: '', // GA3 tracking id/GA4 tag id UA-XXXXXXXXX-X | G-XXXXXXXXXX
@@ -171,7 +182,7 @@ const CONFIG = {
     snippetVersion: 6,
   },
   themeConfig: {
-    defaultTheme: 'lofi',
+    defaultTheme: 'night',
 
     // Hides the switch in the navbar
     // Useful if you want to support a single color mode
@@ -234,13 +245,9 @@ const CONFIG = {
   },
 
   // Optional Footer. Supports plain text or HTML.
-  footer: `Made with <a 
-      class="text-primary" href="https://github.com/arifszn/gitprofile"
-      target="_blank"
-      rel="noreferrer"
-    >GitProfile</a> and ❤️`,
+  footer: `Made with ❤️ by M Mostagir Bhuiyan`,
 
-  enablePWA: true,
+  enablePWA: false,
 };
 
 export default CONFIG;
