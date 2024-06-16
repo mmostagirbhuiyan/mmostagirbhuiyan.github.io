@@ -40,7 +40,7 @@ const CONFIG = {
   },
   seo: {
     title: 'Portfolio of M Mostagir Bhuiyan',
-    description: '',
+    description: 'Experienced Cloud Architect and DevOps Leader with over 10 years of expertise and 5+ AWS Certifications. Known for effectively reducing cloud operational costs and enhancing system efficiencies in high-stakes environments. Proficient in deploying AI/ML technologies to optimize cloud solutions, achieving notable cost savings and improvements in data processing scalability and reliability. Demonstrates a robust command of DevOps practices, including advanced CI/CD strategies and comprehensive cloud infrastructure engineering. Currently pursuing an Executive MBA from Cornell University, committed to delivering innovative cloud architecture solutions and leading transformative initiatives.',
     imageURL: '',
   },
   social: {
