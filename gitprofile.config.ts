@@ -64,7 +64,7 @@ const CONFIG = {
     telegram: '',
     website: '',
     phone: '',
-    email: '',
+    email: 'admin@mmostagirbhuiyan.com',
   },
   resume: {
     fileUrl: '', // Empty fileUrl will hide the `Download Resume` button.
