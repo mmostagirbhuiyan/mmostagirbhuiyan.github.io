@@ -40,7 +40,8 @@ const CONFIG = {
   },
   seo: {
     title: 'Portfolio of M Mostagir Bhuiyan',
-    description: 'Experienced Cloud Architect and DevOps Leader with over 10 years of expertise and 5+ AWS Certifications. Known for effectively reducing cloud operational costs and enhancing system efficiencies in high-stakes environments. Proficient in deploying AI/ML technologies to optimize cloud solutions, achieving notable cost savings and improvements in data processing scalability and reliability. Demonstrates a robust command of DevOps practices, including advanced CI/CD strategies and comprehensive cloud infrastructure engineering. Currently pursuing an Executive MBA from Cornell University, committed to delivering innovative cloud architecture solutions and leading transformative initiatives.',
+    description:
+      'Experienced Cloud Architect and DevOps Leader with over 10 years of expertise and 5+ AWS Certifications. Known for effectively reducing cloud operational costs and enhancing system efficiencies in high-stakes environments. Proficient in deploying AI/ML technologies to optimize cloud solutions, achieving notable cost savings and improvements in data processing scalability and reliability. Demonstrates a robust command of DevOps practices, including advanced CI/CD strategies and comprehensive cloud infrastructure engineering. Currently pursuing an Executive MBA from Cornell University, committed to delivering innovative cloud architecture solutions and leading transformative initiatives.',
     imageURL: '',
   },
   social: {
@@ -170,7 +171,7 @@ const CONFIG = {
   // Display articles from your medium or dev account. (Optional)
   blog: {
     source: 'medium', // medium | dev
-    username: '', // to hide blog section, keep it empty
+    username: 'mmostagirbhuiyan', // to hide blog section, keep it empty
     limit: 4, // How many articles to display. Max is 10.
   },
   googleAnalytics: {
@@ -182,7 +183,7 @@ const CONFIG = {
     snippetVersion: 6,
   },
   themeConfig: {
-    defaultTheme: 'wireframe',
+    defaultTheme: 'lofi',
 
     // Hides the switch in the navbar
     // Useful if you want to support a single color mode
