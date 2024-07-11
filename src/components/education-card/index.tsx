@@ -4,9 +4,11 @@ import { skeleton } from '../../utils';
 
 const ListItem = ({
   degree,
+  status,
   institution,
 }: {
   degree?: React.ReactNode;
+  status?: React.ReactNode;
   institution?: React.ReactNode;
 }) => (
   <li className="mb-5 ml-4">
@@ -14,7 +16,8 @@ const ListItem = ({
       className="absolute w-2 h-2 bg-base-300 rounded-full border border-base-300 mt-1.5"
       style={{ left: '-4.5px' }}
     ></div>
-    <h3 className="font-semibold">{degree}</h3>
+    <h3 className="font-bold">{degree}</h3>
+    <div className="font-semibold antialiased">{status}</div>
     <div className="mb-4 font-normal">{institution}</div>
   </li>
 );
@@ -37,6 +40,7 @@ const EducationCard = ({
             heightCls: 'h-4',
             className: 'my-1.5',
           })}
+          status={skeleton({ widthCls: 'w-6/12', heightCls: 'h-3' })}
           institution={skeleton({ widthCls: 'w-6/12', heightCls: 'h-3' })}
         />,
       );
@@ -67,6 +71,7 @@ const EducationCard = ({
                   <ListItem
                     key={index}
                     degree={item.degree}
+                    status={item.status}
                     institution={item.institution}
                   />
                 ))}

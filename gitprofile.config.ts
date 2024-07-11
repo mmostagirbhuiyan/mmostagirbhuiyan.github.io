@@ -139,11 +139,18 @@ const CONFIG = {
   educations: [
     {
       institution: 'Cornell University',
+      status: 'Deferred',
       degree: 'Master of Business Administration (MBA)',
     },
     {
+      institution: 'Dartmouth College',
+      status: 'Now Attending',
+      degree: 'Master of Engineering (MEng)',
+    },
+    {
       institution: 'Pennsylvania State University',
-      degree: 'Bachelor of Science in Software Engineering',
+      status: 'Graduated',
+      degree: 'Bachelor of Science (BSc)',
     },
   ],
   publications: [
