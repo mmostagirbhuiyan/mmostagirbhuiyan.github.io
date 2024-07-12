@@ -128,6 +128,11 @@ interface Social {
   researchGate?: string;
 
   /**
+   * GoogleScholar username
+   */
+  googleScholar?: string;
+
+  /**
    * Facebook
    */
   facebook?: string;

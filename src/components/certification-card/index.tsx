@@ -19,7 +19,7 @@ const ListItem = ({
       style={{ left: '-4.5px' }}
     ></div>
     <div className="my-0.5 text-xs">{year}</div>
-    <div className="font-medium">
+    <div className="font-bold underline antialiasing">
       <a href={link} target="_blank" rel="noreferrer">
         {name}
       </a>

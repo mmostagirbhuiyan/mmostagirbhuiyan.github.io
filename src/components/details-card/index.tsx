@@ -19,7 +19,7 @@ import {
   FaTelegram,
   FaYoutube,
 } from 'react-icons/fa';
-import { FaSquareThreads } from 'react-icons/fa6';
+import { FaSquareThreads, FaGoogleScholar } from 'react-icons/fa6';
 import { MdLocationOn } from 'react-icons/md';
 import { RiMailFill, RiPhoneFill } from 'react-icons/ri';
 import { SiResearchgate, SiTwitter, SiUdemy } from 'react-icons/si';
@@ -208,6 +208,14 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
                   title="ResearchGate:"
                   value={social.researchGate}
                   link={`https://www.researchgate.net/profile/${social.researchGate}`}
+                />
+              )}
+              {social?.googleScholar && (
+                <ListItem
+                  icon={<FaGoogleScholar />}
+                  title="GoogleScholar:"
+                  value={social.googleScholar}
+                  link={`https://scholar.google.com/citations?user=${social.googleScholar}&hl=en`}
                 />
               )}
               {social?.twitter && (

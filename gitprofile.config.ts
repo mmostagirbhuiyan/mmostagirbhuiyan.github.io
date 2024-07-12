@@ -49,6 +49,7 @@ const CONFIG = {
     twitter: '',
     mastodon: '',
     researchGate: '',
+    googleScholar: 'RYJK2CcAAAAJ',
     facebook: '',
     instagram: '',
     reddit: '',
@@ -57,14 +58,14 @@ const CONFIG = {
     udemy: '',
     dribbble: '',
     behance: '',
-    medium: '',
+    medium: 'mmostagirbhuiyan',
     dev: '',
     stackoverflow: '', // example: '1/jeff-atwood'
     skype: '',
     telegram: '',
     website: '',
     phone: '',
-    email: '',
+    email: 'mostagir@mmostagirbhuiyan@gmail.com',
   },
   resume: {
     fileUrl: '', // Empty fileUrl will hide the `Download Resume` button.
@@ -92,19 +93,14 @@ const CONFIG = {
     'Project Management',
     'Agile',
     'Datadog',
-    'New Relic',
+    'Budgeting',
+    'Cost Management',
     'Change Management',
     'Disaster Recovery',
     'System Architecture',
   ],
   experiences: [],
   certifications: [
-    {
-      name: 'Leading with Finance',
-      body: 'Harvard Business School Online',
-      year: '',
-      link: 'https://online.hbs.edu/verify-certificate?dvid=BF6WTYU5',
-    },
     {
       name: 'AWS Certified DevOps Engineer – Professional',
       body: 'Amazon Web Services',
@@ -134,6 +130,12 @@ const CONFIG = {
       body: 'Amazon Web Services',
       year: '',
       link: 'https://www.credly.com/badges/2f716c65-0a8b-4eef-9771-7cd9376034e9/public_url',
+    },
+    {
+      name: 'Leading with Finance',
+      body: 'Harvard Business School Online',
+      year: '',
+      link: 'https://online.hbs.edu/verify-certificate?dvid=BF6WTYU5',
     },
   ],
   educations: [
@@ -190,7 +192,7 @@ const CONFIG = {
     snippetVersion: 6,
   },
   themeConfig: {
-    defaultTheme: 'lofi',
+    defaultTheme: 'halloween',
 
     // Hides the switch in the navbar
     // Useful if you want to support a single color mode
