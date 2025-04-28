@@ -235,6 +235,15 @@ interface Certification {
   link?: string;
 }
 
+interface Patent {
+  title: string;
+  patentOffice?: string;
+  patentNumber?: string;
+  year?: string;
+  link?: string;
+  description?: string;
+}
+
 interface Education {
   institution?: string;
   degree?: string;
@@ -408,6 +417,11 @@ interface Config {
    * Publication list
    */
   publications?: Array<Publication>;
+
+  /**
+   * Patent list
+   */
+  patents?: Array<Patent>;
 
   /**
    * Resume

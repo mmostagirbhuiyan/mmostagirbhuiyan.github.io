@@ -187,6 +187,17 @@ const CONFIG = {
         "Large pre-trained language models (LLMs) have demonstrated remarkable ability to encode vast world knowledge in their parameters, but this static, implicit storage poses challenges for keeping models up-to-date and providing provenance for factual claims [1]. Retrieval-Augmented Generation (RAG) methods address these issues by equipping LLMs with external non-parametric memory (typically a vector database of documents) that can be queried at inference time [1][2]. However, in standard RAG pipelines the retrieval module is an external add-on, not a native part of the model architecture. We propose Retrieval-Native Language Models (RLLMs), a new paradigm that treats vector-based memory as a first-class component of the model. RLLM introduces a unified architecture with three channels of knowledge: (1) Parametric memory in the pretrained model weights (static knowledge); (2) a live retrieval channel that shares an embedding space with the generator for continual intake of external vectors; and (3) an internal Bayesian attention router that dynamically adjusts how information flows from retrieval into generation based on the estimated utility of retrieved results (e.g. relevance, correctness, recency). By tightly integrating retrieval into the model's multi-head attention layers and training the retriever and generator jointly, RLLMs align the model's representations with the memory index and enable endto-end learning of when to trust retrieved evidence. We present a theoretical analysis of how unified embedding alignment and multi-channel attention improve efficiency and reduce hallucination. We describe the RLLM architecture in detail, including pseudo-code for the retrieval-augmented attention mechanism and a Bayesian feedback loop that updates routing weights in light of retrieval success or failure signals. In experiments on knowledge-intensive QA benchmarks (NaturalQuestions, HotpotQA) and a streaming enterprise wiki scenario, RLLM outperforms traditional RAG baselines. It achieves higher answer accuracy with 30% fewer parameters than fully-parametric models by leveraging its vector memory, and quickly adapts to new information with minimal latency. This work demonstrates that making retrieval a native component of LLMs yields significant gains in knowledge access, interpretability, and continual learning, suggesting a new direction for building more flexible and powerful language models.",
     },
   ],
+  patents: [
+    {
+      title: 'Micro-Containerized CPU Architecture for Efficient AI Workloads',
+      patentOffice: 'USPTO',
+      patentNumber: '63/794,191',
+      year: '2025',
+      link: '', // You can update with a link later if it gets published
+      description:
+        'Provisional Patent Filed – Application No. 63/794,191, Filed 04/2025. (Patent Pending)',
+    },
+  ],
   // Display articles from your medium or dev account. (Optional)
   blog: {
     source: 'medium', // medium | dev
@@ -202,7 +213,7 @@ const CONFIG = {
     snippetVersion: 6,
   },
   themeConfig: {
-    defaultTheme: 'halloween',
+    defaultTheme: 'light',
 
     // Hides the switch in the navbar
     // Useful if you want to support a single color mode

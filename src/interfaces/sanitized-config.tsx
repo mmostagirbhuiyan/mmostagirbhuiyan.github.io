@@ -102,6 +102,15 @@ export interface SanitizedPublication {
   description?: string;
 }
 
+export interface SanitizedPatent {
+  title: string;
+  patentOffice?: string;
+  patentNumber?: string;
+  year?: string;
+  link?: string;
+  description?: string;
+}
+
 export interface SanitizedGoogleAnalytics {
   id?: string;
 }
@@ -148,6 +157,7 @@ export interface SanitizedConfig {
   educations: Array<SanitizedEducation>;
   certifications: Array<SanitizedCertification>;
   publications: Array<SanitizedPublication>;
+  patents: Array<SanitizedPatent>;
   googleAnalytics: SanitizedGoogleAnalytics;
   hotjar: SanitizedHotjar;
   blog: SanitizedBlog;

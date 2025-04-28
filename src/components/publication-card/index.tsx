@@ -136,7 +136,7 @@ const PublicationCard = ({
                   </h5>
                 </div>
                 <div className="col-span-2">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 gap-6">
                     {loading ? renderSkeleton() : renderPublications()}
                   </div>
                 </div>

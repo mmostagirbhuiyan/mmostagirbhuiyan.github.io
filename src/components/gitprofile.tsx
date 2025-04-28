@@ -30,6 +30,7 @@ import ExternalProjectCard from './external-project-card';
 import BlogCard from './blog-card';
 import Footer from './footer';
 import PublicationCard from './publication-card';
+import PatentCard from './patent-card';
 
 /**
  * Renders the GitProfile component.
@@ -230,16 +231,22 @@ const GitProfile = ({ config }: { config: Config }) => {
                         experiences={sanitizedConfig.experiences}
                       />
                     )}
+                    {sanitizedConfig.educations.length !== 0 && (
+                      <EducationCard
+                        loading={loading}
+                        educations={sanitizedConfig.educations}
+                      />
+                    )}
                     {sanitizedConfig.certifications.length !== 0 && (
                       <CertificationCard
                         loading={loading}
                         certifications={sanitizedConfig.certifications}
                       />
                     )}
-                    {sanitizedConfig.educations.length !== 0 && (
-                      <EducationCard
+                    {sanitizedConfig.patents.length !== 0 && (
+                      <PatentCard
                         loading={loading}
-                        educations={sanitizedConfig.educations}
+                        patents={sanitizedConfig.patents}
                       />
                     )}
                   </div>
