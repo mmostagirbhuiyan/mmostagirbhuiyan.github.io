@@ -267,10 +267,12 @@ interface Publication {
 
 interface Podcast {
   title: string;
-  platform?: string;
   year?: string;
-  link?: string;
   description?: string;
+  links: Array<{
+    name: string;
+    url: string;
+  }>;
 }
 
 interface GoogleAnalytics {

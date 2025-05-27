@@ -219,6 +219,10 @@ const GitProfile = ({ config }: { config: Config }) => {
                       loading={loading}
                       github={sanitizedConfig.github}
                       social={sanitizedConfig.social}
+                      podcastTitle={
+                        sanitizedConfig.podcasts &&
+                        sanitizedConfig.podcasts[0]?.title
+                      }
                     />
                     {sanitizedConfig.skills.length !== 0 && (
                       <SkillCard
@@ -264,7 +268,6 @@ const GitProfile = ({ config }: { config: Config }) => {
                         externalProjects={
                           sanitizedConfig.projects.external.projects
                         }
-                        googleAnalyticId={sanitizedConfig.googleAnalytics.id}
                       />
                     )}
                   </div>

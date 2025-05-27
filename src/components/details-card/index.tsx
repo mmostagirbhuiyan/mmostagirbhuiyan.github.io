@@ -30,13 +30,13 @@ import {
   SanitizedSocial,
 } from '../../interfaces/sanitized-config';
 import { skeleton } from '../../utils';
-import CONFIG from '../../../gitprofile.config';
 
 type Props = {
   profile: Profile | null;
   loading: boolean;
   social: SanitizedSocial;
   github: SanitizedGithub;
+  podcastTitle?: string;
 };
 
 const isCompanyMention = (company: string): boolean => {
@@ -153,7 +153,13 @@ const OrganizationItem: React.FC<{
  * @param {Object} github - The GitHub object.
  * @return {JSX.Element} The details card component.
  */
-const DetailsCard = ({ profile, loading, social, github }: Props) => {
+const DetailsCard = ({
+  profile,
+  loading,
+  social,
+  github,
+  podcastTitle,
+}: Props) => {
   const renderSkeleton = () => {
     const array = [];
     for (let index = 0; index < 4; index++) {
@@ -383,8 +389,8 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
                   icon={<FaPodcast />}
                   title="Apple Podcast:"
                   value={
-                    CONFIG.podcasts && CONFIG.podcasts[0]?.title
-                      ? CONFIG.podcasts[0].title.split(' (')[0]
+                    podcastTitle
+                      ? podcastTitle.split(' (')[0]
                       : 'Apple Podcasts'
                   }
                   link={social.applePodcast}
