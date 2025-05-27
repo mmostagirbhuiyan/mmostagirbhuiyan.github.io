@@ -18,6 +18,7 @@ import {
   FaStackOverflow,
   FaTelegram,
   FaYoutube,
+  FaPodcast,
 } from 'react-icons/fa';
 import { FaSquareThreads, FaGoogleScholar } from 'react-icons/fa6';
 import { MdLocationOn } from 'react-icons/md';
@@ -29,6 +30,7 @@ import {
   SanitizedSocial,
 } from '../../interfaces/sanitized-config';
 import { skeleton } from '../../utils';
+import CONFIG from '../../../gitprofile.config';
 
 type Props = {
   profile: Profile | null;
@@ -374,6 +376,18 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
                   title="Email:"
                   value={social.email}
                   link={`mailto:${social.email}`}
+                />
+              )}
+              {social?.applePodcast && (
+                <ListItem
+                  icon={<FaPodcast />}
+                  title="Apple Podcast:"
+                  value={
+                    CONFIG.podcasts && CONFIG.podcasts[0]?.title
+                      ? CONFIG.podcasts[0].title.split(' (')[0]
+                      : 'Apple Podcasts'
+                  }
+                  link={social.applePodcast}
                 />
               )}
             </Fragment>

@@ -35,7 +35,20 @@ const CONFIG = {
     },
     external: {
       header: 'My Projects',
-      // To hide the `External Projects` section, keep it empty.
+      projects: [
+        {
+          title: 'MLOps & AI Infrastructure',
+          description: 'Probabilistic Bayesian Neural Network (BNN) inference framework with HMC and variational inference; scalable SVM with kernel approximation; modular SGD suite with adaptive and second-order optimizers.',
+        },
+        {
+          title: 'Fault-Tolerant Distributed Systems',
+          description: 'Byzantine-resilient consensus protocols (Paxos, Raft, BFT-SMaRt); distributed transaction engine with vector clocks and CRDTs; quorum-consistent key-value store with tunable consistency.',
+        },
+        {
+          title: 'FPGA-Accelerated AI Systems',
+          description: 'FPGA-based AI accelerator with INT4/INT8 quantization and sparse matrix optimizations; high-performance SPI controller; custom RISC pipeline with branch prediction and out-of-order execution.',
+        },
+      ],
     },
   },
   seo: {
@@ -48,7 +61,7 @@ const CONFIG = {
     linkedin: '',
     twitter: '',
     mastodon: '',
-    researchGate: '',
+    researchGate: 'M-Mostagir-Bhuiyan',
     googleScholar: 'RYJK2CcAAAAJ',
     facebook: '',
     instagram: '',
@@ -66,6 +79,7 @@ const CONFIG = {
     website: '',
     phone: '',
     email: 'mo@mmostagirbhuiyan.com',
+    applePodcast: 'https://podcasts.apple.com/us/podcast/the-practical-ai-digest/id1817015122',
   },
   resume: {
     fileUrl: '', // Empty fileUrl will hide the `Download Resume` button.
@@ -279,6 +293,27 @@ const CONFIG = {
   footer: `Made with ❤️ by Mostagir`,
 
   enablePWA: true,
+
+  podcasts: [
+    {
+      title: 'The Practical AI Digest (Generative AI–Powered Podcast)',
+      description: `A generative AI–powered podcast where I distill advanced AI/ML topics into real-world insights. Built using tools like NotebookLM to synthesize research and simplify communication for practitioners.`,
+      links: [
+        {
+          name: 'Apple Podcasts',
+          url: 'https://podcasts.apple.com/us/podcast/the-practical-ai-digest/id1817015122',
+        },
+        {
+          name: 'Spotify',
+          url: 'https://open.spotify.com/show/61Q7vfkXDyNKJ1rIDJUf7x',
+        },
+        {
+          name: 'Amazon Music',
+          url: 'https://music.amazon.com/podcasts/3b8e4c2a-3119-43d7-bc68-3c804147c2f2',
+        },
+      ],
+    },
+  ],
 };
 
 export default CONFIG;

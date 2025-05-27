@@ -82,6 +82,7 @@ export const getSanitizedConfig = (
         telegram: config?.social?.telegram,
         researchGate: config?.social?.researchGate,
         googleScholar: config?.social?.googleScholar,
+        applePodcast: config?.social?.applePodcast,
       },
       resume: {
         fileUrl: config?.resume?.fileUrl || '',
@@ -106,6 +107,7 @@ export const getSanitizedConfig = (
         ) || [],
       publications: config?.publications?.filter((item) => item.title) || [],
       patents: config?.patents?.filter((item) => item.title) || [],
+      podcasts: config?.podcasts?.filter((item) => item.title) || [],
       googleAnalytics: {
         id: config?.googleAnalytics?.id,
       },

@@ -64,6 +64,7 @@ export interface SanitizedSocial {
   telegram?: string;
   phone?: string;
   email?: string;
+  applePodcast?: string;
 }
 
 export interface SanitizedResume {
@@ -109,6 +110,16 @@ export interface SanitizedPatent {
   year?: string;
   link?: string;
   description?: string;
+}
+
+export interface SanitizedPodcast {
+  title: string;
+  year?: string;
+  description?: string;
+  links: Array<{
+    name: string;
+    url: string;
+  }>;
 }
 
 export interface SanitizedGoogleAnalytics {
@@ -158,6 +169,7 @@ export interface SanitizedConfig {
   certifications: Array<SanitizedCertification>;
   publications: Array<SanitizedPublication>;
   patents: Array<SanitizedPatent>;
+  podcasts: Array<SanitizedPodcast>;
   googleAnalytics: SanitizedGoogleAnalytics;
   hotjar: SanitizedHotjar;
   blog: SanitizedBlog;

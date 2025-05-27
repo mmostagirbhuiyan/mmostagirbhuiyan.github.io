@@ -211,6 +211,11 @@ interface Social {
    * Email
    */
   email?: string;
+
+  /**
+   * Apple Podcast
+   */
+  applePodcast?: string;
 }
 
 interface Resume {
@@ -256,6 +261,14 @@ interface Publication {
   conferenceName?: string;
   journalName?: string;
   authors?: string;
+  link?: string;
+  description?: string;
+}
+
+interface Podcast {
+  title: string;
+  platform?: string;
+  year?: string;
   link?: string;
   description?: string;
 }
@@ -422,6 +435,11 @@ interface Config {
    * Patent list
    */
   patents?: Array<Patent>;
+
+  /**
+   * Podcast list
+   */
+  podcasts?: Array<Podcast>;
 
   /**
    * Resume

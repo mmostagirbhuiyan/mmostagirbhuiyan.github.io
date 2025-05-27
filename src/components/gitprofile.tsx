@@ -31,6 +31,7 @@ import BlogCard from './blog-card';
 import Footer from './footer';
 import PublicationCard from './publication-card';
 import PatentCard from './patent-card';
+import PodcastCard from './podcast-card';
 
 /**
  * Renders the GitProfile component.
@@ -249,6 +250,23 @@ const GitProfile = ({ config }: { config: Config }) => {
                         patents={sanitizedConfig.patents}
                       />
                     )}
+                    {sanitizedConfig.podcasts.length !== 0 && (
+                      <PodcastCard
+                        loading={loading}
+                        podcasts={sanitizedConfig.podcasts}
+                      />
+                    )}
+
+                    {sanitizedConfig.projects.external.projects.length !== 0 && (
+                      <ExternalProjectCard
+                        loading={loading}
+                        header={sanitizedConfig.projects.external.header}
+                        externalProjects={
+                          sanitizedConfig.projects.external.projects
+                        }
+                        googleAnalyticId={sanitizedConfig.googleAnalytics.id}
+                      />
+                    )}
                   </div>
                 </div>
                 <div className="lg:col-span-2 col-span-1">
@@ -267,17 +285,6 @@ const GitProfile = ({ config }: { config: Config }) => {
                       <PublicationCard
                         loading={loading}
                         publications={sanitizedConfig.publications}
-                      />
-                    )}
-                    {sanitizedConfig.projects.external.projects.length !==
-                      0 && (
-                      <ExternalProjectCard
-                        loading={loading}
-                        header={sanitizedConfig.projects.external.header}
-                        externalProjects={
-                          sanitizedConfig.projects.external.projects
-                        }
-                        googleAnalyticId={sanitizedConfig.googleAnalytics.id}
                       />
                     )}
                     {sanitizedConfig.blog.display && (
