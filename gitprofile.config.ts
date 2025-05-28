@@ -155,7 +155,7 @@ const CONFIG = {
   educations: [
     {
       institution: 'Cornell University',
-      status: 'Deferred',
+      status: 'Now Attending',
       degree: 'Master of Business Administration (MBA)',
     },
     {
