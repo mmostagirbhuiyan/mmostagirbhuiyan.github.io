@@ -50,6 +50,21 @@ const CONFIG = {
         },
       ],
     },
+    liveProjects: {
+      display: true,
+      projects: [
+        {
+          title: 'REIT Fund Model',
+          description: 'A comprehensive real estate investment trust (REIT) analysis and modeling tool that helps investors evaluate and compare different REIT opportunities.',
+          link: 'https://mmostagirbhuiyan.com/reit-fund-model',
+        },
+        {
+          title: 'University Aggregator Rankings',
+          description: 'An innovative platform that aggregates and analyzes university rankings from multiple sources to provide comprehensive insights for prospective students.',
+          link: 'https://www.mmostagirbhuiyan.com/university-ranking-aggregator/',
+        },
+      ],
+    },
   },
   seo: {
     title: 'Portfolio of M Mostagir Bhuiyan',
@@ -227,7 +242,7 @@ const CONFIG = {
     snippetVersion: 6,
   },
   themeConfig: {
-    defaultTheme: 'light',
+    defaultTheme: 'synthwave',
 
     // Hides the switch in the navbar
     // Useful if you want to support a single color mode

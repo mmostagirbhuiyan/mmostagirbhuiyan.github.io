@@ -83,10 +83,37 @@ interface ExternalProjects {
   }[];
 }
 
+interface LiveProjects {
+  /**
+   * Display live projects?
+   */
+  display?: boolean;
+
+  /**
+   * Project list
+   */
+  projects?: {
+    title: string;
+    description: string;
+    link: string;
+  }[];
+}
+
 interface Projects {
+  /**
+   * GitHub projects config
+   */
   github?: GitHubProjects;
 
+  /**
+   * External projects config
+   */
   external?: ExternalProjects;
+
+  /**
+   * Live projects config
+   */
+  liveProjects?: LiveProjects;
 }
 
 interface SEO {

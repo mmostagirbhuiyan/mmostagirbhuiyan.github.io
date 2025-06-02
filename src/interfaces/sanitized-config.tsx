@@ -31,9 +31,21 @@ export interface SanitizedExternalProjects {
   projects: SanitizedExternalProject[];
 }
 
+export interface SanitizedLiveProject {
+  title: string;
+  description: string;
+  link: string;
+}
+
+export interface SanitizedLiveProjects {
+  display: boolean;
+  projects: SanitizedLiveProject[];
+}
+
 export interface SanitizedProjects {
   github: SanitizedGitHubProjects;
   external: SanitizedExternalProjects;
+  liveProjects: SanitizedLiveProjects;
 }
 
 export interface SanitizedSEO {

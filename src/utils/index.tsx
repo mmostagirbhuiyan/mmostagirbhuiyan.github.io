@@ -54,6 +54,10 @@ export const getSanitizedConfig = (
           header: config?.projects?.external?.header || 'My Projects',
           projects: config?.projects?.external?.projects || [],
         },
+        liveProjects: {
+          display: config?.projects?.liveProjects?.display ?? true,
+          projects: config?.projects?.liveProjects?.projects || [],
+        },
       },
       seo: {
         title: config?.seo?.title,
@@ -156,6 +160,7 @@ export const getSanitizedConfig = (
       enablePWA: config?.enablePWA ?? true,
     };
   } catch (error) {
+    console.error(error);
     return {};
   }
 };

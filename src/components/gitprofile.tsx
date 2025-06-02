@@ -32,6 +32,7 @@ import Footer from './footer';
 import PublicationCard from './publication-card';
 import PatentCard from './patent-card';
 import PodcastCard from './podcast-card';
+import LiveProjectsCard from './live-projects-card';
 
 /**
  * Renders the GitProfile component.
@@ -274,6 +275,12 @@ const GitProfile = ({ config }: { config: Config }) => {
                 </div>
                 <div className="lg:col-span-2 col-span-1">
                   <div className="grid grid-cols-1 gap-6">
+                    {sanitizedConfig.projects.liveProjects.display && (
+                      <LiveProjectsCard
+                        loading={loading}
+                        projects={sanitizedConfig.projects.liveProjects.projects}
+                      />
+                    )}
                     {sanitizedConfig.projects.github.display && (
                       <GithubProjectCard
                         header={sanitizedConfig.projects.github.header}
