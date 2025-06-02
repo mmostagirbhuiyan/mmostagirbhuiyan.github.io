@@ -279,9 +279,36 @@ const GitProfile = ({ config }: { config: Config }) => {
                     {sanitizedConfig.projects.liveProjects.display && (
                       <LiveProjectsCard
                         loading={loading}
-                        projects={sanitizedConfig.projects.liveProjects.projects}
+                        projects={
+                          sanitizedConfig.projects.liveProjects.projects
+                        }
                       />
                     )}
+                    {/* GitHub Contribution Graph Card */}
+                    <div className="card glass-bg shadow-md p-6">
+                      <div className="flex items-center mb-4">
+                        <svg
+                          className="w-6 h-6 text-primary mr-2"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+                          <circle cx="12" cy="12" r="5"></circle>
+                        </svg>
+                        <h2 className="text-xl font-bold text-base-content opacity-80">
+                          GitHub Contributions
+                        </h2>
+                      </div>
+                      <img
+                        src={`https://ghchart.rshah.org/${sanitizedConfig.github.username}`}
+                        alt="GitHub Contribution Chart"
+                        className="w-full h-auto"
+                        loading="lazy"
+                        style={{ background: 'transparent' }}
+                      />
+                    </div>
                     {sanitizedConfig.projects.github.display && (
                       <GithubProjectCard
                         header={sanitizedConfig.projects.github.header}
