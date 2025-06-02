@@ -19,6 +19,7 @@ import {
   FaTelegram,
   FaYoutube,
   FaPodcast,
+  FaUser,
 } from 'react-icons/fa';
 import { FaSquareThreads, FaGoogleScholar } from 'react-icons/fa6';
 import { MdLocationOn } from 'react-icons/md';
@@ -68,14 +69,19 @@ const ListItem: React.FC<{
   skeleton?: boolean;
 }> = ({ icon, title, value, link, skeleton = false }) => {
   return (
-    <div className="flex justify-start py-2 px-1 items-center">
+    <div className="flex justify-start py-2.5 px-2 items-center group hover:bg-base-200 hover:bg-opacity-50 rounded-lg transition-all duration-300">
       <div className="flex-grow font-medium gap-2 flex items-center my-1">
-        {icon} {title}
+        <span className="text-primary group-hover:opacity-100 transition-opacity duration-300 text-glass-shadow">
+          {icon}
+        </span>
+        <span className="text-base-content opacity-100 font-semibold group-hover:opacity-100 transition-opacity duration-300 text-glass-shadow">
+          {title}
+        </span>
       </div>
       <div
         className={`${
           skeleton ? 'flex-grow' : ''
-        } text-sm font-normal text-right mr-2 ml-3 ${link ? 'truncate' : ''}`}
+        } text-base-content opacity-100 font-normal text-right mr-2 ml-3 ${link ? 'truncate' : ''} text-glass-shadow`}
         style={{
           wordBreak: 'break-word',
         }}
@@ -84,7 +90,7 @@ const ListItem: React.FC<{
           href={link}
           target="_blank"
           rel="noreferrer"
-          className="flex justify-start py-2 px-1 items-center"
+          className="flex justify-start py-2 px-1 items-center text-base-content opacity-100 hover:text-primary-focus transition-colors duration-300 text-glass-shadow"
         >
           {value}
         </a>
@@ -113,12 +119,13 @@ const OrganizationItem: React.FC<{
               target="_blank"
               rel="noreferrer"
               key={company}
+              className="text-primary hover:text-primary-focus transition-colors duration-300 text-glass-shadow"
             >
               {company}
             </a>
           );
         } else {
-          return <span key={company}>{company}</span>;
+          return <span key={company} className="text-glass-shadow">{company}</span>;
         }
       });
     }
@@ -126,14 +133,19 @@ const OrganizationItem: React.FC<{
   };
 
   return (
-    <div className="flex justify-start py-2 px-1 items-center">
+    <div className="flex justify-start py-2.5 px-2 items-center group hover:bg-base-200 hover:bg-opacity-50 rounded-lg transition-all duration-300">
       <div className="flex-grow font-medium gap-2 flex items-center my-1">
-        {icon} {title}
+        <span className="text-primary group-hover:opacity-100 transition-opacity duration-300 text-glass-shadow">
+          {icon}
+        </span>
+        <span className="text-base-content opacity-100 font-semibold group-hover:opacity-100 transition-opacity duration-300 text-glass-shadow">
+          {title}
+        </span>
       </div>
       <div
         className={`${
           skeleton ? 'flex-grow' : ''
-        } text-sm font-normal text-right mr-2 ml-3 space-x-2 ${link ? 'truncate' : ''}`}
+        } text-base-content opacity-100 font-normal text-right mr-2 ml-3 space-x-2 ${link ? 'truncate' : ''} text-glass-shadow`}
         style={{
           wordBreak: 'break-word',
         }}
@@ -178,9 +190,21 @@ const DetailsCard = ({
   };
 
   return (
-    <div className="card shadow-lg compact bg-base-100">
+    <div className="card glass-bg shadow-md">
       <div className="card-body">
-        <div className="text-base-content text-opacity-60">
+        <div className="mx-3 mb-4">
+          <h5 className="card-title text-2xl font-bold text-glass-shadow">
+            {loading ? (
+              skeleton({ widthCls: 'w-32', heightCls: 'h-8' })
+            ) : (
+              <span className="text-base-content opacity-100 flex items-center text-glass-shadow">
+                <FaUser className="mr-2" />
+                {'Contact & Social'}
+              </span>
+            )}
+          </h5>
+        </div>
+        <div className="text-base-content divide-y divide-base-300 divide-opacity-20">
           {loading || !profile ? (
             renderSkeleton()
           ) : (

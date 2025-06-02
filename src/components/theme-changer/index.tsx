@@ -1,8 +1,9 @@
+import { useState, useRef, useEffect, KeyboardEvent } from 'react';
+import { createPortal } from 'react-dom';
 import { AiOutlineControl } from 'react-icons/ai';
 import { SanitizedThemeConfig } from '../../interfaces/sanitized-config';
 import { LOCAL_STORAGE_KEY_NAME } from '../../constants';
 import { skeleton } from '../../utils';
-import { MouseEvent } from 'react';
 
 /**
  * Renders a theme changer component.
@@ -25,22 +26,82 @@ const ThemeChanger = ({
   loading: boolean;
   themeConfig: SanitizedThemeConfig;
 }) => {
-  const changeTheme = (
-    e: MouseEvent<HTMLAnchorElement>,
-    selectedTheme: string,
-  ) => {
-    e.preventDefault();
+  const [open, setOpen] = useState(false);
+  const [dropdownPos, setDropdownPos] = useState<{
+    top: number;
+    left: number;
+  } | null>(null);
+  const btnRef = useRef<HTMLButtonElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
+  const [focusedIndex, setFocusedIndex] = useState<number>(-1);
 
+  const themeList = [
+    themeConfig.defaultTheme,
+    ...themeConfig.themes.filter((item) => item !== themeConfig.defaultTheme),
+  ];
+
+  useEffect(() => {
+    if (!open) return;
+    function handleClick(e: Event) {
+      if (btnRef.current && btnRef.current.contains(e.target as Node)) return;
+      if (listRef.current && listRef.current.contains(e.target as Node)) return;
+      setOpen(false);
+    }
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [open]);
+
+  useEffect(() => {
+    if (open && btnRef.current) {
+      const rect = btnRef.current.getBoundingClientRect();
+      setDropdownPos({
+        top: rect.bottom + window.scrollY + 8,
+        left: rect.left + window.scrollX,
+      });
+      setFocusedIndex(themeList.findIndex((t) => t === theme));
+    }
+  }, [open]);
+
+  useEffect(() => {
+    if (open && listRef.current && focusedIndex >= 0) {
+      const el = listRef.current.children[focusedIndex] as HTMLElement;
+      if (el) el.focus();
+    }
+  }, [focusedIndex, open]);
+
+  useEffect(() => {
+    console.log('ThemeChanger themeConfig:', themeConfig);
+    console.log('ThemeChanger themeConfig.themes:', themeConfig.themes);
+  }, [themeConfig]);
+
+  const changeTheme = (selectedTheme: string) => {
     document.querySelector('html')?.setAttribute('data-theme', selectedTheme);
-
     typeof window !== 'undefined' &&
       localStorage.setItem(LOCAL_STORAGE_KEY_NAME, selectedTheme);
-
     setTheme(selectedTheme);
+    setOpen(false);
+  };
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (!open) return;
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setFocusedIndex((prev) => (prev + 1) % themeList.length);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setFocusedIndex(
+        (prev) => (prev - 1 + themeList.length) % themeList.length,
+      );
+    } else if (e.key === 'Enter' && focusedIndex >= 0) {
+      e.preventDefault();
+      changeTheme(themeList[focusedIndex]);
+    } else if (e.key === 'Escape') {
+      setOpen(false);
+    }
   };
 
   return (
-    <div className="card overflow-visible shadow-lg compact bg-base-100">
+    <div className="card glass-bg overflow-visible compact relative">
       <div className="flex-row items-center space-x-4 flex pl-6 pr-2 py-4">
         <div className="flex-1">
           <h5 className="card-title">
@@ -70,49 +131,62 @@ const ThemeChanger = ({
               className: 'mr-6',
             })
           ) : (
-            <div title="Change Theme" className="dropdown dropdown-end">
-              <div
-                tabIndex={0}
-                className="btn btn-ghost m-1 normal-case opacity-50 text-base-content"
+            <button
+              ref={btnRef}
+              title="Change Theme"
+              className="btn btn-ghost m-1 normal-case opacity-50 text-base-content relative"
+              onClick={() => setOpen((v) => !v)}
+              type="button"
+              aria-haspopup="listbox"
+              aria-expanded={open}
+              onKeyDown={handleKeyDown}
+            >
+              <AiOutlineControl className="inline-block w-5 h-5 stroke-current md:mr-2" />
+              <span className="hidden md:inline">Change Theme</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1792 1792"
+                className="inline-block w-4 h-4 ml-1 fill-current"
               >
-                <AiOutlineControl className="inline-block w-5 h-5 stroke-current md:mr-2" />
-                <span className="hidden md:inline">Change Theme</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 1792 1792"
-                  className="inline-block w-4 h-4 ml-1 fill-current"
-                >
-                  <path d="M1395 736q0 13-10 23l-466 466q-10 10-23 10t-23-10l-466-466q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l393 393 393-393q10-10 23-10t23 10l50 50q10 10 10 23z" />
-                </svg>
-              </div>
-              <div
-                tabIndex={0}
-                className="mt-16 overflow-y-auto shadow-2xl top-px dropdown-content max-h-96 w-52 rounded-lg bg-base-200 text-base-content z-10"
-              >
-                <ul className="p-4 menu compact">
-                  {[
-                    themeConfig.defaultTheme,
-                    ...themeConfig.themes.filter(
-                      (item) => item !== themeConfig.defaultTheme,
-                    ),
-                  ].map((item, index) => (
-                    <li key={index}>
-                      {}
-                      <a
-                        onClick={(e) => changeTheme(e, item)}
-                        className={`${theme === item ? 'active' : ''}`}
-                      >
-                        <span className="opacity-60 capitalize">
-                          {item === themeConfig.defaultTheme ? 'Default' : item}
-                        </span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+                <path d="M1395 736q0 13-10 23l-466 466q-10 10-23 10t-23-10l-466-466q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l393 393 393-393q10-10 23-10t23 10l50 50q10 10 10 23z" />
+              </svg>
+            </button>
           )}
         </div>
+        {!!(open && !loading && dropdownPos) &&
+          createPortal(
+            <ul
+              ref={listRef}
+              className="overflow-y-auto shadow-2xl max-h-96 w-52 rounded-lg bg-white bg-opacity-80 backdrop-blur-lg border border-white/20 z-[99999] py-2 focus:outline-none"
+              style={{
+                position: 'absolute',
+                top: dropdownPos.top,
+                left: dropdownPos.left,
+                listStyle: 'none',
+              }}
+              tabIndex={-1}
+              role="listbox"
+              aria-activedescendant={themeList[focusedIndex]}
+              onKeyDown={handleKeyDown}
+            >
+              {themeList.map((item, index) => (
+                <li key={item} className="px-2">
+                  <button
+                    type="button"
+                    className={`w-full text-left px-4 py-2 rounded transition font-semibold capitalize ${theme === item ? 'bg-primary text-white' : 'text-black hover:bg-primary/10'} ${focusedIndex === index ? 'ring-2 ring-primary' : ''}`}
+                    onClick={() => changeTheme(item)}
+                    onMouseEnter={() => setFocusedIndex(index)}
+                    role="option"
+                    aria-selected={theme === item}
+                    tabIndex={-1}
+                  >
+                    {item === themeConfig.defaultTheme ? 'Default' : item}
+                  </button>
+                </li>
+              ))}
+            </ul>,
+            document.body,
+          )}
       </div>
     </div>
   );

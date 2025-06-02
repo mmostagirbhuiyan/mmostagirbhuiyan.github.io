@@ -1,9 +1,9 @@
 export const DEFAULT_CUSTOM_THEME = {
-  primary: '#fc055b',
-  secondary: '#219aaf',
-  accent: '#e8d03a',
+  primary: '#ff5af7',
+  secondary: '#5af7ff',
+  accent: '#f7ff5a',
   neutral: '#2A2730',
-  'base-100': '#E3E3ED',
-  '--rounded-box': '3rem',
-  '--rounded-btn': '3rem',
+  'base-100': '#1a1333',
+  '--rounded-box': '2rem',
+  '--rounded-btn': '2rem',
 };

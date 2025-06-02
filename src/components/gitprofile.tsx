@@ -33,6 +33,7 @@ import PublicationCard from './publication-card';
 import PatentCard from './patent-card';
 import PodcastCard from './podcast-card';
 import LiveProjectsCard from './live-projects-card';
+import avatarImg from '../data/Avatar.png';
 
 /**
  * Renders the GitProfile component.
@@ -110,7 +111,7 @@ const GitProfile = ({ config }: { config: Config }) => {
       const data = response.data;
 
       setProfile({
-        avatar: data.avatar_url,
+        avatar: avatarImg,
         name: data.name || ' ',
         bio: data.bio || '',
         location: data.location || '',

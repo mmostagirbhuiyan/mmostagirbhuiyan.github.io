@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
-import { AiOutlineFork, AiOutlineStar } from 'react-icons/ai';
-import { MdInsertLink } from 'react-icons/md';
+import { AiOutlineFork, AiOutlineStar, AiOutlineCode } from 'react-icons/ai';
+import { MdInsertLink, MdLanguage } from 'react-icons/md';
+import { FaGithub } from 'react-icons/fa';
 import { ga, getLanguageColor, skeleton } from '../../utils';
 import { GithubProject } from '../../interfaces/github-project';
 
@@ -27,8 +28,11 @@ const GithubProjectCard = ({
     const array = [];
     for (let index = 0; index < limit; index++) {
       array.push(
-        <div className="card shadow-lg compact bg-base-100" key={index}>
-          <div className="flex justify-between flex-col p-8 h-full w-full">
+        <div
+          className="card bg-base-200 bg-opacity-50 backdrop-blur-sm border border-base-300"
+          key={index}
+        >
+          <div className="flex justify-between flex-col p-6 h-full w-full">
             <div>
               <div className="flex items-center">
                 <span>
@@ -51,8 +55,8 @@ const GithubProjectCard = ({
               </div>
             </div>
             <div className="flex justify-between">
-              <div className="flex flex-grow">
-                <span className="mr-3 flex items-center">
+              <div className="flex flex-grow gap-4">
+                <span className="flex items-center">
                   {skeleton({ widthCls: 'w-12', heightCls: 'h-4' })}
                 </span>
                 <span className="flex items-center">
@@ -76,7 +80,7 @@ const GithubProjectCard = ({
   const renderProjects = () => {
     return githubProjects.map((item, index) => (
       <a
-        className="card shadow-lg compact bg-base-100 cursor-pointer"
+        className="card bg-base-200 bg-opacity-50 backdrop-blur-sm border border-base-300 hover:border-primary hover:shadow-lg transition-all duration-300 cursor-pointer group"
         href={item.html_url}
         key={index}
         onClick={(e) => {
@@ -95,37 +99,49 @@ const GithubProjectCard = ({
           window?.open(item.html_url, '_blank');
         }}
       >
-        <div className="flex justify-between flex-col p-8 h-full w-full">
+        <div className="flex justify-between flex-col p-6 h-full w-full">
           <div>
-            <div className="flex items-center truncate">
-              <div className="card-title text-lg tracking-wide flex text-base-content opacity-60">
-                <MdInsertLink className="my-auto" />
-                <span>{item.name}</span>
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <FaGithub className="w-5 h-5 text-base-content opacity-70 group-hover:text-primary transition-colors duration-300" />
+                <h5 className="card-title text-lg font-semibold text-base-content opacity-90 group-hover:opacity-100 group-hover:text-primary transition-all duration-300">
+                  {item.name}
+                </h5>
+              </div>
+              <div className="badge badge-outline hover:bg-primary hover:bg-opacity-10 hover:text-primary transition-all duration-300">
+                <AiOutlineCode className="w-4 h-4 mr-1" />
+                Code
               </div>
             </div>
-            <p className="mb-5 mt-1 text-base-content text-opacity-60 text-sm">
-              {item.description}
+            <p className="text-base-content opacity-70 group-hover:opacity-90 transition-opacity duration-300 mb-4">
+              {item.description || 'No description available'}
             </p>
-          </div>
-          <div className="flex justify-between text-sm text-base-content text-opacity-60 truncate">
-            <div className="flex flex-grow">
-              <span className="mr-3 flex items-center">
-                <AiOutlineStar className="mr-0.5" />
-                <span>{item.stargazers_count}</span>
-              </span>
-              <span className="flex items-center">
-                <AiOutlineFork className="mr-0.5" />
-                <span>{item.forks_count}</span>
-              </span>
-            </div>
-            <div>
-              <span className="flex items-center">
+            {item.language && (
+              <div className="flex items-center gap-2 mb-4">
                 <div
-                  className="w-3 h-3 rounded-full mr-1 opacity-60"
+                  className="w-3 h-3 rounded-full"
                   style={{ backgroundColor: getLanguageColor(item.language) }}
                 />
-                <span>{item.language}</span>
-              </span>
+                <span className="text-sm text-base-content opacity-70">
+                  {item.language}
+                </span>
+              </div>
+            )}
+          </div>
+          <div className="flex justify-between items-center mt-4 pt-4 border-t border-base-300">
+            <div className="flex gap-4">
+              <div className="flex items-center gap-1 text-base-content opacity-70 group-hover:opacity-90 transition-opacity duration-300">
+                <AiOutlineStar className="w-4 h-4" />
+                <span className="text-sm">{item.stargazers_count}</span>
+              </div>
+              <div className="flex items-center gap-1 text-base-content opacity-70 group-hover:opacity-90 transition-opacity duration-300">
+                <AiOutlineFork className="w-4 h-4" />
+                <span className="text-sm">{item.forks_count}</span>
+              </div>
+            </div>
+            <div className="badge badge-outline hover:bg-primary hover:bg-opacity-10 hover:text-primary transition-all duration-300">
+              <MdLanguage className="w-4 h-4 mr-1" />
+              View
             </div>
           </div>
         </div>
@@ -135,40 +151,32 @@ const GithubProjectCard = ({
 
   return (
     <Fragment>
-      <div className="col-span-1 lg:col-span-2">
-        <div className="grid grid-cols-2 gap-6">
-          <div className="col-span-2">
-            <div className="card compact bg-base-100 shadow bg-opacity-40">
-              <div className="card-body">
-                <div className="mx-3 flex items-center justify-between mb-2">
-                  <h5 className="card-title">
-                    {loading ? (
-                      skeleton({ widthCls: 'w-40', heightCls: 'h-8' })
-                    ) : (
-                      <span className="text-base-content opacity-70">
-                        {header}
-                      </span>
-                    )}
-                  </h5>
-                  {loading ? (
-                    skeleton({ widthCls: 'w-10', heightCls: 'h-5' })
-                  ) : (
-                    <a
-                      href={`https://github.com/${username}?tab=repositories`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-base-content opacity-50 hover:underline"
-                    >
-                      See All
-                    </a>
-                  )}
-                </div>
-                <div className="col-span-2">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {loading ? renderSkeleton() : renderProjects()}
-                  </div>
-                </div>
+      <div className="col-span-1 lg:col-span-2 transform hover:scale-[1.01] transition-transform duration-300">
+        <div className="card glass-bg shadow-xl">
+          <div className="card-body">
+            <div className="mx-3 flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <FaGithub className="w-6 h-6 text-primary" />
+                <h5 className="card-title text-base-content opacity-90 text-2xl font-bold">
+                  {header}
+                </h5>
               </div>
+              {loading ? (
+                skeleton({ widthCls: 'w-10', heightCls: 'h-5' })
+              ) : (
+                <a
+                  href={`https://github.com/${username}?tab=repositories`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="badge badge-outline hover:bg-primary hover:bg-opacity-10 hover:text-primary badge-lg gap-2 transition-all duration-300"
+                >
+                  <MdInsertLink className="w-4 h-4" />
+                  View All
+                </a>
+              )}
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {loading ? renderSkeleton() : renderProjects()}
             </div>
           </div>
         </div>

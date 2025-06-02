@@ -38,11 +38,14 @@ const BlogCard = ({
     const array = [];
     for (let index = 0; index < blog.limit; index++) {
       array.push(
-        <div className="card shadow-lg compact bg-base-100" key={index}>
+        <div
+          className="card shadow-lg compact bg-base-100 bg-opacity-40 backdrop-blur-sm transition-all duration-300"
+          key={index}
+        >
           <div className="p-8 h-full w-full">
             <div className="flex items-center flex-col md:flex-row">
               <div className="avatar mb-5 md:mb-0">
-                <div className="w-24 h-24 mask mask-squircle">
+                <div className="w-24 h-24 mask mask-squircle bg-base-300 bg-opacity-20">
                   {skeleton({
                     widthCls: 'w-full',
                     heightCls: 'h-full',
@@ -72,7 +75,7 @@ const BlogCard = ({
                         className: 'mx-auto md:mx-0',
                       })}
                     </div>
-                    <div className="mt-4 flex items-center flex-wrap justify-center md:justify-start">
+                    <div className="mt-4 flex items-center flex-wrap justify-center md:justify-start gap-2">
                       {skeleton({
                         widthCls: 'w-32',
                         heightCls: 'h-4',
@@ -95,7 +98,7 @@ const BlogCard = ({
     return articles && articles.length ? (
       articles.slice(0, blog.limit).map((article, index) => (
         <a
-          className="card shadow-lg compact bg-base-100 cursor-pointer"
+          className="card shadow-lg compact bg-base-100 bg-opacity-40 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer"
           key={index}
           href={article.link}
           onClick={(e) => {
@@ -117,7 +120,7 @@ const BlogCard = ({
           <div className="p-8 h-full w-full">
             <div className="flex items-center flex-col md:flex-row">
               <div className="avatar mb-5 md:mb-0 opacity-90">
-                <div className="w-24 h-24 mask mask-squircle">
+                <div className="w-24 h-24 mask mask-squircle bg-base-300 bg-opacity-20">
                   <LazyImage
                     src={article.thumbnail}
                     alt={'thumbnail'}
@@ -132,21 +135,21 @@ const BlogCard = ({
               <div className="w-full">
                 <div className="flex items-start px-4">
                   <div className="text-center md:text-left w-full">
-                    <h2 className="font-medium text-base-content opacity-60">
+                    <h2 className="font-medium text-lg text-base-content opacity-80 mb-2">
                       {article.title}
                     </h2>
-                    <p className="text-base-content opacity-50 text-xs">
+                    <p className="text-base-content opacity-60 text-sm">
                       {formatDistance(article.publishedAt, new Date(), {
                         addSuffix: true,
                       })}
                     </p>
-                    <p className="mt-3 text-base-content text-opacity-60 text-sm">
+                    <p className="mt-3 text-base-content opacity-70 text-sm leading-relaxed">
                       {article.description}
                     </p>
-                    <div className="mt-4 flex items-center flex-wrap justify-center md:justify-start">
+                    <div className="mt-4 flex items-center flex-wrap justify-center md:justify-start gap-2">
                       {article.categories.map((category, index2) => (
                         <div
-                          className="py-2 px-4 text-xs leading-3 rounded-full bg-base-300 mr-1 mb-1 opacity-50 text-base-content"
+                          className="py-1.5 px-3 text-xs font-medium rounded-full bg-primary bg-opacity-10 text-primary transition-all duration-300 hover:bg-opacity-20"
                           key={index2}
                         >
                           #{category}
@@ -177,18 +180,19 @@ const BlogCard = ({
           <div
             className={`card compact bg-base-100 ${
               loading || (articles && articles.length)
-                ? 'shadow bg-opacity-40'
+                ? 'shadow-lg bg-opacity-40 backdrop-blur-sm'
                 : 'shadow-lg'
             }`}
           >
             <div className="card-body">
-              <div className="mx-3 mb-2">
-                <h5 className="card-title">
+              <div className="mx-3 mb-4">
+                <h5 className="card-title text-2xl font-bold">
                   {loading ? (
                     skeleton({ widthCls: 'w-28', heightCls: 'h-8' })
                   ) : (
-                    <span className="text-base-content opacity-70">
-                      My Articles
+                    <span className="text-base-content opacity-80 flex items-center">
+                      <AiOutlineContainer className="mr-2" />
+                      {'My Articles'}
                     </span>
                   )}
                 </h5>

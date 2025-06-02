@@ -70,7 +70,7 @@ const CONFIG = {
     title: 'Portfolio of M Mostagir Bhuiyan',
     description:
       'Experienced Cloud Architect and DevOps Leader with over 10 years of expertise and 5+ AWS Certifications. Known for effectively reducing cloud operational costs and enhancing system efficiencies in high-stakes environments. Proficient in deploying AI/ML technologies to optimize cloud solutions, achieving notable cost savings and improvements in data processing scalability and reliability. Demonstrates a robust command of DevOps practices, including advanced CI/CD strategies and comprehensive cloud infrastructure engineering. Currently pursuing an Executive MBA from Cornell University, committed to delivering innovative cloud architecture solutions and leading transformative initiatives.',
-    imageURL: '',
+    imageURL: 'https://www.dropbox.com/scl/fi/wmfxd68i4bjp0v1os1y06/Avatar.png?rlkey=cewgvppwwkk9zlydn2asf5pxk&st=wm9hcoo0&dl=0',
   },
   social: {
     linkedin: '',
@@ -242,7 +242,7 @@ const CONFIG = {
     snippetVersion: 6,
   },
   themeConfig: {
-    defaultTheme: 'synthwave',
+    defaultTheme: 'procyon',
 
     // Hides the switch in the navbar
     // Useful if you want to support a single color mode
@@ -250,7 +250,7 @@ const CONFIG = {
 
     // Should use the prefers-color-scheme media-query,
     // using user system preferences, instead of the hardcoded defaultTheme
-    respectPrefersColorScheme: true,
+    respectPrefersColorScheme: false,
 
     // Display the ring in Profile picture
     displayAvatarRing: true,
