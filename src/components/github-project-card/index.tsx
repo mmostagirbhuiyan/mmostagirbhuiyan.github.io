@@ -101,14 +101,15 @@ const GithubProjectCard = ({
       >
         <div className="flex justify-between flex-col p-6 h-full w-full">
           <div>
-            <div className="flex items-center justify-between mb-2">
-              <div className="flex items-center gap-2">
-                <FaGithub className="w-5 h-5 text-base-content opacity-70 group-hover:text-primary transition-colors duration-300" />
-                <h5 className="card-title text-lg font-semibold text-base-content opacity-90 group-hover:opacity-100 group-hover:text-primary transition-all duration-300">
+            {/* Fixed header layout - separated title and button */}
+            <div className="flex items-start justify-between mb-2 gap-3">
+              <div className="flex items-center gap-2 flex-1 min-w-0">
+                <FaGithub className="w-5 h-5 text-base-content opacity-70 group-hover:text-primary transition-colors duration-300 flex-shrink-0" />
+                <h5 className="card-title text-lg font-semibold text-base-content opacity-90 group-hover:opacity-100 group-hover:text-primary transition-all duration-300 truncate">
                   {item.name}
                 </h5>
               </div>
-              <div className="badge badge-outline hover:bg-primary hover:bg-opacity-10 hover:text-primary transition-all duration-300">
+              <div className="badge badge-outline hover:bg-primary hover:bg-opacity-10 hover:text-primary transition-all duration-300 flex-shrink-0">
                 <AiOutlineCode className="w-4 h-4 mr-1" />
                 Code
               </div>
