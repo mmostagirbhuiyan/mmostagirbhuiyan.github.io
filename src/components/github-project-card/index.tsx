@@ -155,7 +155,7 @@ const GithubProjectCard = ({
       <div className="col-span-1 lg:col-span-2 transform hover:scale-[1.01] transition-transform duration-300">
         <div className="card glass-bg shadow-xl">
           <div className="card-body">
-            <div className="mx-3 flex items-center justify-between mb-4">
+            <div className="mx-3 flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
               <div className="flex items-center gap-2">
                 <FaGithub className="w-6 h-6 text-primary" />
                 <h5 className="card-title text-base-content opacity-90 text-2xl font-bold">
@@ -169,7 +169,7 @@ const GithubProjectCard = ({
                   href={`https://github.com/${username}?tab=repositories`}
                   target="_blank"
                   rel="noreferrer"
-                  className="badge badge-outline hover:bg-primary hover:bg-opacity-10 hover:text-primary badge-lg gap-2 transition-all duration-300"
+                  className="badge badge-outline hover:bg-primary hover:bg-opacity-10 hover:text-primary badge-md sm:badge-lg gap-2 transition-all duration-300 w-full sm:w-auto justify-center"
                 >
                   <MdInsertLink className="w-4 h-4" />
                   View All

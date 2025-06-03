@@ -43,7 +43,7 @@ const LiveProjectsCard = ({ loading, projects }: LiveProjectsCardProps) => {
     return (
       <div className="card glass-bg shadow-xl">
         <div className="card-body">
-          <div className="mx-3 flex items-center justify-between mb-2">
+          <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <FaRocket className="w-6 h-6 text-primary animate-pulse" />
               <h5 className="card-title text-base-content opacity-90 text-2xl font-bold">
@@ -55,29 +55,34 @@ const LiveProjectsCard = ({ loading, projects }: LiveProjectsCardProps) => {
               Featured
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {projects.map((project, index) => (
               <a
                 key={index}
+                className="card bg-base-200 bg-opacity-50 backdrop-blur-sm border border-base-300 hover:border-primary hover:shadow-lg transition-all duration-300 cursor-pointer group"
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="card bg-base-200 bg-opacity-50 backdrop-blur-sm border border-base-300 hover:border-primary hover:shadow-lg transition-all duration-300 cursor-pointer group"
               >
-                <div className="card-body">
-                  <div className="flex items-center justify-between mb-2">
-                    <h6 className="card-title text-base-content opacity-90 group-hover:opacity-100 text-xl font-semibold group-hover:text-primary transition-colors duration-300">
-                      {project.title}
-                    </h6>
-                    <div className="badge badge-outline hover:bg-primary hover:bg-opacity-10 hover:text-primary transition-all duration-300">
-                      <MdLaunch className="w-4 h-4 mr-1" />
-                      Demo
+                <div className="flex justify-between flex-col p-6 h-full w-full">
+                  <div>
+                    <div className="flex items-start justify-between mb-2 gap-3">
+                      <div className="flex items-center gap-2 flex-1 min-w-0">
+                        <FaRocket className="w-5 h-5 text-base-content opacity-70 group-hover:text-primary transition-colors duration-300 flex-shrink-0" />
+                        <h5 className="card-title text-lg font-semibold text-base-content opacity-90 group-hover:opacity-100 group-hover:text-primary transition-all duration-300 truncate">
+                          {project.title}
+                        </h5>
+                      </div>
+                      <div className="badge badge-outline hover:bg-primary hover:bg-opacity-10 hover:text-primary transition-all duration-300 flex-shrink-0">
+                        <MdLaunch className="w-4 h-4 mr-1" />
+                        Demo
+                      </div>
                     </div>
+                    <p className="text-base-content opacity-70 group-hover:opacity-90 transition-opacity duration-300 mb-4">
+                      {project.description}
+                    </p>
                   </div>
-                  <p className="text-base-content opacity-70 group-hover:opacity-90 transition-opacity duration-300">
-                    {project.description}
-                  </p>
-                  <div className="card-actions justify-end mt-4">
+                  <div className="card-actions justify-end mt-4 pt-4 border-t border-base-300">
                     <div className="badge badge-outline hover:bg-primary hover:bg-opacity-10 hover:text-primary transition-all duration-300">
                       Click to explore
                     </div>
