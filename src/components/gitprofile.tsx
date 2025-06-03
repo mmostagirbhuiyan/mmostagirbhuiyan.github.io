@@ -34,6 +34,7 @@ import PatentCard from './patent-card';
 import PodcastCard from './podcast-card';
 import LiveProjectsCard from './live-projects-card';
 import avatarImg from '../data/Avatar.png';
+import GitHubCalendar from 'react-github-calendar';
 
 /**
  * Renders the GitProfile component.
@@ -275,62 +276,77 @@ const GitProfile = ({ config }: { config: Config }) => {
                   </div>
                 </div>
                 <div className="lg:col-span-2 col-span-1">
-                  <div className="grid grid-cols-1 gap-6">
-                    {sanitizedConfig.projects.liveProjects.display && (
-                      <LiveProjectsCard
-                        loading={loading}
-                        projects={
-                          sanitizedConfig.projects.liveProjects.projects
-                        }
-                      />
-                    )}
-                    {/* GitHub Contribution Graph Card */}
-                    <div className="card glass-bg shadow-md p-6">
-                      <div className="flex items-center mb-4">
-                        <svg
-                          className="w-6 h-6 text-primary mr-2"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
-                          <circle cx="12" cy="12" r="5"></circle>
-                        </svg>
-                        <h2 className="text-xl font-bold text-base-content opacity-80">
-                          GitHub Contributions
-                        </h2>
+                  <div className="grid grid-cols-2 gap-6">
+                    {/* Live Projects Card (single, handles its own layout) */}
+                    {sanitizedConfig.projects.liveProjects.display &&
+                      sanitizedConfig.projects.liveProjects.projects.length > 0 && (
+                        <LiveProjectsCard
+                          loading={loading}
+                          projects={
+                            sanitizedConfig.projects.liveProjects.projects
+                          }
+                        />
+                      )}
+                    {/* GitHub Contribution Graph Card - spans both columns */}
+                    <div className="col-span-2">
+                      <div className="card glass-bg shadow-md p-6 w-full">
+                        <div className="flex items-center mb-4">
+                          <svg
+                            className="w-6 h-6 text-primary mr-2"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+                            <circle cx="12" cy="12" r="5"></circle>
+                          </svg>
+                          <h2 className="text-xl font-bold text-base-content opacity-80">
+                            GitHub Contributions
+                          </h2>
+                        </div>
+                        <div className="w-full overflow-x-auto">
+                          <GitHubCalendar
+                            username={sanitizedConfig.github.username}
+                            blockSize={15}
+                            blockMargin={5}
+                            colorScheme="light"
+                            showWeekdayLabels
+                          />
+                        </div>
                       </div>
-                      <img
-                        src={`https://ghchart.rshah.org/${sanitizedConfig.github.username}`}
-                        alt="GitHub Contribution Chart"
-                        className="w-full h-auto"
-                        loading="lazy"
-                        style={{ background: 'transparent' }}
-                      />
                     </div>
+                    {/* Other right pane cards (projects, publications, blog, etc.) can be added below, spanning both columns if needed */}
                     {sanitizedConfig.projects.github.display && (
-                      <GithubProjectCard
-                        header={sanitizedConfig.projects.github.header}
-                        limit={sanitizedConfig.projects.github.automatic.limit}
-                        githubProjects={githubProjects}
-                        loading={loading}
-                        username={sanitizedConfig.github.username}
-                        googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
-                      />
+                      <div className="col-span-2">
+                        <GithubProjectCard
+                          header={sanitizedConfig.projects.github.header}
+                          limit={
+                            sanitizedConfig.projects.github.automatic.limit
+                          }
+                          githubProjects={githubProjects}
+                          loading={loading}
+                          username={sanitizedConfig.github.username}
+                          googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
+                        />
+                      </div>
                     )}
                     {sanitizedConfig.publications.length !== 0 && (
-                      <PublicationCard
-                        loading={loading}
-                        publications={sanitizedConfig.publications}
-                      />
+                      <div className="col-span-2">
+                        <PublicationCard
+                          loading={loading}
+                          publications={sanitizedConfig.publications}
+                        />
+                      </div>
                     )}
                     {sanitizedConfig.blog.display && (
-                      <BlogCard
-                        loading={loading}
-                        googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
-                        blog={sanitizedConfig.blog}
-                      />
+                      <div className="col-span-2">
+                        <BlogCard
+                          loading={loading}
+                          googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
+                          blog={sanitizedConfig.blog}
+                        />
+                      </div>
                     )}
                   </div>
                 </div>

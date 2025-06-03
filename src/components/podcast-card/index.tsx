@@ -41,7 +41,7 @@ const ListItem = ({
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-primary bg-primary bg-opacity-10 rounded-full transition-all duration-300 hover:bg-opacity-20 hover:scale-105"
+              className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-accent-content bg-primary bg-opacity-10 rounded-full transition-all duration-300 hover:bg-opacity-20 hover:scale-105"
             >
               <FaPodcast className="mr-1.5" />
               {link.name}
