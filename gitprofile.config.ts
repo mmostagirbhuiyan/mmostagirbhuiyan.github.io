@@ -54,9 +54,9 @@ const CONFIG = {
       display: true,
       projects: [
         {
-          title: 'REIT Fund Model',
-          description: 'A comprehensive real estate investment trust (REIT) analysis and modeling tool that helps investors evaluate and compare different REIT opportunities.',
-          link: 'https://mmostagirbhuiyan.com/reit-fund-model',
+          title: 'MULTI Fund Model',
+          description: 'A comprehensive real estate investment trust (REIT), 401k, Roth IRA, HSA, Brokerage analysis and modeling tool that helps investors evaluate and compare different INVESTMENT opportunities.',
+          link: 'https://mmostagirbhuiyan.com/multi-fund-model',
         },
         {
           title: 'University Aggregator Rankings',
