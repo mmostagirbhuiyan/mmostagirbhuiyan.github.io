@@ -26,10 +26,17 @@
   border-radius: 10px;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   min-height: 100vh;
   height: auto;
-  background: linear-gradient(135deg, #2d1457 0%, #6a82fb 60%, #b06ab3 100%) !important;
+  background: linear-gradient(
+    135deg,
+    #2d1457 0%,
+    #6a82fb 60%,
+    #b06ab3 100%
+  ) !important;
   background-attachment: fixed !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
@@ -38,8 +45,17 @@ html, body, #root {
 
 body {
   margin: 0;
-  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family:
+    'IBM Plex Sans',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -102,12 +118,19 @@ svg {
 }
 
 .glass-bg {
-  background-color: rgba(255, 255, 255, 0.4); /* 40% opacity for better contrast */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.4
+  ); /* 40% opacity for better contrast */
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .text-glass-shadow {
-  text-shadow: 0 1px 6px rgba(0,0,0,0.10), 0 1px 1px rgba(0,0,0,0.10);
+  text-shadow:
+    0 1px 6px rgba(0, 0, 0, 0.1),
+    0 1px 1px rgba(0, 0, 0, 0.1);
 }

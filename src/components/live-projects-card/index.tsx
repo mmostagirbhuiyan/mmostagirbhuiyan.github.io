@@ -26,7 +26,10 @@ const LiveProjectsCard = ({ loading, projects }: LiveProjectsCardProps) => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
             {[1, 2].map((index) => (
-              <div key={index} className="card bg-base-200 bg-opacity-50 backdrop-blur-sm border border-base-300">
+              <div
+                key={index}
+                className="card bg-base-200 bg-opacity-50 backdrop-blur-sm border border-base-300"
+              >
                 <div className="card-body">
                   {skeleton({ widthCls: 'w-24', heightCls: 'h-6' })}
                   {skeleton({ widthCls: 'w-full', heightCls: 'h-4 mt-2' })}
@@ -105,4 +108,4 @@ const LiveProjectsCard = ({ loading, projects }: LiveProjectsCardProps) => {
   );
 };
 
-export default LiveProjectsCard; 
+export default LiveProjectsCard;

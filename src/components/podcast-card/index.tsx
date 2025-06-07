@@ -119,4 +119,4 @@ const PodcastCard = ({
   );
 };
 
-export default PodcastCard; 
+export default PodcastCard;
