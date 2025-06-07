@@ -38,15 +38,18 @@ const CONFIG = {
       projects: [
         {
           title: 'MLOps & AI Infrastructure',
-          description: 'Probabilistic Bayesian Neural Network (BNN) inference framework with HMC and variational inference; scalable SVM with kernel approximation; modular SGD suite with adaptive and second-order optimizers.',
+          description:
+            'Probabilistic Bayesian Neural Network (BNN) inference framework with HMC and variational inference; scalable SVM with kernel approximation; modular SGD suite with adaptive and second-order optimizers.',
         },
         {
           title: 'Fault-Tolerant Distributed Systems',
-          description: 'Byzantine-resilient consensus protocols (Paxos, Raft, BFT-SMaRt); distributed transaction engine with vector clocks and CRDTs; quorum-consistent key-value store with tunable consistency.',
+          description:
+            'Byzantine-resilient consensus protocols (Paxos, Raft, BFT-SMaRt); distributed transaction engine with vector clocks and CRDTs; quorum-consistent key-value store with tunable consistency.',
         },
         {
           title: 'FPGA-Accelerated AI Systems',
-          description: 'FPGA-based AI accelerator with INT4/INT8 quantization and sparse matrix optimizations; high-performance SPI controller; custom RISC pipeline with branch prediction and out-of-order execution.',
+          description:
+            'FPGA-based AI accelerator with INT4/INT8 quantization and sparse matrix optimizations; high-performance SPI controller; custom RISC pipeline with branch prediction and out-of-order execution.',
         },
       ],
     },
@@ -55,22 +58,25 @@ const CONFIG = {
       projects: [
         {
           title: 'MULTI Fund Model',
-          description: 'A comprehensive real estate investment trust (REIT), 401k, Roth IRA, HSA, Brokerage analysis and modeling tool that helps investors evaluate and compare different INVESTMENT opportunities.',
+          description:
+            'A comprehensive real estate investment trust (REIT), 401k, Roth IRA, HSA, Brokerage analysis and modeling tool that helps investors evaluate and compare different INVESTMENT opportunities.',
           link: 'https://mmostagirbhuiyan.com/multi-fund-model',
         },
         {
           title: 'University Aggregator Rankings',
-          description: 'An innovative platform that aggregates and analyzes university rankings from multiple sources to provide comprehensive insights for prospective students.',
+          description:
+            'An innovative platform that aggregates and analyzes university rankings from multiple sources to provide comprehensive insights for prospective students.',
           link: 'https://www.mmostagirbhuiyan.com/university-ranking-aggregator/',
         },
       ],
     },
   },
   seo: {
-  title: 'Mostagir Bhuiyan | Cloud, DevOps & AI/ML Engineering Leader',
-  description:
-    'Cloud Architect and DevOps Leader with 10+ years of experience designing and optimizing scalable cloud infrastructures. Holds all AWS associate and professional certifications. Skilled in integrating AI/ML into cloud systems to drive cost savings, enhance scalability, and enable predictive analytics. Proven expertise in advanced CI/CD, infrastructure engineering, and real-world AI/ML solutions. Currently pursuing an Executive MBA and an M.Eng in Computer Engineering, committed to transforming businesses through innovation.',
-  imageURL: 'https://drive.google.com/uc?export=view&id=1O0-uaBf7rhlmRyvDD3ipixMG-z1Q3Gyb'
+    title: 'Mostagir Bhuiyan | Cloud, DevOps & AI/ML Engineering Leader',
+    description:
+      'Cloud Architect and DevOps Leader with 10+ years of experience designing and optimizing scalable cloud infrastructures. Holds all AWS associate and professional certifications. Skilled in integrating AI/ML into cloud systems to drive cost savings, enhance scalability, and enable predictive analytics. Proven expertise in advanced CI/CD, infrastructure engineering, and real-world AI/ML solutions. Currently pursuing an Executive MBA and an M.Eng in Computer Engineering, committed to transforming businesses through innovation.',
+    imageURL:
+      'https://drive.google.com/uc?export=view&id=1O0-uaBf7rhlmRyvDD3ipixMG-z1Q3Gyb',
   },
   social: {
     linkedin: '',
@@ -94,7 +100,8 @@ const CONFIG = {
     website: '',
     phone: '',
     email: 'mo@mmostagirbhuiyan.com',
-    applePodcast: 'https://podcasts.apple.com/us/podcast/the-practical-ai-digest/id1817015122',
+    applePodcast:
+      'https://podcasts.apple.com/us/podcast/the-practical-ai-digest/id1817015122',
   },
   resume: {
     fileUrl: '', // Empty fileUrl will hide the `Download Resume` button.
@@ -305,7 +312,7 @@ const CONFIG = {
   },
 
   // Optional Footer. Supports plain text or HTML.
-  footer: `Made with ❤️ by Mostagir`,
+  footer: `© ${new Date().getFullYear()} Mostagir Bhuiyan. All rights reserved.`,
 
   enablePWA: true,
 
