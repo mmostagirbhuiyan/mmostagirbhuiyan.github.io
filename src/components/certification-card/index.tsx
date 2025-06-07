@@ -33,7 +33,9 @@ const ListItem = ({
           {name}
         </a>
       </div>
-      <div className="text-base-content opacity-100 leading-relaxed text-glass-shadow">{body}</div>
+      <div className="text-base-content opacity-100 leading-relaxed text-glass-shadow">
+        {body}
+      </div>
     </div>
   </li>
 );

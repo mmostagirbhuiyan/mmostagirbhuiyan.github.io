@@ -125,7 +125,11 @@ const OrganizationItem: React.FC<{
             </a>
           );
         } else {
-          return <span key={company} className="text-glass-shadow">{company}</span>;
+          return (
+            <span key={company} className="text-glass-shadow">
+              {company}
+            </span>
+          );
         }
       });
     }

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, KeyboardEvent } from 'react';
+import { useState, useRef, useEffect, useMemo, KeyboardEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { AiOutlineControl } from 'react-icons/ai';
 import { SanitizedThemeConfig } from '../../interfaces/sanitized-config';
@@ -35,10 +35,13 @@ const ThemeChanger = ({
   const listRef = useRef<HTMLUListElement>(null);
   const [focusedIndex, setFocusedIndex] = useState<number>(-1);
 
-  const themeList = [
-    themeConfig.defaultTheme,
-    ...themeConfig.themes.filter((item) => item !== themeConfig.defaultTheme),
-  ];
+  const themeList = useMemo(
+    () => [
+      themeConfig.defaultTheme,
+      ...themeConfig.themes.filter((item) => item !== themeConfig.defaultTheme),
+    ],
+    [themeConfig],
+  );
 
   useEffect(() => {
     if (!open) return;
@@ -60,7 +63,7 @@ const ThemeChanger = ({
       });
       setFocusedIndex(themeList.findIndex((t) => t === theme));
     }
-  }, [open]);
+  }, [open, theme, themeList]);
 
   useEffect(() => {
     if (open && listRef.current && focusedIndex >= 0) {

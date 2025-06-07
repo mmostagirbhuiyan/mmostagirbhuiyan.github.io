@@ -14,8 +14,7 @@ const LazyImage: React.FC<{
   placeholder: React.ReactElement;
   src: string;
   alt: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: any;
+  [key: string]: unknown;
 }> = ({ placeholder, src, alt, ...rest }): React.ReactElement => {
   const [loading, setLoading] = useState(true);
 

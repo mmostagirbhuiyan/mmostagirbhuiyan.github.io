@@ -87,18 +87,22 @@ const PublicationCard = ({
                   View
                 </div>
               </div>
-              
+
               <div className="space-y-2 mb-4">
                 {item.conferenceName && (
                   <div className="flex items-center gap-2 text-base-content opacity-70 group-hover:opacity-90 transition-opacity duration-300">
                     <FaBook className="w-4 h-4" />
-                    <span className="text-sm font-medium">{item.conferenceName}</span>
+                    <span className="text-sm font-medium">
+                      {item.conferenceName}
+                    </span>
                   </div>
                 )}
                 {item.journalName && (
                   <div className="flex items-center gap-2 text-base-content opacity-70 group-hover:opacity-90 transition-opacity duration-300">
                     <FaBook className="w-4 h-4" />
-                    <span className="text-sm font-medium">{item.journalName}</span>
+                    <span className="text-sm font-medium">
+                      {item.journalName}
+                    </span>
                   </div>
                 )}
                 {item.authors && (
