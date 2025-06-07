@@ -264,7 +264,8 @@ const GitProfile = ({ config }: { config: Config }) => {
                       />
                     )}
 
-                    {sanitizedConfig.projects.external.projects.length !== 0 && (
+                    {sanitizedConfig.projects.external.projects.length !==
+                      0 && (
                       <ExternalProjectCard
                         loading={loading}
                         header={sanitizedConfig.projects.external.header}
@@ -279,7 +280,8 @@ const GitProfile = ({ config }: { config: Config }) => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Live Projects Card (single, handles its own layout) */}
                     {sanitizedConfig.projects.liveProjects.display &&
-                      sanitizedConfig.projects.liveProjects.projects.length > 0 && (
+                      sanitizedConfig.projects.liveProjects.projects.length >
+                        0 && (
                         <LiveProjectsCard
                           loading={loading}
                           projects={
@@ -356,7 +358,7 @@ const GitProfile = ({ config }: { config: Config }) => {
               <footer
                 className={`p-4 footer ${BG_COLOR} text-base-content footer-center`}
               >
-                <div className="card compact bg-base-100 shadow">
+                <div className="card glass-bg shadow-md compact">
                   <Footer content={sanitizedConfig.footer} loading={loading} />
                 </div>
               </footer>
