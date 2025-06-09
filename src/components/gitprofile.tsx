@@ -282,12 +282,14 @@ const GitProfile = ({ config }: { config: Config }) => {
                     {sanitizedConfig.projects.liveProjects.display &&
                       sanitizedConfig.projects.liveProjects.projects.length >
                         0 && (
-                        <LiveProjectsCard
-                          loading={loading}
-                          projects={
-                            sanitizedConfig.projects.liveProjects.projects
-                          }
-                        />
+                        <div className="col-span-2">
+                          <LiveProjectsCard
+                            loading={loading}
+                            projects={
+                              sanitizedConfig.projects.liveProjects.projects
+                            }
+                          />
+                        </div>
                       )}
                     {/* GitHub Contribution Graph Card - spans both columns */}
                     <div className="col-span-2">
