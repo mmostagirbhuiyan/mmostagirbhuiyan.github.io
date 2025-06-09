@@ -29,7 +29,7 @@ const GithubProjectCard = ({
     for (let index = 0; index < limit; index++) {
       array.push(
         <div
-          className="card bg-base-200 bg-opacity-50 backdrop-blur-sm border border-base-300"
+          className="card glass-bg border border-base-300"
           key={index}
         >
           <div className="flex justify-between flex-col p-6 h-full w-full">
@@ -80,7 +80,7 @@ const GithubProjectCard = ({
   const renderProjects = () => {
     return githubProjects.map((item, index) => (
       <a
-        className="card bg-base-200 bg-opacity-50 backdrop-blur-sm border border-base-300 hover:border-primary hover:shadow-lg transition-all duration-300 cursor-pointer group"
+        className="card glass-bg border border-base-300 hover:border-primary hover:shadow-lg transition-all duration-300 cursor-pointer group"
         href={item.html_url}
         key={index}
         onClick={(e) => {

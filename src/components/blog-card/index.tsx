@@ -39,7 +39,7 @@ const BlogCard = ({
     for (let index = 0; index < blog.limit; index++) {
       array.push(
         <div
-          className="card shadow-lg compact bg-base-100 bg-opacity-40 backdrop-blur-sm transition-all duration-300"
+          className="card glass-bg shadow-lg compact transition-all duration-300"
           key={index}
         >
           <div className="p-8 h-full w-full">
@@ -98,7 +98,7 @@ const BlogCard = ({
     return articles && articles.length ? (
       articles.slice(0, blog.limit).map((article, index) => (
         <a
-          className="card shadow-lg compact bg-base-100 bg-opacity-40 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer"
+          className="card glass-bg shadow-lg compact transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer"
           key={index}
           href={article.link}
           onClick={(e) => {
@@ -177,13 +177,7 @@ const BlogCard = ({
     <div className="col-span-1 lg:col-span-2">
       <div className="grid grid-cols-2 gap-6">
         <div className="col-span-2">
-          <div
-            className={`card compact bg-base-100 ${
-              loading || (articles && articles.length)
-                ? 'shadow-lg bg-opacity-40 backdrop-blur-sm'
-                : 'shadow-lg'
-            }`}
-          >
+          <div className="card glass-bg shadow-lg compact">
             <div className="card-body">
               <div className="mx-3 mb-4">
                 <h5 className="card-title text-2xl font-bold">
