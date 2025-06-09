@@ -15,7 +15,7 @@ const PublicationCard = ({
     for (let index = 0; index < publications.length; index++) {
       array.push(
         <div
-          className="card bg-base-200 bg-opacity-50 backdrop-blur-sm border border-base-300"
+          className="card glass-bg border border-base-300"
           key={index}
         >
           <div className="p-6 h-full w-full">
@@ -66,7 +66,7 @@ const PublicationCard = ({
   const renderPublications = () => {
     return publications.map((item, index) => (
       <a
-        className="card bg-base-200 bg-opacity-50 backdrop-blur-sm border border-base-300 hover:border-primary hover:shadow-lg transition-all duration-300 cursor-pointer group"
+        className="card glass-bg border border-base-300 hover:border-primary hover:shadow-lg transition-all duration-300 cursor-pointer group"
         key={index}
         href={item.link}
         target="_blank"

@@ -28,7 +28,7 @@ const LiveProjectsCard = ({ loading, projects }: LiveProjectsCardProps) => {
             {[1, 2].map((index) => (
               <div
                 key={index}
-                className="card bg-base-200 bg-opacity-50 backdrop-blur-sm border border-base-300"
+                className="card glass-bg border border-base-300"
               >
                 <div className="card-body">
                   {skeleton({ widthCls: 'w-24', heightCls: 'h-6' })}
@@ -62,7 +62,7 @@ const LiveProjectsCard = ({ loading, projects }: LiveProjectsCardProps) => {
             {projects.map((project, index) => (
               <a
                 key={index}
-                className="card bg-base-200 bg-opacity-50 backdrop-blur-sm border border-base-300 hover:border-primary hover:shadow-lg transition-all duration-300 cursor-pointer group"
+                className="card glass-bg border border-base-300 hover:border-primary hover:shadow-lg transition-all duration-300 cursor-pointer group"
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
