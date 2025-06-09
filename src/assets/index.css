@@ -60,6 +60,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: hsl(var(--bc));
+  color: white !important;
 }
 
 code {
@@ -134,4 +135,9 @@ svg {
   text-shadow:
     0 1px 6px rgba(0, 0, 0, 0.1),
     0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+/* Force text color to white across all DaisyUI themes */
+[data-theme] {
+  --bc: 0 0% 100% !important;
 }
