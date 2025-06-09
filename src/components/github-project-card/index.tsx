@@ -28,10 +28,7 @@ const GithubProjectCard = ({
     const array = [];
     for (let index = 0; index < limit; index++) {
       array.push(
-        <div
-          className="card glass-bg border border-base-300"
-          key={index}
-        >
+        <div className="card glass-bg border border-base-300" key={index}>
           <div className="flex justify-between flex-col p-6 h-full w-full">
             <div>
               <div className="flex items-center">
