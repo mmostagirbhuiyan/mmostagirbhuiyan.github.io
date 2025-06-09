@@ -26,10 +26,7 @@ const LiveProjectsCard = ({ loading, projects }: LiveProjectsCardProps) => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
             {[1, 2].map((index) => (
-              <div
-                key={index}
-                className="card glass-bg border border-base-300"
-              >
+              <div key={index} className="card glass-bg border border-base-300">
                 <div className="card-body">
                   {skeleton({ widthCls: 'w-24', heightCls: 'h-6' })}
                   {skeleton({ widthCls: 'w-full', heightCls: 'h-4 mt-2' })}
