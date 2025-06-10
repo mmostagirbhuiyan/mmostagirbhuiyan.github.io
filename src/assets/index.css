@@ -140,4 +140,7 @@ svg {
 /* Force text color to white across all DaisyUI themes */
 [data-theme] {
   --bc: 0 0% 100% !important;
+  /* Make cards and buttons rounded across all themes */
+  --rounded-box: 3rem !important;
+  --rounded-btn: 3rem !important;
 }
