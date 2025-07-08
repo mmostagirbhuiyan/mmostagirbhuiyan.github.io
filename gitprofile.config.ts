@@ -231,7 +231,7 @@ const CONFIG = {
       year: "2025",
       link: "", // Optional: Add public link if published later
       description:
-        "US Utility Patent Filed – Application No. 19/262,056, Filed 07/2025. (Patent Pending)\nOriginally filed as Provisional Application No. 63/794,191 (04/2024)."
+        "US Utility Patent Filed – Application No. 19/262,056, Filed 07/2025. (Patent Pending)\nOriginally filed as Provisional Application No. 63/794,191 (04/2025)."
     }
   ],
   // Display articles from your medium or dev account. (Optional)
