@@ -225,14 +225,14 @@ const CONFIG = {
   ],
   patents: [
     {
-      title: 'Micro-Containerized CPU Architecture for Efficient AI Workloads',
-      patentOffice: 'USPTO',
-      patentNumber: '63/794,191',
-      year: '2025',
-      link: '', // You can update with a link later if it gets published
+      title: "Micro-Containerized CPU Architecture for Efficient AI Workloads",
+      patentOffice: "USPTO",
+      patentNumber: "19/262,056",
+      year: "2025",
+      link: "", // Optional: Add public link if published later
       description:
-        'Provisional Patent Filed – Application No. 63/794,191, Filed 04/2025. (Patent Pending)',
-    },
+        "US Utility Patent Filed – Application No. 19/262,056, Filed 07/2025. (Patent Pending)\nOriginally filed as Provisional Application No. 63/794,191 (04/2024)."
+    }
   ],
   // Display articles from your medium or dev account. (Optional)
   blog: {
