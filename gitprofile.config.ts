@@ -74,7 +74,7 @@ const CONFIG = {
   seo: {
     title: 'Mostagir Bhuiyan | Cloud, DevOps & AI/ML Engineering Leader',
     description:
-      'Cloud Architect and DevOps Leader with 10+ years of experience designing and optimizing scalable cloud infrastructures. Holds all AWS associate and professional certifications. Skilled in integrating AI/ML into cloud systems to drive cost savings, enhance scalability, and enable predictive analytics. Proven expertise in advanced CI/CD, infrastructure engineering, and real-world AI/ML solutions. Currently pursuing an Executive MBA and an M.Eng in Computer Engineering, committed to transforming businesses through innovation.',
+      'Principal Architect & Director merging 10 years of Cloud/DevOps leadership with deep expertise in Distributed Systems, FPGA-Accelerated AI, and Micro-architecture. Built Kubernetes-native MLOps pipelines to slash inference latency by 45% and achieve 99.99% uptime, and drove multi-cloud governance with GPU-optimized inference to cut cloud spend by 60%. Led CI/CD and observability frameworks delivering 40% faster deployments, and SOC 2/FedRAMP compliance.',
     imageURL:
       'https://drive.google.com/uc?export=view&id=1O0-uaBf7rhlmRyvDD3ipixMG-z1Q3Gyb',
   },
@@ -182,7 +182,7 @@ const CONFIG = {
     },
     {
       institution: 'Dartmouth College',
-      status: 'Now Attending',
+      status: 'Graduated',
       degree: 'Master of Engineering (MEng)',
     },
     {
