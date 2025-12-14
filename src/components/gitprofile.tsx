@@ -35,6 +35,8 @@ import PodcastCard from './podcast-card';
 import LiveProjectsCard from './live-projects-card';
 import avatarImg from '../data/Avatar.png';
 import GitHubCalendar from 'react-github-calendar';
+import ParticleNetwork from './particle-network';
+import CursorSpotlight from './cursor-spotlight';
 
 /**
  * Renders the GitProfile component.
@@ -187,6 +189,8 @@ const GitProfile = ({ config }: { config: Config }) => {
   return (
     <HelmetProvider>
       <div className="fade-in h-screen">
+        <ParticleNetwork />
+        <CursorSpotlight />
         {error ? (
           <ErrorPage
             status={error.status}
@@ -199,7 +203,7 @@ const GitProfile = ({ config }: { config: Config }) => {
               googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
               appliedTheme={theme}
             />
-            <div className={`p-4 lg:p-10 min-h-full ${BG_COLOR}`}>
+            <div className={`p-4 lg:p-10 min-h-full ${BG_COLOR} content-layer`}>
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 rounded-box">
                 <div className="col-span-1">
                   <div className="grid grid-cols-1 gap-6">

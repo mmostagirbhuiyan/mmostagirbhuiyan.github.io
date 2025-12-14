@@ -25,7 +25,7 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
   resumeFileUrl,
 }): JSX.Element => {
   return (
-    <div className="card glass-bg">
+    <div className="card glass-bg card-3d gradient-border">
       <div className="grid place-items-center py-8">
         {loading || !profile ? (
           <div className="avatar opacity-90">
@@ -38,9 +38,9 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
             </div>
           </div>
         ) : (
-          <div className="avatar opacity-90">
+          <div className="avatar opacity-90 float-animation">
             <div
-              className={`mb-8 rounded-full w-32 h-32 ${
+              className={`mb-8 rounded-full w-32 h-32 glow-effect ${
                 avatarRing
                   ? 'ring ring-primary ring-offset-base-100 ring-offset-2'
                   : ''
@@ -61,16 +61,16 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
           </div>
         )}
         <div className="text-center mx-auto px-8">
-          <h5 className="font-bold text-2xl">
+          <h5 className="font-bold text-2xl heading-primary">
             {loading || !profile ? (
               skeleton({ widthCls: 'w-48', heightCls: 'h-8' })
             ) : (
-              <span className="text-base-content opacity-70">
+              <span className="text-base-content opacity-70 text-glow">
                 {profile.name}
               </span>
             )}
           </h5>
-          <div className="mt-3 text-base-content text-opacity-60 font-mono">
+          <div className="mt-3 text-base-content text-opacity-60 text-mono">
             {loading || !profile
               ? skeleton({ widthCls: 'w-48', heightCls: 'h-5' })
               : profile.bio}

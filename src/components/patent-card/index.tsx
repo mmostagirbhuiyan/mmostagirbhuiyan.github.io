@@ -69,7 +69,7 @@ const PatentCard = ({
   };
 
   return (
-    <div className="card glass-bg shadow-md">
+    <div className="card glass-bg shadow-md card-3d">
       <div className="card-body">
         <div className="mx-3 mb-4">
           <h5 className="card-title text-2xl font-bold">

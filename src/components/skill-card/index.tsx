@@ -22,10 +22,10 @@ const SkillCard = ({
   };
 
   return (
-    <div className="card glass-bg shadow-md">
+    <div className="card glass-bg shadow-md card-3d">
       <div className="card-body">
         <div className="mx-3 mb-4">
-          <h5 className="card-title text-2xl font-bold text-base-content opacity-100 text-glass-shadow">
+          <h5 className="card-title text-2xl font-bold text-base-content opacity-100 heading-secondary">
             {loading ? (
               skeleton({ widthCls: 'w-32', heightCls: 'h-8' })
             ) : (
@@ -37,13 +37,14 @@ const SkillCard = ({
           </h5>
         </div>
         <div className="p-3 flow-root">
-          <div className="-m-1 flex flex-wrap justify-center gap-2">
+          <div className="-m-1 flex flex-wrap justify-center gap-2 stagger-children">
             {loading
               ? renderSkeleton()
               : skills.map((skill, index) => (
                   <div
                     key={index}
-                    className="group m-1 text-xs inline-flex items-center font-semibold leading-sm px-3 py-1.5 bg-primary bg-opacity-10 text-base-content opacity-100 rounded-full transition-all duration-300 hover:bg-opacity-20 hover:scale-105 hover:shadow-md text-glass-shadow"
+                    className="skill-badge group m-1 text-xs inline-flex items-center font-semibold leading-sm px-3 py-1.5 text-base-content opacity-100 rounded-full text-mono"
+                    style={{ animationDelay: `${index * 0.05}s` }}
                   >
                     {skill}
                   </div>
