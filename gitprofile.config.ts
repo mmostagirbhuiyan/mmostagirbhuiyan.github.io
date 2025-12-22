@@ -99,7 +99,7 @@ const CONFIG = {
     telegram: '',
     website: '',
     phone: '',
-    email: 'mo@mmostagirbhuiyan.com',
+    email: 'mmostagirbhuiyan@gmail.com',
     applePodcast:
       'https://podcasts.apple.com/us/podcast/the-practical-ai-digest/id1817015122',
   },
