@@ -57,9 +57,23 @@ const ThemeChanger = ({
   useEffect(() => {
     if (open && btnRef.current) {
       const rect = btnRef.current.getBoundingClientRect();
+      const dropdownWidth = 208; // w-52 is 13rem = 208px
+      const padding = 16;
+
+      let left = rect.left + window.scrollX;
+
+      // If dropdown would overflow right side of screen, right-align it with the button
+      // or shift it left to fit in the viewport
+      if (rect.left + dropdownWidth > window.innerWidth) {
+        left = window.innerWidth + window.scrollX - dropdownWidth - padding;
+      }
+
+      // Ensure it doesn't overflow the left side
+      left = Math.max(padding, left);
+
       setDropdownPos({
         top: rect.bottom + window.scrollY + 8,
-        left: rect.left + window.scrollX,
+        left: left,
       });
       setFocusedIndex(themeList.findIndex((t) => t === theme));
     }
