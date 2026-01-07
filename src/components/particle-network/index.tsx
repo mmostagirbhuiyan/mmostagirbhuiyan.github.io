@@ -63,7 +63,7 @@ const ParticleNetwork = () => {
       if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      particlesRef.current.forEach((p, i) => {
+      particlesRef.current.forEach((p) => {
         // Update position
         p.x += p.vx;
         p.y += p.vy;
