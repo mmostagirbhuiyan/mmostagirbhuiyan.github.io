@@ -74,7 +74,7 @@ const CONFIG = {
   seo: {
     title: 'Principal Cloud Architect & AI Strategist',
     description:
-      'Principal Architect combining deep technical rigor (Dartmouth MEng in Computer Engineering) with executive business acumen (Cornell MBA). I focus not just on building models, but on engineering the scalable, secure, and cost-efficient cloud systems required to deploy them—bringing 10+ years of experience in turning experimental AI into production-grade enterprise infrastructure.',
+      'Principal Architect leveraging 10+ years in Cloud Engineering to build scalable AI infrastructure. With a background in Computer Engineering (Dartmouth MEng) and Business Strategy (Cornell MBA), I bridge the gap between technical implementation and value realization—focusing on MLOps, system design, and the operational reality of deploying AI at scale.',
     imageURL:
       'https://drive.google.com/uc?export=view&id=1O0-uaBf7rhlmRyvDD3ipixMG-z1Q3Gyb',
   },
