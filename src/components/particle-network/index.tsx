@@ -3,16 +3,18 @@ import { useEffect, useRef } from 'react';
 interface Particle {
   x: number;
   y: number;
+  size: number;
   vx: number;
   vy: number;
-  radius: number;
+  life: number;
+  maxLife: number;
+  opacity: number;
 }
 
 const ParticleNetwork = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const animationFrameRef = useRef<number>();
-  const mouseRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -21,7 +23,6 @@ const ParticleNetwork = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas size
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -29,83 +30,67 @@ const ParticleNetwork = () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Initialize particles
-    const particleCount = Math.floor((canvas.width * canvas.height) / 15000);
-    particlesRef.current = [];
+    // Initial population - sparse cosmic dust
+    const initParticles = () => {
+      const particleCount = Math.floor((canvas.width * canvas.height) / 25000); // Less dense
+      particlesRef.current = [];
+      for (let i = 0; i < particleCount; i++) {
+        createParticle();
+      }
+    };
 
-    for (let i = 0; i < particleCount; i++) {
-      particlesRef.current.push({
+    const createParticle = (reset = false) => {
+      const p: Particle = {
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        radius: Math.random() * 2 + 1,
-      });
-    }
-
-    // Mouse tracking
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY };
+        size: Math.random() * 2 + 0.5, // Small discrete stars
+        vx: (Math.random() - 0.5) * 0.2, // Very slow movement
+        vy: (Math.random() - 0.5) * 0.2,
+        life: Math.random() * 100, // For twinkling phase
+        maxLife: 100,
+        opacity: Math.random() * 0.5 + 0.1,
+      };
+      if (reset) {
+        particlesRef.current.push(p);
+      } else {
+        particlesRef.current.push(p);
+      }
     };
-    window.addEventListener('mousemove', handleMouseMove);
 
-    // Animation loop
+    initParticles();
+
     const animate = () => {
       if (!ctx || !canvas) return;
-
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      const particles = particlesRef.current;
-      const mouse = mouseRef.current;
-
-      // Update and draw particles
-      particles.forEach((particle, i) => {
+      particlesRef.current.forEach((p, i) => {
         // Update position
-        particle.x += particle.vx;
-        particle.y += particle.vy;
+        p.x += p.vx;
+        p.y += p.vy;
 
-        // Bounce off edges
-        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+        // Wrap around screen
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
 
-        // Mouse interaction
-        const dx = mouse.x - particle.x;
-        const dy = mouse.y - particle.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
+        // Twinkle effect using sine wave based on frame/life
+        p.life += 1;
+        const twinkle = Math.abs(Math.sin(p.life * 0.02));
+        const currentOpacity = p.opacity * twinkle;
 
-        if (dist < 150) {
-          const angle = Math.atan2(dy, dx);
-          const force = (150 - dist) / 150;
-          particle.vx -= Math.cos(angle) * force * 0.03;
-          particle.vy -= Math.sin(angle) * force * 0.03;
-        }
-
-        // Apply friction
-        particle.vx *= 0.99;
-        particle.vy *= 0.99;
-
-        // Draw particle
+        // Draw
         ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(252, 5, 91, 0.6)';
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        // Use theme glow color (Violet) but very faint
+        ctx.fillStyle = `rgba(124, 58, 237, ${currentOpacity})`;
         ctx.fill();
 
-        // Draw connections
-        particles.slice(i + 1).forEach((particle2) => {
-          const dx = particle.x - particle2.x;
-          const dy = particle.y - particle2.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 120) {
-            ctx.beginPath();
-            ctx.moveTo(particle.x, particle.y);
-            ctx.lineTo(particle2.x, particle2.y);
-            const opacity = (1 - distance / 120) * 0.3;
-            ctx.strokeStyle = `rgba(252, 5, 91, ${opacity})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        });
+        // Add a subtle white core for star effect
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 0.3, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity * 0.8})`;
+        ctx.fill();
       });
 
       animationFrameRef.current = requestAnimationFrame(animate);
@@ -113,10 +98,8 @@ const ParticleNetwork = () => {
 
     animate();
 
-    // Cleanup
     return () => {
       window.removeEventListener('resize', resizeCanvas);
-      window.removeEventListener('mousemove', handleMouseMove);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }

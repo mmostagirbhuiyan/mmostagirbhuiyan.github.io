@@ -17,7 +17,7 @@ const ListItem = ({
   <li className="mb-6 ml-4 group">
     <div
       className="absolute w-3 h-3 bg-primary rounded-full border border-primary mt-1.5 transition-all duration-300 group-hover:scale-125"
-      style={{ left: '-5.5px' }}
+      style={{ left: '-22px' }}
     ></div>
     <div className="transform transition-all duration-300 hover:translate-x-2">
       <h3 className="font-bold text-lg text-base-content opacity-90 mb-1">

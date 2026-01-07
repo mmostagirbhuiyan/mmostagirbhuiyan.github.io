@@ -17,80 +17,74 @@ interface LiveProjectsCardProps {
 const LiveProjectsCard = ({ loading, projects }: LiveProjectsCardProps) => {
   const renderSkeleton = () => {
     return (
-      <div className="card glass-bg shadow-xl">
-        <div className="card-body">
-          <div className="mx-3">
-            <h5 className="card-title">
-              {skeleton({ widthCls: 'w-32', heightCls: 'h-8' })}
-            </h5>
+      <div className="project-grid mt-6">
+        {[1, 2].map((index) => (
+          <div key={index} className="glass-bg p-6 rounded-2xl h-48">
+            {skeleton({ widthCls: 'w-24', heightCls: 'h-6' })}
+            {skeleton({ widthCls: 'w-full', heightCls: 'h-20 mt-4' })}
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-            {[1, 2].map((index) => (
-              <div key={index} className="card glass-bg border border-base-300">
-                <div className="card-body">
-                  {skeleton({ widthCls: 'w-24', heightCls: 'h-6' })}
-                  {skeleton({ widthCls: 'w-full', heightCls: 'h-4 mt-2' })}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
     );
   };
 
   const renderProjects = () => {
     return (
-      <div className="card glass-bg shadow-xl">
-        <div className="card-body">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2">
-              <FaRocket className="w-6 h-6 text-primary animate-pulse" />
-              <h5 className="card-title text-base-content opacity-90 text-2xl font-bold">
-                Live Projects
-              </h5>
+      <div className="col-span-1 lg:col-span-2">
+        {/* Minimal Header */}
+        <div className="flex items-center justify-between mb-6 px-2">
+          <div className="flex items-center gap-3">
+            <div className="p-3 rounded-lg bg-opacity-10 bg-blue-500 backdrop-blur-md border border-white/10 text-blue-400">
+              <FaRocket size={20} />
             </div>
-            <div className="badge badge-outline hover:bg-primary hover:bg-opacity-10 hover:text-primary badge-lg gap-2 transition-all duration-300">
-              <MdStar className="w-4 h-4" />
-              Featured
-            </div>
+            <h5 className="text-2xl font-bold text-white tracking-tight">
+              Live Projects
+            </h5>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {projects.map((project, index) => (
-              <a
-                key={index}
-                className="card glass-bg border border-base-300 hover:border-primary hover:shadow-lg transition-all duration-300 cursor-pointer group"
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="flex justify-between flex-col p-6 h-full w-full">
-                  <div>
-                    <div className="flex items-start justify-between mb-2 gap-3">
-                      <div className="flex items-center gap-2 flex-1 min-w-0">
-                        <FaRocket className="w-5 h-5 text-base-content opacity-70 group-hover:text-primary transition-colors duration-300 flex-shrink-0" />
-                        <h5 className="card-title text-lg font-semibold text-base-content opacity-90 group-hover:opacity-100 group-hover:text-primary transition-all duration-300 truncate">
-                          {project.title}
-                        </h5>
-                      </div>
-                      <div className="badge badge-outline hover:bg-primary hover:bg-opacity-10 hover:text-primary transition-all duration-300 flex-shrink-0">
-                        <MdLaunch className="w-4 h-4 mr-1" />
-                        Demo
-                      </div>
-                    </div>
-                    <p className="text-base-content opacity-70 group-hover:opacity-90 transition-opacity duration-300 mb-4">
-                      {project.description}
-                    </p>
-                  </div>
-                  <div className="card-actions justify-end mt-4 pt-4 border-t border-base-300">
-                    <div className="badge badge-outline hover:bg-primary hover:bg-opacity-10 hover:text-primary transition-all duration-300">
-                      Click to explore
-                    </div>
-                  </div>
+
+          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-yellow-400">
+            <MdStar className="w-4 h-4" />
+            <span>FEATURED</span>
+          </div>
+        </div>
+
+        <div className="project-grid">
+          {projects.map((project, index) => (
+            <a
+              key={index}
+              className="card glass-bg p-6 h-full flex flex-col justify-between group no-underline relative overflow-hidden"
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {/* Background Gradient Hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <div className="relative z-10">
+                <div className="flex items-start justify-between mb-4">
+                  <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                  <MdLaunch className="text-gray-500 group-hover:text-white transition-colors" />
                 </div>
-              </a>
-            ))}
-          </div>
+
+                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                  {project.description}
+                </p>
+              </div>
+
+              <div className="relative z-10 w-full flex items-center justify-between border-t border-white/5 pt-4">
+                <span className="text-xs font-mono text-blue-300/80 uppercase tracking-widest">
+                  Production Ready
+                </span>
+                <span className="text-xs text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+                  Explore &rarr;
+                </span>
+              </div>
+
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+            </a>
+          ))}
         </div>
       </div>
     );
@@ -98,9 +92,7 @@ const LiveProjectsCard = ({ loading, projects }: LiveProjectsCardProps) => {
 
   return (
     <Fragment>
-      <div className="col-span-1 lg:col-span-2 transform hover:scale-[1.01] transition-transform duration-300">
-        {loading ? renderSkeleton() : renderProjects()}
-      </div>
+      {loading ? renderSkeleton() : renderProjects()}
     </Fragment>
   );
 };

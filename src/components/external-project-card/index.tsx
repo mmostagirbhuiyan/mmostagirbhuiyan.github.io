@@ -1,9 +1,9 @@
 import React from 'react';
 import { SanitizedExternalProject } from '../../interfaces/sanitized-config';
 import { skeleton } from '../../utils';
-import { FaProjectDiagram } from 'react-icons/fa';
+import { FaProjectDiagram, FaExternalLinkAlt } from 'react-icons/fa';
 
-const ListItem = ({
+const ProjectCard = ({
   title,
   description,
   link,
@@ -12,24 +12,27 @@ const ListItem = ({
   description?: React.ReactNode;
   link?: string;
 }) => (
-  <li className="mb-6 ml-4 group">
-    <div
-      className="absolute w-3 h-3 bg-primary rounded-full border border-primary mt-1.5 transition-all duration-300 group-hover:scale-125"
-      style={{ left: '-5.5px' }}
-    ></div>
-    <div className="transform transition-all duration-300 hover:translate-x-2">
-      <a href={link} target="_blank" rel="noreferrer" className="block">
-        <h3 className="font-bold text-lg text-base-content opacity-100 hover:text-primary-focus transition-colors duration-300 mb-2 text-glass-shadow">
+  <a
+    href={link}
+    target="_blank"
+    rel="noreferrer"
+    className="card glass-bg p-6 h-full flex flex-col justify-between group no-underline"
+  >
+    <div>
+      <div className="flex justify-between items-start mb-4">
+        <h3 className="text-xl font-bold text-white group-hover:text-primary-glow transition-colors duration-300">
           {title}
         </h3>
-        {description && (
-          <div className="text-base-content opacity-100 group-hover:opacity-100 transition-opacity duration-300 leading-relaxed text-glass-shadow">
-            {description}
-          </div>
-        )}
-      </a>
+        <FaExternalLinkAlt className="text-gray-500 group-hover:text-white transition-colors" size={14} />
+      </div>
+      <div className="text-gray-400 text-sm leading-relaxed mb-4">
+        {description}
+      </div>
     </div>
-  </li>
+
+    {/* Decorative gradient line at the bottom */}
+    <div className="w-full h-1 bg-gradient-to-r from-purple-500 to-blue-500 opacity-30 rounded-full group-hover:opacity-100 transition-opacity duration-500" />
+  </a>
 );
 
 const ExternalProjectCard = ({
@@ -45,53 +48,45 @@ const ExternalProjectCard = ({
     const array = [];
     for (let index = 0; index < 2; index++) {
       array.push(
-        <ListItem
-          key={index}
-          title={skeleton({
-            widthCls: 'w-6/12',
-            heightCls: 'h-4',
-            className: 'my-1.5',
+        <div key={index} className="glass-bg p-6 rounded-2xl h-48">
+          {skeleton({
+            widthCls: 'w-3/4',
+            heightCls: 'h-6',
+            className: 'mb-4',
           })}
-          description={skeleton({ widthCls: 'w-6/12', heightCls: 'h-3' })}
-        />,
+          {skeleton({ widthCls: 'w-full', heightCls: 'h-20' })}
+        </div>,
       );
     }
     return array;
   };
 
   return (
-    <div className="card glass-bg shadow-xl">
-      <div className="card-body">
-        <div className="mx-3 mb-4">
-          <h5 className="card-title text-2xl font-bold">
-            {loading ? (
-              skeleton({ widthCls: 'w-32', heightCls: 'h-8' })
-            ) : (
-              <span className="text-base-content opacity-100 flex items-center text-glass-shadow">
-                <FaProjectDiagram className="mr-2" />
-                {header}
-              </span>
-            )}
-          </h5>
+    <div className="col-span-1 lg:col-span-2">
+      <div className="flex items-center gap-3 mb-6 px-2">
+        <div className="p-3 rounded-lg bg-opacity-10 bg-purple-500 backdrop-blur-md border border-white/10 text-purple-400">
+          <FaProjectDiagram size={20} />
         </div>
-        <div className="text-base-content">
-          <ol className="relative border-l border-primary border-opacity-20 my-2 mx-4">
-            {loading ? (
-              renderSkeleton()
-            ) : (
-              <>
-                {externalProjects.map((item, index) => (
-                  <ListItem
-                    key={index}
-                    title={item.title}
-                    description={item.description}
-                    link={item.link}
-                  />
-                ))}
-              </>
-            )}
-          </ol>
-        </div>
+        <h5 className="text-2xl font-bold text-white tracking-tight">
+          {header}
+        </h5>
+      </div>
+
+      <div className="project-grid">
+        {loading ? (
+          renderSkeleton()
+        ) : (
+          <>
+            {externalProjects.map((item, index) => (
+              <ProjectCard
+                key={index}
+                title={item.title}
+                description={item.description}
+                link={item.link}
+              />
+            ))}
+          </>
+        )}
       </div>
     </div>
   );

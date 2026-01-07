@@ -188,7 +188,7 @@ const GitProfile = ({ config }: { config: Config }) => {
 
   return (
     <HelmetProvider>
-      <div className="fade-in h-screen">
+      <div className="fade-in min-h-screen">
         <ParticleNetwork />
         <CursorSpotlight />
         {error ? (
@@ -204,166 +204,148 @@ const GitProfile = ({ config }: { config: Config }) => {
               appliedTheme={theme}
             />
             <div className={`p-4 lg:p-10 min-h-full ${BG_COLOR} content-layer`}>
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 rounded-box">
-                <div className="col-span-1">
-                  <div className="grid grid-cols-1 gap-6">
-                    {!sanitizedConfig.themeConfig.disableSwitch && (
-                      <ThemeChanger
-                        theme={theme}
-                        setTheme={setTheme}
-                        loading={loading}
-                        themeConfig={sanitizedConfig.themeConfig}
-                      />
-                    )}
-                    <AvatarCard
-                      profile={profile}
-                      loading={loading}
-                      avatarRing={sanitizedConfig.themeConfig.displayAvatarRing}
-                      resumeFileUrl={sanitizedConfig.resume.fileUrl}
-                    />
-                    <DetailsCard
-                      profile={profile}
-                      loading={loading}
-                      github={sanitizedConfig.github}
-                      social={sanitizedConfig.social}
-                      podcastTitle={
-                        sanitizedConfig.podcasts &&
-                        sanitizedConfig.podcasts[0]?.title
-                      }
-                    />
-                    {sanitizedConfig.skills.length !== 0 && (
-                      <SkillCard
-                        loading={loading}
-                        skills={sanitizedConfig.skills}
-                      />
-                    )}
-                    {sanitizedConfig.experiences.length !== 0 && (
-                      <ExperienceCard
-                        loading={loading}
-                        experiences={sanitizedConfig.experiences}
-                      />
-                    )}
-                    {sanitizedConfig.educations.length !== 0 && (
-                      <EducationCard
-                        loading={loading}
-                        educations={sanitizedConfig.educations}
-                      />
-                    )}
-                    {sanitizedConfig.certifications.length !== 0 && (
-                      <CertificationCard
-                        loading={loading}
-                        certifications={sanitizedConfig.certifications}
-                      />
-                    )}
-                    {sanitizedConfig.patents.length !== 0 && (
-                      <PatentCard
-                        loading={loading}
-                        patents={sanitizedConfig.patents}
-                      />
-                    )}
-                    {sanitizedConfig.podcasts.length !== 0 && (
-                      <PodcastCard
-                        loading={loading}
-                        podcasts={sanitizedConfig.podcasts}
-                      />
-                    )}
 
-                    {sanitizedConfig.projects.external.projects.length !==
-                      0 && (
-                      <ExternalProjectCard
+              {/* Main Layout - Flexbox for stability */}
+              <div className="flex flex-col lg:flex-row gap-8 items-start">
+
+                {/* Left Sidebar - 1/3 Width */}
+                <aside className="w-full lg:w-1/3 flex flex-col gap-6 shrink-0 relative z-20">
+                  {!sanitizedConfig.themeConfig.disableSwitch && (
+                    <ThemeChanger
+                      theme={theme}
+                      setTheme={setTheme}
+                      loading={loading}
+                      themeConfig={sanitizedConfig.themeConfig}
+                    />
+                  )}
+                  <AvatarCard
+                    profile={profile}
+                    loading={loading}
+                    avatarRing={sanitizedConfig.themeConfig.displayAvatarRing}
+                    resumeFileUrl={sanitizedConfig.resume.fileUrl}
+                  />
+                  <DetailsCard
+                    profile={profile}
+                    loading={loading}
+                    github={sanitizedConfig.github}
+                    social={sanitizedConfig.social}
+                    podcastTitle={
+                      sanitizedConfig.podcasts &&
+                      sanitizedConfig.podcasts[0]?.title
+                    }
+                  />
+                  {sanitizedConfig.skills.length !== 0 && (
+                    <SkillCard
+                      loading={loading}
+                      skills={sanitizedConfig.skills}
+                    />
+                  )}
+                  {sanitizedConfig.experiences.length !== 0 && (
+                    <ExperienceCard
+                      loading={loading}
+                      experiences={sanitizedConfig.experiences}
+                    />
+                  )}
+                  {sanitizedConfig.educations.length !== 0 && (
+                    <EducationCard
+                      loading={loading}
+                      educations={sanitizedConfig.educations}
+                    />
+                  )}
+                  {sanitizedConfig.certifications.length !== 0 && (
+                    <CertificationCard
+                      loading={loading}
+                      certifications={sanitizedConfig.certifications}
+                    />
+                  )}
+                  {sanitizedConfig.patents.length !== 0 && (
+                    <PatentCard
+                      loading={loading}
+                      patents={sanitizedConfig.patents}
+                    />
+                  )}
+                  {sanitizedConfig.podcasts.length !== 0 && (
+                    <PodcastCard
+                      loading={loading}
+                      podcasts={sanitizedConfig.podcasts}
+                    />
+                  )}
+
+                  {sanitizedConfig.projects.external.projects.length !== 0 && (
+                    <ExternalProjectCard
+                      loading={loading}
+                      header={sanitizedConfig.projects.external.header}
+                      externalProjects={sanitizedConfig.projects.external.projects}
+                    />
+                  )}
+                </aside>
+
+                {/* Right Content - 2/3 Width */}
+                <main className="w-full lg:w-2/3 flex flex-col gap-6 relative z-10">
+                  {/* Live Projects */}
+                  {sanitizedConfig.projects.liveProjects.display &&
+                    sanitizedConfig.projects.liveProjects.projects.length > 0 && (
+                      <LiveProjectsCard
                         loading={loading}
-                        header={sanitizedConfig.projects.external.header}
-                        externalProjects={
-                          sanitizedConfig.projects.external.projects
-                        }
+                        projects={sanitizedConfig.projects.liveProjects.projects}
                       />
                     )}
-                  </div>
-                </div>
-                <div className="lg:col-span-2 col-span-1">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Live Projects Card (single, handles its own layout) */}
-                    {sanitizedConfig.projects.liveProjects.display &&
-                      sanitizedConfig.projects.liveProjects.projects.length >
-                        0 && (
-                        <div className="col-span-2">
-                          <LiveProjectsCard
-                            loading={loading}
-                            projects={
-                              sanitizedConfig.projects.liveProjects.projects
-                            }
-                          />
-                        </div>
-                      )}
-                    {/* GitHub Contribution Graph Card - spans both columns */}
-                    <div className="col-span-2">
-                      <div className="card glass-bg shadow-md p-6 w-full">
-                        <div className="flex items-center mb-4">
-                          <svg
-                            className="w-6 h-6 text-primary mr-2"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
-                            <circle cx="12" cy="12" r="5"></circle>
-                          </svg>
-                          <h2 className="text-xl font-bold text-base-content opacity-80">
-                            GitHub Contributions
-                          </h2>
-                        </div>
-                        <div className="w-full overflow-x-auto">
-                          <GitHubCalendar
-                            username={sanitizedConfig.github.username}
-                            blockSize={15}
-                            blockMargin={5}
-                            colorScheme="light"
-                            showWeekdayLabels
-                          />
-                        </div>
-                      </div>
+                  {/* GitHub Contributions */}
+                  <div className="card glass-bg shadow-md p-6 w-full">
+                    <div className="flex items-center mb-4">
+                      <svg
+                        className="w-6 h-6 text-primary mr-2"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+                        <circle cx="12" cy="12" r="5"></circle>
+                      </svg>
+                      <h2 className="text-xl font-bold text-base-content opacity-80">
+                        GitHub Contributions
+                      </h2>
                     </div>
-                    {/* Other right pane cards (projects, publications, blog, etc.) can be added below, spanning both columns if needed */}
-                    {sanitizedConfig.projects.github.display && (
-                      <div className="col-span-2">
-                        <GithubProjectCard
-                          header={sanitizedConfig.projects.github.header}
-                          limit={
-                            sanitizedConfig.projects.github.automatic.limit
-                          }
-                          githubProjects={githubProjects}
-                          loading={loading}
-                          username={sanitizedConfig.github.username}
-                          googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
-                        />
-                      </div>
-                    )}
-                    {sanitizedConfig.publications.length !== 0 && (
-                      <div className="col-span-2">
-                        <PublicationCard
-                          loading={loading}
-                          publications={sanitizedConfig.publications}
-                        />
-                      </div>
-                    )}
-                    {sanitizedConfig.blog.display && (
-                      <div className="col-span-2">
-                        <BlogCard
-                          loading={loading}
-                          googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
-                          blog={sanitizedConfig.blog}
-                        />
-                      </div>
-                    )}
+                    <div className="w-full overflow-x-auto">
+                      <GitHubCalendar
+                        username={sanitizedConfig.github.username}
+                        blockSize={15}
+                        blockMargin={5}
+                        colorScheme="light"
+                        showWeekdayLabels
+                      />
+                    </div>
                   </div>
-                </div>
+
+                  {sanitizedConfig.projects.github.display && (
+                    <GithubProjectCard
+                      header={sanitizedConfig.projects.github.header}
+                      limit={sanitizedConfig.projects.github.automatic.limit}
+                      githubProjects={githubProjects}
+                      loading={loading}
+                      username={sanitizedConfig.github.username}
+                      googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
+                    />
+                  )}
+                  {sanitizedConfig.publications.length !== 0 && (
+                    <PublicationCard
+                      loading={loading}
+                      publications={sanitizedConfig.publications}
+                    />
+                  )}
+                  {sanitizedConfig.blog.display && (
+                    <BlogCard
+                      loading={loading}
+                      googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
+                      blog={sanitizedConfig.blog}
+                    />
+                  )}
+                </main>
               </div>
             </div>
             {sanitizedConfig.footer && (
-              <footer
-                className={`p-4 footer ${BG_COLOR} text-base-content footer-center`}
-              >
+              <footer className={`p-4 footer ${BG_COLOR} text-base-content footer-center`}>
                 <div className="card glass-bg shadow-md compact">
                   <Footer content={sanitizedConfig.footer} loading={loading} />
                 </div>
