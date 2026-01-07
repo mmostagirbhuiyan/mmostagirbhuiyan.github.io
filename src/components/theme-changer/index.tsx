@@ -160,7 +160,7 @@ const ThemeChanger = ({
           createPortal(
             <ul
               ref={listRef}
-              className="overflow-y-auto shadow-2xl max-h-96 w-52 rounded-lg bg-white bg-opacity-80 backdrop-blur-lg border border-white/20 z-[99999] py-2 focus:outline-none"
+              className="overflow-y-auto shadow-2xl max-h-96 w-52 rounded-lg bg-base-100/90 backdrop-blur-xl border border-base-content/10 z-[99999] py-2 focus:outline-none"
               style={{
                 position: 'absolute',
                 top: dropdownPos.top,
@@ -173,17 +173,27 @@ const ThemeChanger = ({
               onKeyDown={handleKeyDown}
             >
               {themeList.map((item, index) => (
-                <li key={item} className="px-2">
+                <li key={item} className="px-2 mb-1 last:mb-0">
                   <button
                     type="button"
-                    className={`w-full text-left px-4 py-2 rounded transition font-semibold capitalize ${theme === item ? 'bg-primary text-white' : 'text-black hover:bg-primary/10'} ${focusedIndex === index ? 'ring-2 ring-primary' : ''}`}
+                    className={`w-full text-left px-4 py-2 rounded-md transition-all duration-200 font-medium capitalize flex items-center justify-between
+                      ${theme === item
+                        ? 'bg-primary text-primary-content shadow-md'
+                        : 'text-base-content hover:bg-base-content/10'
+                      } 
+                      ${focusedIndex === index ? 'ring-2 ring-primary ring-opacity-50' : ''}`}
                     onClick={() => changeTheme(item)}
                     onMouseEnter={() => setFocusedIndex(index)}
                     role="option"
                     aria-selected={theme === item}
                     tabIndex={-1}
                   >
-                    {item === themeConfig.defaultTheme ? 'Default' : item}
+                    <span>
+                      {item === 'procyon' ? 'Deep Space (Dark)' :
+                        item === 'light' ? 'Executive (Light)' :
+                          item === themeConfig.defaultTheme ? 'Default' : item}
+                    </span>
+                    {theme === item && <span className="text-xs opacity-70">Active</span>}
                   </button>
                 </li>
               ))}

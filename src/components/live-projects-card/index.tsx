@@ -42,7 +42,7 @@ const LiveProjectsCard = ({ loading, projects }: LiveProjectsCardProps) => {
             </h5>
           </div>
 
-          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-base-content/5 border border-base-content/10 text-xs font-semibold text-yellow-400">
+          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-base-content/5 border border-base-content/10 text-xs font-semibold text-primary">
             <MdStar className="w-4 h-4" />
             <span>FEATURED</span>
           </div>
