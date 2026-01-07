@@ -72,9 +72,9 @@ const CONFIG = {
     },
   },
   seo: {
-    title: 'Mostagir Bhuiyan | Director of AI Engineering & Cloud Architecture',
+    title: 'Principal Cloud Architect & AI Engineering Strategist',
     description:
-      'Visionary Technology Leader & Principal Architect with an Ivy League pedigree (Cornell MBA, Dartmouth MEng) and 10+ years of driving digital transformation. specialized in reducing cloud spend by 60% and slashing inference latency by 45% through cutting-edge Generative AI, MLOps, and Distributed Systems. Proven track record of leading high-performance engineering teams to deliver scalable, FedRAMP-compliant platforms that align technical innovation with strategic business growth.',
+      'Principal Architect & MBA Candidate (Cornell University) bridging the gap between large-scale Cloud Engineering and AI Strategy. Leveraging an Ivy League technical foundation (Dartmouth MEng) and 10+ years of distributed systems expertise to architect scalable, governance-aware GenAI platforms. Focused on operationalizing MLOps and transforming complex technical capabilities into measurable business ROI.',
     imageURL:
       'https://drive.google.com/uc?export=view&id=1O0-uaBf7rhlmRyvDD3ipixMG-z1Q3Gyb',
   },
@@ -107,20 +107,17 @@ const CONFIG = {
     fileUrl: '', // Empty fileUrl will hide the `Download Resume` button.
   },
   skills: [
-    'Generative AI',
-    'LLM Ops',
+    'AI Strategy & Governance',
+    'Generative AI Architecture',
+    'Cloud-Native/FinOps',
+    'Enterprise System Design',
+    'MLOps & LLM Ops',
     'Strategic Leadership',
-    'Enterprise Architecture',
-    'Cloud Governance (FinOps)',
-    'Kubernetes & Docker',
     'AWS / Azure / GCP',
     'Distributed Systems',
     'Python & PyTorch',
     'React & TypeScript',
-    'CI/CD & DevOps',
     'Engineering Management',
-    'Agile & Scrum',
-    'System Design',
     'Cybersecurity (SOC2/FedRAMP)',
   ],
   experiences: [],
