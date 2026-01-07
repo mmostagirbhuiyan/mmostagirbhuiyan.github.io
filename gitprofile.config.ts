@@ -72,9 +72,9 @@ const CONFIG = {
     },
   },
   seo: {
-    title: 'Mostagir Bhuiyan | Cloud, DevOps & AI/ML Engineering Leader',
+    title: 'Mostagir Bhuiyan | Director of AI Engineering & Cloud Architecture',
     description:
-      'Principal Architect & Director merging 10 years of Cloud/DevOps leadership with deep expertise in Distributed Systems, FPGA-Accelerated AI, and Micro-architecture. Built Kubernetes-native MLOps pipelines to slash inference latency by 45% and achieve 99.99% uptime, and drove multi-cloud governance with GPU-optimized inference to cut cloud spend by 60%. Led CI/CD and observability frameworks delivering 40% faster deployments, and SOC 2/FedRAMP compliance.',
+      'Visionary Technology Leader & Principal Architect with an Ivy League pedigree (Cornell MBA, Dartmouth MEng) and 10+ years of driving digital transformation. specialized in reducing cloud spend by 60% and slashing inference latency by 45% through cutting-edge Generative AI, MLOps, and Distributed Systems. Proven track record of leading high-performance engineering teams to deliver scalable, FedRAMP-compliant platforms that align technical innovation with strategic business growth.',
     imageURL:
       'https://drive.google.com/uc?export=view&id=1O0-uaBf7rhlmRyvDD3ipixMG-z1Q3Gyb',
   },
@@ -107,33 +107,21 @@ const CONFIG = {
     fileUrl: '', // Empty fileUrl will hide the `Download Resume` button.
   },
   skills: [
-    'Docker',
-    'Kubernetes',
-    'DevOps',
-    'Site Reliability Engineering',
-    'CI/CD',
-    'Jenkins',
-    'AWS',
+    'Generative AI',
+    'LLM Ops',
+    'Strategic Leadership',
+    'Enterprise Architecture',
+    'Cloud Governance (FinOps)',
+    'Kubernetes & Docker',
+    'AWS / Azure / GCP',
+    'Distributed Systems',
+    'Python & PyTorch',
+    'React & TypeScript',
+    'CI/CD & DevOps',
     'Engineering Management',
-    'Java',
-    'JavaScript',
-    'Python',
-    'MySQL',
-    'PostgreSQL',
-    'Git',
-    'Cloud Computing',
-    'Azure',
-    'Scripting',
-    'Software Development',
-    'SDLC',
-    'Project Management',
-    'Agile',
-    'Datadog',
-    'Budgeting',
-    'Cost Management',
-    'Change Management',
-    'Disaster Recovery',
-    'System Architecture',
+    'Agile & Scrum',
+    'System Design',
+    'Cybersecurity (SOC2/FedRAMP)',
   ],
   experiences: [],
   certifications: [
@@ -183,12 +171,12 @@ const CONFIG = {
     {
       institution: 'Dartmouth College',
       status: 'Graduated',
-      degree: 'Master of Engineering (MEng)',
+      degree: 'Master of Engineering (MEng) - Computer Engineering',
     },
     {
       institution: 'Pennsylvania State University',
       status: 'Graduated',
-      degree: 'Bachelor of Science (BSc)',
+      degree: 'Bachelor of Science (BSc) - Electrical Engineering',
     },
   ],
   publications: [
@@ -200,7 +188,7 @@ const CONFIG = {
       authors: 'M Mostagir Bhuiyan',
       link: 'https://doi.org/10.36227/techrxiv.171617385.50532539/v1',
       description:
-        "The growing body of Artificial Intelligence (AI) and Machine Learning (ML) models increases the necessity for computational needs that put the onus on looking for new approaches so as to stray from the traditional reliance on Graphics Processing Units (GPUs). This paper introduces a new method to maximize Central Processing Units (CPUs) through the use of a micro-containerization concept. The proposed approach theoretically dissects the CPU cores into isolated, efficient processing units called 'micro containers', making an effort to simulate GPU capabilities for parallel processing in order to enhance processing efficiencies to supposedly compete with GPU-based environments. Through a theoretical study of the possibilities in architecture and dynamics of operations, the paper shows how micro containerization can contribute to the democratization of advanced computational resources. The presented micro containerization model has the potential to revolutionize the landscape of machine learning workloads for the same very reasons: it is scalable, cost-effective, and holds a promise of maybe even changing the way computation strategies currently deal with tasks that are data-intensive. This bridges the current constraints with the future needs of computation, making micro containerization the new paradigm in accessibility and sustainability of high-performance computing innovation for a wide class of AI applications.",
+        "The growing body of Artificial Intelligence (AI) and Machine Learning (ML) models increases the necessity for computational needs that put the onus on looking for new approaches so as to stray from the traditional reliance on Graphics Processing Units (GPUs). This paper introduces a new method to maximize Central Processing Units (CPUs) through the use of a micro-containerization concept. The proposed approach theoretically dissects the CPU cores into isolated, efficient processing units called 'micro containers', making an effort to simulate GPU capabilities for parallel processing.",
     },
     {
       title:
@@ -210,7 +198,7 @@ const CONFIG = {
       authors: 'M Mostagir Bhuiyan',
       link: 'https://doi.org/10.36227/techrxiv.171742375.53309794/v1',
       description:
-        "The narrative that emerges from the current development and training of the artificial intelligence models has a rhetoric of unlimited potential of AI in its current state. This paper argues against that very point and will be looking at the serious constraints currently facing models of AI and machine learning, particularly the finitude of the data on which they rely. Its not just that the results are limited by the data at hand, but also by a host of other constraints: diminishing returns in scaling up model size, imposing costs on training, and making models harder to run. These are increasingly observed when AI is clad upon complex, real-world tasks that involve genuine generalization and adaptability. The paper also critically examines the commercial motivations driving the focus on automating white-collar jobs, highlighting that such priorities often stem from immediate financial incentives rather than a comprehensive evaluation of AI's broader applications. These practices raise profound ethical issues, including concerns about transparency and the responsible deployment of AI technologies. By dispelling the myth of AI's unlimited potential, this paper advocates for a more grounded and ethical approach to AI development, stressing the urgent need for breakthrough technological advancements that move us closer to achieving artificial general intelligence (AGI).",
+        "The narrative that emerges from the current development and training of the artificial intelligence models has a rhetoric of unlimited potential of AI in its current state. This paper argues against that very point and will be looking at the serious constraints currently facing models of AI and machine learning, particularly the finitude of the data on which they rely. It critically examines the commercial motivations driving the focus on automating white-collar jobs.",
     },
     {
       title:
@@ -220,7 +208,7 @@ const CONFIG = {
       authors: 'M Mostagir Bhuiyan',
       link: 'https://doi.org/10.36227/techrxiv.174494725.56070193/v1',
       description:
-        "Large pre-trained language models (LLMs) have demonstrated remarkable ability to encode vast world knowledge in their parameters, but this static, implicit storage poses challenges for keeping models up-to-date and providing provenance for factual claims [1]. Retrieval-Augmented Generation (RAG) methods address these issues by equipping LLMs with external non-parametric memory (typically a vector database of documents) that can be queried at inference time [1][2]. However, in standard RAG pipelines the retrieval module is an external add-on, not a native part of the model architecture. We propose Retrieval-Native Language Models (RLLMs), a new paradigm that treats vector-based memory as a first-class component of the model. RLLM introduces a unified architecture with three channels of knowledge: (1) Parametric memory in the pretrained model weights (static knowledge); (2) a live retrieval channel that shares an embedding space with the generator for continual intake of external vectors; and (3) an internal Bayesian attention router that dynamically adjusts how information flows from retrieval into generation based on the estimated utility of retrieved results (e.g. relevance, correctness, recency). By tightly integrating retrieval into the model's multi-head attention layers and training the retriever and generator jointly, RLLMs align the model's representations with the memory index and enable endto-end learning of when to trust retrieved evidence. We present a theoretical analysis of how unified embedding alignment and multi-channel attention improve efficiency and reduce hallucination. We describe the RLLM architecture in detail, including pseudo-code for the retrieval-augmented attention mechanism and a Bayesian feedback loop that updates routing weights in light of retrieval success or failure signals. In experiments on knowledge-intensive QA benchmarks (NaturalQuestions, HotpotQA) and a streaming enterprise wiki scenario, RLLM outperforms traditional RAG baselines. It achieves higher answer accuracy with 30% fewer parameters than fully-parametric models by leveraging its vector memory, and quickly adapts to new information with minimal latency. This work demonstrates that making retrieval a native component of LLMs yields significant gains in knowledge access, interpretability, and continual learning, suggesting a new direction for building more flexible and powerful language models.",
+        "We propose Retrieval-Native Language Models (RLLMs), a new paradigm that treats vector-based memory as a first-class component of the model. RLLM introduces a unified architecture with three channels of knowledge: (1) Parametric memory in the pretrained model weights; (2) a live retrieval channel that shares an embedding space with the generator; and (3) an internal Bayesian attention router that dynamically adjusts how information flows from retrieval into generation.",
     },
   ],
   patents: [
