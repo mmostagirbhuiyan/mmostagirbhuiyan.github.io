@@ -184,8 +184,8 @@ export const getInitialTheme = (themeConfig: SanitizedThemeConfig): string => {
   if (themeConfig.respectPrefersColorScheme && !themeConfig.disableSwitch) {
     return typeof window !== 'undefined' &&
       window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : themeConfig.defaultTheme;
+      ? 'procyon'
+      : 'light';
   }
 
   return themeConfig.defaultTheme;

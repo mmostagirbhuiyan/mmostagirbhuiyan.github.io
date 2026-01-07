@@ -152,6 +152,22 @@ const GitProfile = ({ config }: { config: Config }) => {
     theme && document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
+  // Listen for system theme changes
+  useEffect(() => {
+    if (
+      sanitizedConfig.themeConfig.respectPrefersColorScheme &&
+      !localStorage.getItem('gitprofile-theme')
+    ) {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      const handleChange = (e: MediaQueryListEvent) => {
+        setTheme(e.matches ? 'procyon' : 'light');
+      };
+
+      mediaQuery.addEventListener('change', handleChange);
+      return () => mediaQuery.removeEventListener('change', handleChange);
+    }
+  }, [sanitizedConfig.themeConfig.respectPrefersColorScheme]);
+
   const handleError = (error: AxiosError | Error): void => {
     console.error('Error:', error);
 
