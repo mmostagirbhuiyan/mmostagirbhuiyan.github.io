@@ -72,9 +72,9 @@ const CONFIG = {
     },
   },
   seo: {
-    title: 'Principal Cloud Architect & AI Engineering Strategist',
+    title: 'Principal Cloud Architect & AI Strategist',
     description:
-      'Principal Architect & MBA Candidate (Cornell University) bridging the gap between large-scale Cloud Engineering and AI Strategy. Leveraging an Ivy League technical foundation (Dartmouth MEng) and 10+ years of distributed systems expertise to architect scalable, governance-aware GenAI platforms. Focused on operationalizing MLOps and transforming complex technical capabilities into measurable business ROI.',
+      'Principal Architect combining deep technical rigor (Dartmouth MEng in Computer Engineering) with executive business acumen (Cornell MBA). I focus not just on building models, but on engineering the scalable, secure, and cost-efficient cloud systems required to deploy them—bringing 10+ years of experience in turning experimental AI into production-grade enterprise infrastructure.',
     imageURL:
       'https://drive.google.com/uc?export=view&id=1O0-uaBf7rhlmRyvDD3ipixMG-z1Q3Gyb',
   },
