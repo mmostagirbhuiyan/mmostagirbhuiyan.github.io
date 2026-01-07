@@ -173,7 +173,7 @@ const CONFIG = {
     {
       institution: 'Pennsylvania State University',
       status: 'Graduated',
-      degree: 'Bachelor of Science (BSc) - Electrical Engineering',
+      degree: 'Bachelor of Science (BSc) - Software Engineering',
     },
   ],
   publications: [
