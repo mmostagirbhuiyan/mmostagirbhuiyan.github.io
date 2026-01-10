@@ -176,19 +176,16 @@ export const getInitialTheme = (themeConfig: SanitizedThemeConfig): string => {
   ) {
     const savedTheme = localStorage.getItem(LOCAL_STORAGE_KEY_NAME);
 
+    if (savedTheme === 'system') {
+      return 'system';
+    }
+
     if (savedTheme && themeConfig.themes.includes(savedTheme)) {
       return savedTheme;
     }
   }
 
-  if (themeConfig.respectPrefersColorScheme && !themeConfig.disableSwitch) {
-    return typeof window !== 'undefined' &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'procyon'
-      : 'light';
-  }
-
-  return themeConfig.defaultTheme;
+  return 'system';
 };
 
 export const skeleton = ({

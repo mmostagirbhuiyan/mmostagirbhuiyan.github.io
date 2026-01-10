@@ -37,6 +37,7 @@ const ThemeChanger = ({
 
   const themeList = useMemo(
     () => [
+      'system',
       themeConfig.defaultTheme,
       ...themeConfig.themes.filter((item) => item !== themeConfig.defaultTheme),
     ],
@@ -92,7 +93,15 @@ const ThemeChanger = ({
   }, [themeConfig]);
 
   const changeTheme = (selectedTheme: string) => {
-    document.querySelector('html')?.setAttribute('data-theme', selectedTheme);
+    if (selectedTheme === 'system') {
+      const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document
+        .querySelector('html')
+        ?.setAttribute('data-theme', isDark ? 'procyon' : 'light');
+    } else {
+      document.querySelector('html')?.setAttribute('data-theme', selectedTheme);
+    }
+
     typeof window !== 'undefined' &&
       localStorage.setItem(LOCAL_STORAGE_KEY_NAME, selectedTheme);
     setTheme(selectedTheme);
@@ -135,9 +144,15 @@ const ThemeChanger = ({
           <span className="text-base-content text-opacity-40 capitalize text-sm">
             {loading
               ? skeleton({ widthCls: 'w-16', heightCls: 'h-5' })
-              : theme === themeConfig.defaultTheme
-                ? 'Default'
-                : theme}
+              : theme === 'system'
+                ? 'Quantum (Auto)'
+                : theme === themeConfig.defaultTheme
+                  ? 'Default'
+                  : theme === 'procyon'
+                    ? 'Deep Space'
+                    : theme === 'light'
+                      ? 'Executive'
+                      : theme}
           </span>
         </div>
         <div className="flex-0">
@@ -203,9 +218,15 @@ const ThemeChanger = ({
                     tabIndex={-1}
                   >
                     <span>
-                      {item === 'procyon' ? 'Deep Space (Dark)' :
-                        item === 'light' ? 'Executive (Light)' :
-                          item === themeConfig.defaultTheme ? 'Default' : item}
+                      {item === 'system'
+                        ? 'Quantum (Auto)'
+                        : item === 'procyon'
+                          ? 'Deep Space (Dark)'
+                          : item === 'light'
+                            ? 'Executive (Light)'
+                            : item === themeConfig.defaultTheme
+                              ? 'Default'
+                              : item}
                     </span>
                     {theme === item && <span className="text-xs opacity-70">Active</span>}
                   </button>

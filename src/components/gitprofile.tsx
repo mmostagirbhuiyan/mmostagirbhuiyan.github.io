@@ -149,24 +149,36 @@ const GitProfile = ({ config }: { config: Config }) => {
   }, [sanitizedConfig, loadData]);
 
   useEffect(() => {
-    theme && document.documentElement.setAttribute('data-theme', theme);
+    if (!theme) return;
+
+    if (theme === 'system') {
+      const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute(
+        'data-theme',
+        isDark ? 'procyon' : 'light',
+      );
+    } else {
+      document.documentElement.setAttribute('data-theme', theme);
+    }
   }, [theme]);
 
-  // Listen for system theme changes
   useEffect(() => {
-    if (
-      sanitizedConfig.themeConfig.respectPrefersColorScheme &&
-      !localStorage.getItem('gitprofile-theme')
-    ) {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      const handleChange = (e: MediaQueryListEvent) => {
-        setTheme(e.matches ? 'procyon' : 'light');
-      };
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e: MediaQueryListEvent) => {
+      if (theme === 'system') {
+        document.documentElement.setAttribute(
+          'data-theme',
+          e.matches ? 'procyon' : 'light',
+        );
+      }
+    };
 
+    if (theme === 'system') {
       mediaQuery.addEventListener('change', handleChange);
-      return () => mediaQuery.removeEventListener('change', handleChange);
     }
-  }, [sanitizedConfig.themeConfig.respectPrefersColorScheme]);
+
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, [theme]);
 
   const handleError = (error: AxiosError | Error): void => {
     console.error('Error:', error);
