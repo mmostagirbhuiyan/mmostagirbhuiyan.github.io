@@ -7,11 +7,13 @@ const ListItem = ({
   position,
   company,
   companyLink,
+  description,
 }: {
   time: React.ReactNode;
   position?: React.ReactNode;
   company?: React.ReactNode;
   companyLink?: string;
+  description?: string[];
 }) => (
   <li className="mb-5 ml-4">
     <div
@@ -25,6 +27,13 @@ const ListItem = ({
         {company}
       </a>
     </div>
+    {description && (
+      <ul className="list-disc ml-4 space-y-1 text-sm text-base-content text-opacity-70">
+        {description.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    )}
   </li>
 );
 
@@ -86,6 +95,7 @@ const ExperienceCard = ({
                         ? experience.companyLink
                         : undefined
                     }
+                    description={experience.description}
                   />
                 ))}
               </Fragment>

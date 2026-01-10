@@ -39,17 +39,17 @@ const CONFIG = {
         {
           title: 'MLOps & AI Infrastructure',
           description:
-            'Probabilistic Bayesian Neural Network (BNN) inference framework with HMC and variational inference; scalable SVM with kernel approximation; modular SGD suite with adaptive and second-order optimizers.',
+            'Built Bayesian neural network inference pipelines to quantify prediction uncertainty in production ML workflows. Scaled high-dimensional SVM models using kernel approximation to reduce compute cost. Developed a modular optimization framework comparing adaptive and second-order gradient methods.',
         },
         {
           title: 'Fault-Tolerant Distributed Systems',
           description:
-            'Byzantine-resilient consensus protocols (Paxos, Raft, BFT-SMaRt); distributed transaction engine with vector clocks and CRDTs; quorum-consistent key-value store with tunable consistency.',
+            'Designed and evaluated Paxos, Raft, and Byzantine consensus protocols for leader election and fault tolerance. Built an event-driven transaction system using vector clocks and CRDTs for consistency under failure. Implemented a quorum-based key-value store with tunable consistency guarantees.',
         },
         {
           title: 'FPGA-Accelerated AI Systems',
           description:
-            'FPGA-based AI accelerator with INT4/INT8 quantization and sparse matrix optimizations; high-performance SPI controller; custom RISC pipeline with branch prediction and out-of-order execution.',
+            'Implemented an FPGA-based inference accelerator using low-precision quantization and sparsity. Designed a high-speed SPI controller with correct clock-domain crossing and synchronization. Built a pipelined RISC processor with branch prediction and speculative execution.',
         },
       ],
     },
@@ -74,7 +74,7 @@ const CONFIG = {
   seo: {
     title: 'Principal Cloud Architect & AI Strategist',
     description:
-      'Principal Architect leveraging 10+ years in Cloud Engineering to build scalable AI infrastructure. With a background in Computer Engineering (Dartmouth MEng) and Business Strategy (Cornell MBA), I bridge the gap between technical implementation and value realization, focusing on MLOps, system design, and the operational reality of deploying AI at scale.',
+      'Principal Architect and Engineering Leader with 10+ years of experience designing scalable, secure, and cost-efficient cloud-native systems for Fortune 100 enterprises. Expert in Kubernetes, AWS, and MLOps, with a proven track record of modernizing legacy infrastructure, reducing operational costs by ~50%, and accelerating deployment velocity. Dual-background in Engineering (Dartmouth MEng) and Business (Cornell MBA) enables a unique ability to align technical strategy with high-impact business goals.',
     imageURL:
       'https://drive.google.com/uc?export=view&id=1O0-uaBf7rhlmRyvDD3ipixMG-z1Q3Gyb',
   },
@@ -206,6 +206,15 @@ const CONFIG = {
       link: 'https://doi.org/10.36227/techrxiv.174494725.56070193/v1',
       description:
         "We propose Retrieval-Native Language Models (RLLMs), a new paradigm that treats vector-based memory as a first-class component of the model. RLLM introduces a unified architecture with three channels of knowledge: (1) Parametric memory in the pretrained model weights; (2) a live retrieval channel that shares an embedding space with the generator; and (3) an internal Bayesian attention router that dynamically adjusts how information flows from retrieval into generation.",
+    },
+    {
+      title: 'Technological Adaptation Outpaces Climate Impacts on Aviation: Evidence from Three Decades of Warming',
+      conferenceName: '',
+      journalName: 'EarthArXiv',
+      authors: 'M Mostagir Bhuiyan & Rifa Rafia',
+      link: '',
+      description:
+        'Analyzes the relationship between rising global temperatures and aviation efficiency, presenting evidence of technological adaptation outpacing climate impacts over a three-decade period.',
     },
   ],
   patents: [
