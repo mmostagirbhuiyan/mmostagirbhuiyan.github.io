@@ -2,13 +2,37 @@
 
 import { motion } from 'framer-motion';
 import { Podcast as PodcastIcon, Play, Headphones } from 'lucide-react';
-import { SectionHeader } from './section-header';
 import { podcast } from '@/data/portfolio';
 
-const platformIcons: Record<string, string> = {
-  apple: '🎧',
-  spotify: '🎵',
-  amazon: '📻',
+// Clean SVG icons for podcast platforms
+function ApplePodcastIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 3.5a6.5 6.5 0 0 1 3.894 11.707 1 1 0 0 1-1.281-1.536A4.5 4.5 0 1 0 7.5 12a4.48 4.48 0 0 0 1.113 2.96 1 1 0 0 1-1.536 1.28A6.5 6.5 0 0 1 12 5.5zm0 3a3.5 3.5 0 0 1 1.823 6.489l-.323.194V18.5a1.5 1.5 0 1 1-3 0v-3.317l-.323-.194A3.5 3.5 0 0 1 12 8.5zm0 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+    </svg>
+  );
+}
+
+function SpotifyIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 0 1-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.622.622 0 0 1-.277-1.215c3.809-.87 7.076-.496 9.712 1.115a.622.622 0 0 1 .207.857zm1.223-2.722a.78.78 0 0 1-1.072.257c-2.687-1.652-6.786-2.13-9.965-1.166a.78.78 0 0 1-.452-1.492c3.632-1.102 8.147-.568 11.234 1.329a.78.78 0 0 1 .255 1.072zm.105-2.835c-3.223-1.914-8.54-2.09-11.618-1.156a.935.935 0 1 1-.543-1.79c3.533-1.072 9.404-.865 13.115 1.338a.935.935 0 1 1-.954 1.608z"/>
+    </svg>
+  );
+}
+
+function AmazonMusicIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6ZM8 19a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"/>
+    </svg>
+  );
+}
+
+const platformIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  apple: ApplePodcastIcon,
+  spotify: SpotifyIcon,
+  amazon: AmazonMusicIcon,
 };
 
 export function Podcast() {
@@ -46,20 +70,23 @@ export function Podcast() {
 
               {/* Platform Links */}
               <div className="flex flex-wrap gap-3">
-                {podcast.platforms.map((platform) => (
-                  <motion.a
-                    key={platform.name}
-                    href={platform.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-secondary hover:bg-secondary/80 transition-colors"
-                  >
-                    <span className="text-lg">{platformIcons[platform.icon]}</span>
-                    <span className="font-medium text-sm">{platform.name}</span>
-                  </motion.a>
-                ))}
+                {podcast.platforms.map((platform) => {
+                  const Icon = platformIcons[platform.icon];
+                  return (
+                    <motion.a
+                      key={platform.name}
+                      href={platform.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-secondary hover:bg-secondary/80 transition-colors"
+                    >
+                      {Icon && <Icon className="w-5 h-5" />}
+                      <span className="font-medium text-sm">{platform.name}</span>
+                    </motion.a>
+                  );
+                })}
               </div>
             </div>
 
