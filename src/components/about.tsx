@@ -16,7 +16,7 @@ export function About() {
           subtitle="Director-level engineering leader focused on platform architecture, AI infrastructure, and building high-performing teams."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           {/* Profile Card - Large */}
           <BentoCard colSpan={2} className="relative">
             <div className="flex flex-col md:flex-row gap-6 items-start">
@@ -54,47 +54,47 @@ export function About() {
 
           {/* Location Card */}
           <BentoCard delay={0.1}>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 rounded-lg bg-primary/10">
-                <MapPin className="w-5 h-5 text-primary" />
+            <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <div className="p-1.5 sm:p-2 rounded-lg bg-primary/10">
+                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
               </div>
-              <span className="font-medium">Location</span>
+              <span className="font-medium text-sm sm:text-base">Location</span>
             </div>
-            <p className="text-muted-foreground">United States</p>
+            <p className="text-muted-foreground text-sm sm:text-base">United States</p>
           </BentoCard>
 
           {/* Current Role Card */}
           <BentoCard delay={0.15}>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 rounded-lg bg-primary/10">
-                <Briefcase className="w-5 h-5 text-primary" />
+            <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <div className="p-1.5 sm:p-2 rounded-lg bg-primary/10">
+                <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
               </div>
-              <span className="font-medium">Building</span>
+              <span className="font-medium text-sm sm:text-base">Building</span>
             </div>
-            <p className="text-muted-foreground">AI Infrastructure</p>
-            <p className="text-sm text-muted-foreground mt-1">Stealth Mode</p>
+            <p className="text-muted-foreground text-sm sm:text-base">AI Infrastructure</p>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">Stealth Mode</p>
           </BentoCard>
 
           {/* Education Quick View */}
           <BentoCard colSpan={2} delay={0.2}>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 rounded-lg bg-primary/10">
-                <GraduationCap className="w-5 h-5 text-primary" />
+            <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <div className="p-1.5 sm:p-2 rounded-lg bg-primary/10">
+                <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
               </div>
-              <span className="font-medium">Education Highlights</span>
+              <span className="font-medium text-sm sm:text-base">Education Highlights</span>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="text-center p-4 rounded-xl bg-secondary/50">
-                <p className="font-semibold">Cornell</p>
-                <p className="text-sm text-muted-foreground">MBA</p>
+            <div className="grid grid-cols-3 gap-2 sm:gap-4">
+              <div className="text-center p-2 sm:p-4 rounded-xl bg-secondary/50">
+                <p className="font-semibold text-sm sm:text-base">Cornell</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">MBA</p>
               </div>
-              <div className="text-center p-4 rounded-xl bg-secondary/50">
-                <p className="font-semibold">Dartmouth</p>
-                <p className="text-sm text-muted-foreground">MEng</p>
+              <div className="text-center p-2 sm:p-4 rounded-xl bg-secondary/50">
+                <p className="font-semibold text-sm sm:text-base">Dartmouth</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">MEng</p>
               </div>
-              <div className="text-center p-4 rounded-xl bg-secondary/50">
-                <p className="font-semibold">Penn State</p>
-                <p className="text-sm text-muted-foreground">BSc</p>
+              <div className="text-center p-2 sm:p-4 rounded-xl bg-secondary/50">
+                <p className="font-semibold text-sm sm:text-base">Penn State</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">BSc</p>
               </div>
             </div>
           </BentoCard>

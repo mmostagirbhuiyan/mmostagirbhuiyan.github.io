@@ -21,9 +21,9 @@ export function BentoCard({
 }: BentoCardProps) {
   const colSpanClasses = {
     1: 'col-span-1',
-    2: 'col-span-1 md:col-span-2',
-    3: 'col-span-1 md:col-span-2 lg:col-span-3',
-    4: 'col-span-1 md:col-span-2 lg:col-span-4',
+    2: 'col-span-2',
+    3: 'col-span-2 lg:col-span-3',
+    4: 'col-span-2 lg:col-span-4',
   };
 
   const rowSpanClasses = {
@@ -39,7 +39,7 @@ export function BentoCard({
       transition={{ duration: 0.5, delay }}
       whileHover={{ scale: 1.02 }}
       className={cn(
-        'glass-card rounded-2xl p-6 overflow-hidden',
+        'glass-card rounded-2xl p-4 sm:p-6 overflow-hidden',
         colSpanClasses[colSpan],
         rowSpanClasses[rowSpan],
         className
