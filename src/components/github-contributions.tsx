@@ -26,12 +26,12 @@ export function GitHubContributions() {
           transition={{ duration: 0.5 }}
           className="flex flex-col items-center"
         >
-          {/* Algora Widget */}
+          {/* Algora Widget - Dark container to match widget's dark theme */}
           <motion.a
             href={algoraProfileUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="block w-full max-w-2xl glass-card rounded-2xl overflow-hidden group"
+            className="block w-full max-w-2xl rounded-2xl overflow-hidden group bg-[#0d1117] border border-[#30363d] shadow-xl"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -41,7 +41,7 @@ export function GitHubContributions() {
               className="w-full h-auto"
               loading="lazy"
             />
-            <div className="p-4 flex items-center justify-center gap-2 text-sm text-muted-foreground group-hover:text-primary transition-colors">
+            <div className="p-4 flex items-center justify-center gap-2 text-sm text-[#8b949e] group-hover:text-[#58a6ff] transition-colors">
               <ExternalLink className="w-4 h-4" />
               View full profile on Algora
             </div>
