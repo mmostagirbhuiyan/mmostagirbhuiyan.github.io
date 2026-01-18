@@ -119,7 +119,7 @@ export const publications = [
     title: 'Technological Adaptation Outpaces Climate Impacts on Aviation: Evidence from Three Decades of Warming',
     journal: 'EarthArXiv',
     authors: 'M Mostagir Bhuiyan & Rifa Rafia',
-    link: '',
+    link: 'https://doi.org/10.31223/X58J1S',
     description:
       'Analyzes the relationship between rising global temperatures and aviation efficiency, presenting evidence of technological adaptation outpacing climate impacts over a three-decade period.',
   },
