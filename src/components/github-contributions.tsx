@@ -1,14 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Github, ExternalLink } from 'lucide-react';
+import { Github } from 'lucide-react';
 import { SectionHeader } from './section-header';
 import { siteConfig } from '@/data/portfolio';
 
 export function GitHubContributions() {
-  const algoraUsername = siteConfig.github;
-  const algoraProfileUrl = `https://algora.io/user/${algoraUsername}`;
-  const algoraWidgetUrl = `https://algora.io/og/user/${algoraUsername}`;
+  const algoraWidgetUrl = `https://algora.io/og/user/${siteConfig.github}`;
   const githubProfileUrl = `https://github.com/${siteConfig.github}`;
 
   return (
@@ -27,25 +25,14 @@ export function GitHubContributions() {
           className="flex flex-col items-center"
         >
           {/* Algora Widget - Dark container to match widget's dark theme */}
-          <motion.a
-            href={algoraProfileUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full max-w-2xl rounded-2xl overflow-hidden group bg-[#0d1117] border border-[#30363d] shadow-xl"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
+          <div className="w-full max-w-[95%] md:max-w-4xl lg:max-w-5xl rounded-2xl overflow-hidden bg-[#0d1117] border border-[#30363d] shadow-xl">
             <img
               src={algoraWidgetUrl}
               alt={`${siteConfig.name}'s GitHub contributions - Top 1% TypeScript engineers globally`}
-              className="w-full h-auto"
+              className="w-full h-auto block"
               loading="lazy"
             />
-            <div className="p-4 flex items-center justify-center gap-2 text-sm text-[#8b949e] group-hover:text-[#58a6ff] transition-colors">
-              <ExternalLink className="w-4 h-4" />
-              View full profile on Algora
-            </div>
-          </motion.a>
+          </div>
 
           {/* GitHub Link */}
           <motion.div
