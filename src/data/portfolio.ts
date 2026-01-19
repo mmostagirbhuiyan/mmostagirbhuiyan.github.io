@@ -123,13 +123,28 @@ export const publications = [
     description:
       'Analyzes the relationship between rising global temperatures and aviation efficiency, presenting evidence of technological adaptation outpacing climate impacts over a three-decade period.',
   },
+];
+
+export const blogPosts = [
   {
     title: 'The Zero Marginal Cost Architecture: Why I Built a Wealth Planner to Run Entirely on the Edge',
-    journal: 'Medium',
-    authors: 'M Mostagir Bhuiyan',
     link: 'https://medium.com/@mmostagirbhuiyan/the-zero-marginal-cost-architecture-why-i-built-a-wealth-planner-to-run-entirely-on-the-edge-e632ba727490',
-    description:
-      'A deep dive into building Meridian, a privacy-first wealth planner powered by WebLLM and WebGPU. Explores the architecture decisions behind running AI entirely in the browser with zero backend costs.',
+    description: 'Building Meridian with WebLLM and WebGPU for privacy-first, zero-backend AI.',
+  },
+  {
+    title: 'To Build a Better Model, You Must Understand the Machine: A Systems Leader\'s Deep Dive into AI',
+    link: 'https://medium.com/@mmostagirbhuiyan/to-build-a-better-model-you-must-understand-the-machine-a-systems-leaders-deep-dive-into-ai-d5041f95d056',
+    description: 'A systems engineering perspective on understanding AI from the ground up.',
+  },
+  {
+    title: 'From Manual Mappings to Intelligent Automation: Engineering Production ML Pipelines That Scale',
+    link: 'https://medium.com/@mmostagirbhuiyan/from-manual-mappings-to-intelligent-automation-engineering-production-ml-pipelines-that-scale-c09b02a4881d',
+    description: 'Designing and scaling production ML pipelines with intelligent automation.',
+  },
+  {
+    title: 'Implementing Authentication with Django, DRF, Angular, and Microsoft Azure AD',
+    link: 'https://medium.com/@mmostagirbhuiyan/implementing-authentication-with-django-drf-angular-and-microsoft-azure-ad-648c1c9f9649',
+    description: 'End-to-end guide for enterprise authentication across the full stack.',
   },
 ];
 

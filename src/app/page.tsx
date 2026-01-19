@@ -4,6 +4,7 @@ import { About } from '@/components/about';
 import { Skills } from '@/components/skills';
 import { Projects } from '@/components/projects';
 import { GitHubContributions } from '@/components/github-contributions';
+import { Blog } from '@/components/blog';
 import { Publications } from '@/components/publications';
 import { Education } from '@/components/education';
 import { Podcast } from '@/components/podcast';
@@ -20,6 +21,7 @@ export default function Home() {
         <Skills />
         <Projects />
         <GitHubContributions />
+        <Blog />
         <Publications />
         <Education />
         <Podcast />
