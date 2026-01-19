@@ -22,7 +22,7 @@ export function Hero() {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.5, ease: 'easeOut' },
+      transition: { duration: 0.5, ease: 'easeOut' as const },
     },
   };
 
@@ -138,7 +138,7 @@ export function Hero() {
           href="#about"
           className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
           animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' as const }}
         >
           <span className="text-sm">Scroll to explore</span>
           <ArrowDown className="w-5 h-5" />
