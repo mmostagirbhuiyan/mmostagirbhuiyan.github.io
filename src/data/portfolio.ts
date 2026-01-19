@@ -162,16 +162,16 @@ export const projects = {
     {
       title: 'Meridian',
       description:
-        'Privacy-first wealth planning platform with on-device AI advisor powered by WebLLM. Features Monte Carlo simulation, 3D visualization, and portfolio modeling for REIT, 401(k), Roth IRA, HSA, and brokerage accounts. Runs entirely in-browser with no backend.',
+        'Privacy-first wealth planning with on-device AI. WebLLM-powered financial advisor runs entirely in-browser via WebGPU. Features Monte Carlo simulation, 3D visualization, and multi-account portfolio modeling. Zero backend, zero API costs.',
       link: 'https://mmostagirbhuiyan.com/meridian',
       tags: ['WebLLM', 'WebGPU', 'React Three Fiber', 'Finance'],
     },
     {
-      title: 'University Aggregator Rankings',
+      title: 'University Ranking Aggregator',
       description:
-        'An innovative platform that aggregates and analyzes university rankings from multiple sources to provide comprehensive insights for prospective students.',
+        'Data aggregation platform combining rankings from QS, Times Higher Education, US News, and Shanghai ARWU. Weighted scoring algorithm normalizes disparate methodologies into unified rankings with filtering by region, program, and criteria.',
       link: 'https://www.mmostagirbhuiyan.com/university-ranking-aggregator/',
-      tags: ['Education', 'Data Aggregation', 'React'],
+      tags: ['Data Aggregation', 'React', 'Education'],
     },
   ],
   github: {
