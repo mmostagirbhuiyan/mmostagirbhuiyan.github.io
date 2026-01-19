@@ -163,7 +163,7 @@ export const projects = {
       title: 'Meridian',
       description:
         'Privacy-first wealth planning with on-device AI. WebLLM-powered financial advisor runs entirely in-browser via WebGPU. Features Monte Carlo simulation, 3D visualization, and multi-account portfolio modeling. Zero backend, zero API costs.',
-      link: 'https://mmostagirbhuiyan.com/meridian',
+      link: 'https://meridian.mmostagirbhuiyan.com',
       tags: ['WebLLM', 'WebGPU', 'React Three Fiber', 'Finance'],
     },
     {
