@@ -195,10 +195,10 @@ export const projects = {
       tags: ['WebLLM', 'WebGPU', 'React Three Fiber', 'Finance'],
     },
     {
-      title: 'University Ranking Aggregator',
+      title: 'Unirank',
       description:
         'Data aggregation platform combining rankings from QS, Times Higher Education, US News, and Shanghai ARWU. Weighted scoring algorithm normalizes disparate methodologies into unified rankings with filtering by region, program, and criteria.',
-      link: 'https://www.mmostagirbhuiyan.com/university-ranking-aggregator/',
+      link: 'https://unirank.mmostagirbhuiyan.com/',
       tags: ['Data Aggregation', 'React', 'Education'],
     },
   ],
