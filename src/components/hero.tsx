@@ -108,7 +108,7 @@ export function Hero() {
             {[
               { value: '10+', label: 'Years Experience' },
               { value: '5', label: 'AWS Certifications' },
-              { value: '4', label: 'Publications' },
+              { value: '5', label: 'Publications' },
               { value: '1', label: 'Patent Pending' },
             ].map((stat, index) => (
               <motion.div

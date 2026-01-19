@@ -123,6 +123,14 @@ export const publications = [
     description:
       'Analyzes the relationship between rising global temperatures and aviation efficiency, presenting evidence of technological adaptation outpacing climate impacts over a three-decade period.',
   },
+  {
+    title: 'The Zero Marginal Cost Architecture: Why I Built a Wealth Planner to Run Entirely on the Edge',
+    journal: 'Medium',
+    authors: 'M Mostagir Bhuiyan',
+    link: 'https://medium.com/@mmostagirbhuiyan/the-zero-marginal-cost-architecture-why-i-built-a-wealth-planner-to-run-entirely-on-the-edge-e632ba727490',
+    description:
+      'A deep dive into building Meridian, a privacy-first wealth planner powered by WebLLM and WebGPU. Explores the architecture decisions behind running AI entirely in the browser with zero backend costs.',
+  },
 ];
 
 export const patents = [
