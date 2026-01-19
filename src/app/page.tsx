@@ -21,8 +21,8 @@ export default function Home() {
         <Skills />
         <Projects />
         <GitHubContributions />
-        <Blog />
         <Publications />
+        <Blog />
         <Education />
         <Podcast />
         <Contact />

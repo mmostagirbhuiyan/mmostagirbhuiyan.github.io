@@ -1,9 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { BookOpen, ExternalLink, ArrowRight } from 'lucide-react';
+import { BookOpen, ArrowRight } from 'lucide-react';
 import { SectionHeader } from './section-header';
 import { blogPosts, siteConfig } from '@/data/portfolio';
+
+// Generate og:image URL using microlink API (free tier)
+function getOgImage(url: string): string {
+  return `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`;
+}
 
 export function Blog() {
   const container = {
@@ -42,23 +47,34 @@ export function Blog() {
               rel="noopener noreferrer"
               variants={item}
               whileHover={{ scale: 1.02 }}
-              className="glass-card rounded-2xl p-6 group cursor-pointer"
+              className="glass-card rounded-2xl overflow-hidden group cursor-pointer"
             >
-              <div className="flex items-start gap-4">
-                <div className="p-2.5 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 shrink-0">
-                  <BookOpen className="w-5 h-5 text-white" />
+              {/* Thumbnail */}
+              <div className="relative h-48 bg-gradient-to-br from-primary/20 to-accent/20 overflow-hidden">
+                {post.thumbnail && (
+                  <img
+                    src={post.thumbnail}
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+                <div className="absolute bottom-3 left-3">
+                  <span className="px-2.5 py-1 text-xs font-medium rounded-full bg-green-500/20 text-green-400 backdrop-blur-sm">
+                    Medium
+                  </span>
                 </div>
+              </div>
 
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-base leading-tight group-hover:text-primary transition-colors mb-2 line-clamp-2">
-                    {post.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
-                    {post.description}
-                  </p>
-                </div>
-
-                <ExternalLink className="w-5 h-5 text-muted-foreground shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+              {/* Content */}
+              <div className="p-5">
+                <h3 className="font-semibold text-base leading-tight group-hover:text-primary transition-colors mb-2 line-clamp-2">
+                  {post.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
+                  {post.description}
+                </p>
               </div>
             </motion.a>
           ))}
