@@ -160,11 +160,11 @@ export const projects = {
   ],
   live: [
     {
-      title: 'MULTI Fund Model',
+      title: 'Meridian',
       description:
-        'A comprehensive real estate investment trust (REIT), 401k, Roth IRA, HSA, Brokerage analysis and modeling tool that helps investors evaluate and compare different investment opportunities.',
-      link: 'https://mmostagirbhuiyan.com/multi-fund-model',
-      tags: ['Finance', 'React', 'Data Analysis'],
+        'Privacy-first wealth planning platform with on-device AI advisor powered by WebLLM. Features Monte Carlo simulation, 3D visualization, and portfolio modeling for REIT, 401(k), Roth IRA, HSA, and brokerage accounts. Runs entirely in-browser with no backend.',
+      link: 'https://mmostagirbhuiyan.com/meridian',
+      tags: ['WebLLM', 'WebGPU', 'React Three Fiber', 'Finance'],
     },
     {
       title: 'University Aggregator Rankings',
