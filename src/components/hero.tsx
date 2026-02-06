@@ -5,26 +5,41 @@ import { ArrowDown, Mail, Github, BookOpen } from 'lucide-react';
 import { siteConfig } from '@/data/portfolio';
 
 export function Hero() {
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
+        staggerChildren: 0.12,
+        delayChildren: 0.2,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.5, ease: 'easeOut' as const },
+      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
     },
   };
+
+  const letterVariants = {
+    hidden: { y: 80, opacity: 0, rotateX: 40 },
+    visible: (i: number) => ({
+      y: 0,
+      opacity: 1,
+      rotateX: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1] as const,
+        delay: i * 0.04,
+      },
+    }),
+  };
+
+  const name = siteConfig.name;
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -35,18 +50,38 @@ export function Hero() {
           animate="visible"
           className="text-center"
         >
-          {/* Main Title */}
-          <motion.h1
+          {/* Overline */}
+          <motion.div
             variants={itemVariants}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6"
+            className="mb-8"
           >
-            <span className="gradient-text glow-text">{siteConfig.name}</span>
-          </motion.h1>
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-secondary/50 text-sm text-muted-foreground font-mono tracking-wide">
+              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+              Building AI Infrastructure
+            </span>
+          </motion.div>
+
+          {/* Main Title - Cinematic Typography */}
+          <div className="text-display mb-8 overflow-hidden" style={{ perspective: '600px' }}>
+            {name.split('').map((char, i) => (
+              <motion.span
+                key={i}
+                custom={i}
+                variants={letterVariants}
+                initial="hidden"
+                animate="visible"
+                className="inline-block gradient-text"
+                style={{ transformOrigin: 'bottom' }}
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </motion.span>
+            ))}
+          </div>
 
           {/* Role */}
           <motion.h2
             variants={itemVariants}
-            className="text-xl sm:text-2xl md:text-3xl text-muted-foreground font-medium mb-8 max-w-3xl mx-auto"
+            className="text-xl sm:text-2xl md:text-3xl text-muted-foreground font-light mb-6 max-w-3xl mx-auto tracking-tight"
           >
             {siteConfig.title}
           </motion.h2>
@@ -54,24 +89,24 @@ export function Hero() {
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed"
+            className="text-base sm:text-lg text-muted-foreground/80 max-w-2xl mx-auto mb-14 leading-relaxed"
           >
             10+ years leading cloud, DevOps, and AI-driven distributed systems.
-            Building in AI. Cornell MBA + Dartmouth MEng.
+            Cornell MBA + Dartmouth MEng.
           </motion.p>
 
           {/* CTA Buttons */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap items-center justify-center gap-4"
+            className="flex flex-wrap items-center justify-center gap-4 mb-20"
           >
             <motion.a
               href="#contact"
-              className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-medium shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-medium shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
+              whileHover={{ scale: 1.04, y: -1 }}
+              whileTap={{ scale: 0.97 }}
             >
-              <Mail className="w-5 h-5" />
+              <Mail className="w-4 h-4" />
               Get in Touch
             </motion.a>
 
@@ -79,11 +114,11 @@ export function Hero() {
               href={`https://github.com/${siteConfig.github}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-secondary text-secondary-foreground font-medium hover:bg-secondary/80 transition-all"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-border bg-card hover:border-primary/30 hover:bg-secondary transition-all duration-300 font-medium"
+              whileHover={{ scale: 1.04, y: -1 }}
+              whileTap={{ scale: 0.97 }}
             >
-              <Github className="w-5 h-5" />
+              <Github className="w-4 h-4" />
               GitHub
             </motion.a>
 
@@ -91,19 +126,19 @@ export function Hero() {
               href={siteConfig.social.medium}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-secondary text-secondary-foreground font-medium hover:bg-secondary/80 transition-all"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-border bg-card hover:border-primary/30 hover:bg-secondary transition-all duration-300 font-medium"
+              whileHover={{ scale: 1.04, y: -1 }}
+              whileTap={{ scale: 0.97 }}
             >
-              <BookOpen className="w-5 h-5" />
+              <BookOpen className="w-4 h-4" />
               Blog
             </motion.a>
           </motion.div>
 
-          {/* Stats */}
+          {/* Stats - Horizontal Strip */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-3xl mx-auto"
+            className="flex items-center justify-center gap-8 md:gap-16 flex-wrap"
           >
             {[
               { value: '10+', label: 'Years Experience' },
@@ -113,14 +148,13 @@ export function Hero() {
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
-                className="glass-card rounded-2xl p-4 text-center"
-                whileHover={{ scale: 1.05 }}
+                className="text-center"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1 + index * 0.1 }}
+                transition={{ delay: 1.2 + index * 0.1 }}
               >
-                <div className="text-3xl font-bold gradient-text">{stat.value}</div>
-                <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
+                <div className="text-3xl md:text-4xl font-bold gradient-text mb-1">{stat.value}</div>
+                <div className="text-xs text-muted-foreground tracking-wide uppercase font-mono">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -132,16 +166,16 @@ export function Hero() {
         className="absolute bottom-8 inset-x-0 flex justify-center"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.5 }}
+        transition={{ delay: 1.8, duration: 0.5 }}
       >
         <motion.a
           href="#about"
           className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
           animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' as const }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
         >
-          <span className="text-sm">Scroll to explore</span>
-          <ArrowDown className="w-5 h-5" />
+          <span className="text-xs font-mono tracking-widest uppercase">Scroll</span>
+          <ArrowDown className="w-4 h-4" />
         </motion.a>
       </motion.div>
     </section>

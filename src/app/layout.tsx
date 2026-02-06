@@ -1,21 +1,8 @@
 import type { Metadata } from 'next';
-import { Outfit, JetBrains_Mono } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { SmoothScroll } from '@/components/smooth-scroll';
 import { siteConfig } from '@/data/portfolio';
 import './globals.css';
-
-const outfit = Outfit({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-  display: 'swap',
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   title: `${siteConfig.name} | ${siteConfig.title}`,
@@ -58,8 +45,11 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet" />
       </head>
-      <body className={`${outfit.variable} ${jetbrainsMono.variable} antialiased`}>
+      <body className="antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -67,10 +57,17 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SmoothScroll>
-            {/* Background Effects */}
-            <div className="dark:star-field" aria-hidden="true" />
-            <div className="dark:animated-bg" aria-hidden="true" />
-            <div className="grid-pattern" aria-hidden="true" />
+            {/* Background Effects - Light Mode */}
+            <div className="dark:hidden light-orbs" aria-hidden="true" />
+            <div className="dark:hidden light-grid" aria-hidden="true" />
+
+            {/* Background Effects - Dark Mode */}
+            <div className="hidden dark:block dark-stars" aria-hidden="true" />
+            <div className="hidden dark:block dark-nebula" aria-hidden="true" />
+            <div className="hidden dark:block dark-grid" aria-hidden="true" />
+
+            {/* Noise overlay - both modes */}
+            <div className="noise-overlay" aria-hidden="true" />
 
             {children}
           </SmoothScroll>
