@@ -62,7 +62,7 @@ export function Hero() {
           </motion.div>
 
           {/* Main Title - Cinematic Typography */}
-          <div className="text-display mb-8 overflow-visible pb-2" style={{ perspective: '600px' }}>
+          <div className="text-display mb-8 overflow-visible" style={{ perspective: '600px' }}>
             {name.split('').map((char, i) => (
               <motion.span
                 key={i}
@@ -70,7 +70,7 @@ export function Hero() {
                 variants={letterVariants}
                 initial="hidden"
                 animate="visible"
-                className="inline-block gradient-text"
+                className="inline-block gradient-text pb-4"
                 style={{ transformOrigin: 'bottom' }}
               >
                 {char === ' ' ? '\u00A0' : char}
@@ -92,7 +92,7 @@ export function Hero() {
             className="text-base sm:text-lg text-muted-foreground/80 max-w-2xl mx-auto mb-14 leading-relaxed"
           >
             10+ years leading cloud, DevOps, and AI-driven distributed systems.
-            Cornell MBA + Dartmouth MEng.
+            Cornell MBA Candidate + Dartmouth MEng.
           </motion.p>
 
           {/* CTA Buttons */}

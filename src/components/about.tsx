@@ -103,7 +103,7 @@ export function About() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
-                { school: 'Cornell', degree: 'MBA', status: 'Current' },
+                { school: 'Cornell', degree: 'MBA Candidate', status: 'Candidate' },
                 { school: 'Dartmouth', degree: 'MEng', status: 'Graduated' },
                 { school: 'Penn State', degree: 'BSc', status: 'Graduated' },
               ].map((edu) => (

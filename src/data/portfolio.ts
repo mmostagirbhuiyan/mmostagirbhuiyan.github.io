@@ -2,7 +2,7 @@ export const siteConfig = {
   name: 'Mostagir Bhuiyan',
   title: 'Engineering Leader & Builder',
   description:
-    'Director and Principal Architect with 10+ years leading cloud, DevOps, and AI-driven distributed systems. Proven track record owning platform architecture, governance, and reliability for large-scale production systems. Dual background in Engineering (Dartmouth MEng) and Business (Cornell MBA).',
+    'Director and Principal Architect with 10+ years leading cloud, DevOps, and AI-driven distributed systems. Proven track record owning platform architecture, governance, and reliability for large-scale production systems. Dual background in Engineering (Dartmouth MEng) and Business (Cornell MBA Candidate).',
   email: 'mmostagirbhuiyan@gmail.com',
   github: 'mmostagirbhuiyan',
   avatar: '/avatar.png',
@@ -34,7 +34,7 @@ export const education = [
   {
     institution: 'Cornell University',
     degree: 'Master of Business Administration (MBA)',
-    status: 'Now Attending',
+    status: 'Candidate',
     logo: '/logos/cornell.svg',
   },
   {

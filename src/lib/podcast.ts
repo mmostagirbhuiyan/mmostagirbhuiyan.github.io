@@ -20,7 +20,7 @@ export async function getPodcastFeed(): Promise<PodcastFeed | null> {
   try {
     const response = await fetch(
       `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(PODCAST_RSS_URL)}`,
-      { next: { revalidate: 3600 } } // Cache for 1 hour
+      { next: { revalidate: 600 } } // Cache for 10 minutes
     );
 
     if (!response.ok) {
@@ -34,7 +34,7 @@ export async function getPodcastFeed(): Promise<PodcastFeed | null> {
     }
 
     // Map episodes
-    const episodes: PodcastEpisode[] = data.items.slice(0, 4).map((item: any) => {
+    const episodes: PodcastEpisode[] = data.items.slice(0, 6).map((item: any) => {
       // Clean up description (strip HTML tags)
       const cleanDescription = item.description
         ?.replace(/<[^>]*>/g, '')
