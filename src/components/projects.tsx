@@ -1,81 +1,67 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Folder, Star, GitFork } from 'lucide-react';
+import { ExternalLink, Github, Folder, ArrowUpRight } from 'lucide-react';
 import { SectionHeader } from './section-header';
-import { BentoCard } from './bento-card';
 import { projects, siteConfig } from '@/data/portfolio';
 
 export function Projects() {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
-  };
-
   return (
-    <section id="projects" className="py-20 md:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-24 md:py-36">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
+          label="Work"
           title="Featured Projects"
           subtitle="A selection of projects showcasing my expertise in AI, distributed systems, and cloud architecture."
         />
 
-        {/* Featured Projects */}
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-100px' }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
-        >
+        {/* Featured Projects - Staggered Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
           {projects.featured.map((project, index) => (
             <motion.div
               key={project.title}
-              variants={item}
-              whileHover={{ scale: 1.02 }}
-              className="glass-card rounded-2xl p-6 group"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className={`glass-card rounded-2xl p-6 sm:p-8 group ${index === 0 ? 'lg:col-span-2' : ''}`}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-primary/10">
-                  <Folder className="w-5 h-5 text-primary" />
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-xl bg-primary/10">
+                    <Folder className="w-5 h-5 text-primary" />
+                  </div>
+                  <h3 className="font-bold text-lg tracking-tight group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
                 </div>
-                <h3 className="font-semibold text-lg group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
               </div>
 
-              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
                 {project.description}
               </p>
 
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-2.5 py-1 text-xs rounded-full bg-secondary text-secondary-foreground"
-                  >
+                  <span key={tag} className="tag-pill">
                     {tag}
                   </span>
                 ))}
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Live Projects */}
-        <div className="mb-12">
-          <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-            <ExternalLink className="w-5 h-5 text-primary" />
+        <div className="mb-16">
+          <motion.h3
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-sm font-mono tracking-widest uppercase text-primary mb-6"
+          >
             Live Projects
-          </h3>
+          </motion.h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {projects.live.map((project, index) => (
@@ -84,30 +70,27 @@ export function Projects() {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.02 }}
-                className="glass-card rounded-2xl p-6 group cursor-pointer"
+                whileHover={{ y: -4 }}
+                className="glass-card rounded-2xl p-6 sm:p-8 group cursor-pointer"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <h4 className="font-semibold text-lg group-hover:text-primary transition-colors">
+                  <h4 className="font-bold text-lg tracking-tight group-hover:text-primary transition-colors">
                     {project.title}
                   </h4>
-                  <ExternalLink className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                  <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
                 </div>
 
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
                   {project.description}
                 </p>
 
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 text-xs rounded-full bg-secondary text-secondary-foreground"
-                    >
+                    <span key={tag} className="tag-pill">
                       {tag}
                     </span>
                   ))}
@@ -128,12 +111,12 @@ export function Projects() {
             href={`https://github.com/${siteConfig.github}?tab=repositories`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-secondary text-secondary-foreground font-medium hover:bg-secondary/80 transition-all"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border bg-card hover:border-primary/30 hover:bg-secondary font-medium transition-all duration-300"
+            whileHover={{ scale: 1.04, y: -1 }}
+            whileTap={{ scale: 0.97 }}
           >
-            <Github className="w-5 h-5" />
-            View All Projects on GitHub
+            <Github className="w-4 h-4" />
+            View All on GitHub
           </motion.a>
         </motion.div>
       </div>

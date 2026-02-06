@@ -5,7 +5,6 @@ import { Podcast as PodcastIcon, Play, Headphones, ExternalLink } from 'lucide-r
 import { podcast } from '@/data/portfolio';
 import { PodcastEpisode } from '@/lib/podcast';
 
-// Clean SVG icons for podcast platforms
 function ApplePodcastIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -43,26 +42,27 @@ interface PodcastClientProps {
 
 export function PodcastClient({ episodes, podcastImage }: PodcastClientProps) {
   return (
-    <section className="py-20 md:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 md:py-36">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="glass-card rounded-3xl p-8 md:p-12 overflow-hidden relative"
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="glass-card rounded-2xl p-6 sm:p-8 md:p-10 overflow-hidden relative"
         >
           {/* Background decoration */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-primary/10 to-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
           <div className="relative">
             {/* Header */}
             <div className="flex flex-col lg:flex-row gap-8 items-start lg:items-center mb-8">
               {/* Podcast artwork */}
               <motion.div
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.03 }}
                 className="relative shrink-0"
               >
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shadow-2xl shadow-primary/25">
+                <div className="w-28 h-28 md:w-36 md:h-36 rounded-2xl overflow-hidden shadow-xl">
                   {podcastImage ? (
                     <img
                       src={podcastImage}
@@ -71,7 +71,7 @@ export function PodcastClient({ episodes, podcastImage }: PodcastClientProps) {
                     />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-primary via-accent to-blue-500 flex items-center justify-center">
-                      <Headphones className="w-12 h-12 text-white" />
+                      <Headphones className="w-10 h-10 text-white" />
                     </div>
                   )}
                 </div>
@@ -81,23 +81,21 @@ export function PodcastClient({ episodes, podcastImage }: PodcastClientProps) {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  className="absolute -bottom-2 -right-2 w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg"
+                  className="absolute -bottom-2 -right-2 w-9 h-9 rounded-full bg-primary flex items-center justify-center shadow-lg"
                 >
-                  <Play className="w-4 h-4 text-white ml-0.5" />
+                  <Play className="w-3.5 h-3.5 text-white ml-0.5" />
                 </motion.a>
               </motion.div>
 
               {/* Podcast info */}
               <div className="flex-1">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                    AI-Powered Podcast
-                  </div>
-                </div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-2">
+                <span className="inline-block text-xs font-mono tracking-widest uppercase text-primary mb-2">
+                  Podcast
+                </span>
+                <h2 className="text-2xl md:text-3xl font-bold mb-2 tracking-tight">
                   {podcast.title}
                 </h2>
-                <p className="text-muted-foreground leading-relaxed mb-4 max-w-2xl">
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4 max-w-2xl">
                   {podcast.description}
                 </p>
 
@@ -111,9 +109,9 @@ export function PodcastClient({ episodes, podcastImage }: PodcastClientProps) {
                         href={platform.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors"
+                        whileHover={{ scale: 1.04 }}
+                        whileTap={{ scale: 0.97 }}
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-secondary/50 hover:border-primary/30 transition-all duration-300"
                       >
                         {Icon && <Icon className="w-4 h-4" />}
                         <span className="font-medium text-sm">{platform.name}</span>
@@ -127,26 +125,25 @@ export function PodcastClient({ episodes, podcastImage }: PodcastClientProps) {
             {/* Latest Episodes */}
             {episodes.length > 0 && (
               <div>
-                <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                  <PodcastIcon className="w-5 h-5 text-primary" />
+                <h3 className="text-sm font-mono tracking-widest uppercase text-primary mb-4">
                   Latest Episodes
                 </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {episodes.map((episode, index) => (
                     <motion.a
                       key={episode.title}
                       href={episode.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 16 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                      whileHover={{ scale: 1.02 }}
-                      className="flex items-start gap-3 p-4 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors group"
+                      transition={{ delay: index * 0.08 }}
+                      whileHover={{ x: 4 }}
+                      className="flex items-start gap-3 p-4 rounded-xl bg-secondary/50 hover:bg-secondary border border-transparent hover:border-border transition-all group"
                     >
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center shrink-0 group-hover:from-primary/30 group-hover:to-accent/30 transition-colors">
-                        <Play className="w-5 h-5 text-primary" />
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <Play className="w-4 h-4 text-primary" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <h4 className="font-medium text-sm leading-tight group-hover:text-primary transition-colors line-clamp-2">
@@ -160,7 +157,6 @@ export function PodcastClient({ episodes, podcastImage }: PodcastClientProps) {
                           })}
                         </p>
                       </div>
-                      <ExternalLink className="w-4 h-4 text-muted-foreground shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </motion.a>
                   ))}
                 </div>

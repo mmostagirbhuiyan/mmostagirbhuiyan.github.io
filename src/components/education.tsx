@@ -6,23 +6,11 @@ import { SectionHeader } from './section-header';
 import { education, certifications } from '@/data/portfolio';
 
 export function Education() {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
-  };
-
   return (
-    <section id="education" className="py-20 md:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="education" className="py-24 md:py-36">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
+          label="Credentials"
           title="Education & Certifications"
           subtitle="A foundation in both engineering excellence and business strategy."
         />
@@ -31,110 +19,102 @@ export function Education() {
           {/* Education */}
           <div>
             <div className="flex items-center gap-3 mb-8">
-              <div className="p-2 rounded-lg bg-primary/10">
-                <GraduationCap className="w-5 h-5 text-primary" />
+              <div className="p-2 rounded-xl bg-primary/10">
+                <GraduationCap className="w-4 h-4 text-primary" />
               </div>
-              <h3 className="text-xl font-bold">Education</h3>
+              <h3 className="font-bold text-lg tracking-tight">Education</h3>
             </div>
 
-            <motion.div
-              variants={container}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="relative"
-            >
+            <div className="relative">
               {/* Timeline line */}
-              <div className="absolute left-4 top-8 bottom-8 w-0.5 bg-border" />
+              <div className="absolute left-[11px] top-6 bottom-6 w-px bg-border" />
 
               {education.map((edu, index) => (
                 <motion.div
                   key={edu.institution}
-                  variants={item}
-                  className="relative pl-12 pb-8 last:pb-0"
+                  initial={{ opacity: 0, x: -16 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  className="relative pl-10 pb-8 last:pb-0"
                 >
                   {/* Timeline dot */}
-                  <div className="absolute left-2 top-2 w-5 h-5 rounded-full bg-primary flex items-center justify-center">
-                    <div className="w-2 h-2 rounded-full bg-white" />
+                  <div className="absolute left-0 top-1.5 w-[23px] h-[23px] rounded-full bg-background border-2 border-primary flex items-center justify-center">
+                    <div className="w-2 h-2 rounded-full bg-primary" />
                   </div>
 
-                  <div className="glass-card rounded-2xl p-6">
-                    <div className="flex items-start justify-between gap-4 mb-2">
-                      <h4 className="font-semibold text-lg">{edu.institution}</h4>
+                  <div className="glass-card rounded-2xl p-5">
+                    <div className="flex items-start justify-between gap-3 mb-1.5">
+                      <h4 className="font-semibold tracking-tight">{edu.institution}</h4>
                       <span
-                        className={`shrink-0 px-3 py-1 rounded-full text-xs font-medium ${
+                        className={`shrink-0 px-2.5 py-0.5 rounded-full text-xs font-medium ${
                           edu.status === 'Now Attending'
                             ? 'bg-primary/10 text-primary'
-                            : 'bg-green-500/10 text-green-500'
+                            : 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400'
                         }`}
                       >
                         {edu.status}
                       </span>
                     </div>
-                    <p className="text-muted-foreground">{edu.degree}</p>
+                    <p className="text-sm text-muted-foreground">{edu.degree}</p>
                   </div>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
           </div>
 
           {/* Certifications */}
           <div>
             <div className="flex items-center gap-3 mb-8">
-              <div className="p-2 rounded-lg bg-accent/10">
-                <Award className="w-5 h-5 text-accent" />
+              <div className="p-2 rounded-xl bg-accent/10">
+                <Award className="w-4 h-4 text-accent" />
               </div>
-              <h3 className="text-xl font-bold">Certifications</h3>
+              <h3 className="font-bold text-lg tracking-tight">Certifications</h3>
             </div>
 
-            <motion.div
-              variants={container}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="grid grid-cols-1 gap-4"
-            >
+            <div className="space-y-3">
               {certifications.map((cert, index) => (
                 <motion.a
                   key={cert.name}
                   href={cert.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  variants={item}
-                  whileHover={{ scale: 1.02 }}
-                  className="glass-card rounded-2xl p-5 group cursor-pointer"
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.06, duration: 0.5 }}
+                  whileHover={{ x: 4 }}
+                  className="flex items-center gap-4 p-4 rounded-xl glass-card group cursor-pointer"
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="p-2.5 rounded-xl bg-gradient-to-br from-orange-500 to-amber-600 shrink-0">
-                      <CheckCircle className="w-5 h-5 text-white" />
-                    </div>
-
-                    <div className="flex-1 min-w-0">
-                      <h4 className="font-medium text-sm leading-tight group-hover:text-primary transition-colors truncate">
-                        {cert.name}
-                      </h4>
-                      <p className="text-xs text-muted-foreground mt-1">{cert.issuer}</p>
-                    </div>
-
-                    <ExternalLink className="w-4 h-4 text-muted-foreground shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="p-2 rounded-lg bg-gradient-to-br from-amber-500/20 to-orange-500/20 shrink-0">
+                    <CheckCircle className="w-4 h-4 text-amber-600 dark:text-amber-400" />
                   </div>
+
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-medium text-sm leading-tight group-hover:text-primary transition-colors truncate">
+                      {cert.name}
+                    </h4>
+                    <p className="text-xs text-muted-foreground mt-0.5">{cert.issuer}</p>
+                  </div>
+
+                  <ExternalLink className="w-3.5 h-3.5 text-muted-foreground shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </motion.a>
               ))}
-            </motion.div>
+            </div>
 
-            {/* AWS Badge Showcase */}
+            {/* AWS Summary */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="mt-8 glass-card rounded-2xl p-6"
+              className="mt-6 p-5 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 border border-border"
             >
-              <h4 className="font-semibold mb-4 flex items-center gap-2">
-                <Award className="w-5 h-5 text-amber-500" />
-                5x AWS Certified
-              </h4>
-              <p className="text-sm text-muted-foreground">
+              <div className="flex items-center gap-2 mb-2">
+                <Award className="w-4 h-4 text-accent" />
+                <h4 className="font-semibold text-sm">5x AWS Certified</h4>
+              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed">
                 Including both Professional-level certifications (Solutions Architect & DevOps Engineer)
                 demonstrating deep expertise in AWS cloud architecture and operations.
               </p>

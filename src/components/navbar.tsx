@@ -80,19 +80,20 @@ export function Navbar() {
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
           isScrolled
             ? 'bg-background/80 backdrop-blur-xl border-b border-border'
             : 'bg-transparent'
         )}
       >
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <motion.a
               href="#"
-              className="flex items-center gap-2 font-bold text-xl"
+              className="flex items-center gap-2 font-bold text-lg tracking-tight"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -102,19 +103,17 @@ export function Navbar() {
             {/* Desktop Nav */}
             <div className="hidden md:flex items-center gap-1">
               {navItems.map((item) => (
-                <motion.a
+                <a
                   key={item.name}
                   href={item.href}
-                  className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-secondary/50"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  className="px-3.5 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 rounded-lg hover:bg-secondary/50"
                 >
                   {item.name}
-                </motion.a>
+                </a>
               ))}
 
               {/* Theme Toggle */}
-              <div className="ml-2">
+              <div className="ml-3">
                 <ThemeToggle />
               </div>
             </div>
@@ -146,7 +145,7 @@ export function Navbar() {
             className="fixed inset-0 z-40 md:hidden"
           >
             <div
-              className="absolute inset-0 bg-background/90 backdrop-blur-xl"
+              className="absolute inset-0 bg-background/95 backdrop-blur-xl"
               onClick={() => setIsOpen(false)}
             />
             <motion.nav
@@ -155,7 +154,7 @@ export function Navbar() {
               exit={{ opacity: 0, scale: 0.95 }}
               className="relative pt-24 px-6"
             >
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1">
                 {navItems.map((item, index) => (
                   <motion.a
                     key={item.name}

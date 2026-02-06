@@ -10,21 +10,22 @@ export function GitHubContributions() {
   const githubProfileUrl = `https://github.com/${siteConfig.github}`;
 
   return (
-    <section id="contributions" className="py-20 md:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contributions" className="py-24 md:py-36">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
+          label="Open Source"
           title="Open Source"
           subtitle="Actively contributing to the developer community. Top 1% TypeScript engineers globally."
         />
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col items-center"
         >
-          {/* Algora Widget - Dark container to match widget's dark theme */}
+          {/* Algora Widget */}
           <div className="w-full max-w-[95%] md:max-w-4xl lg:max-w-5xl rounded-2xl overflow-hidden bg-[#0d1117] border border-[#30363d] shadow-xl">
             <img
               src={algoraWidgetUrl}
@@ -36,7 +37,7 @@ export function GitHubContributions() {
 
           {/* GitHub Link */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
@@ -46,11 +47,11 @@ export function GitHubContributions() {
               href={githubProfileUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-secondary text-secondary-foreground font-medium hover:bg-secondary/80 transition-all"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border bg-card hover:border-primary/30 hover:bg-secondary font-medium transition-all duration-300"
+              whileHover={{ scale: 1.04, y: -1 }}
+              whileTap={{ scale: 0.97 }}
             >
-              <Github className="w-5 h-5" />
+              <Github className="w-4 h-4" />
               View GitHub Profile
             </motion.a>
           </motion.div>

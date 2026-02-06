@@ -22,96 +22,69 @@ const categoryIcons: Record<string, typeof Brain> = {
 };
 
 const categoryColors: Record<string, string> = {
-  ai: 'from-violet-500 to-purple-600',
-  cloud: 'from-blue-500 to-cyan-600',
-  development: 'from-green-500 to-emerald-600',
-  architecture: 'from-orange-500 to-amber-600',
-  security: 'from-red-500 to-rose-600',
-  leadership: 'from-pink-500 to-fuchsia-600',
+  ai: 'text-violet-500',
+  cloud: 'text-blue-500',
+  development: 'text-emerald-500',
+  architecture: 'text-orange-500',
+  security: 'text-red-500',
+  leadership: 'text-pink-500',
 };
 
 export function Skills() {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-      },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20, scale: 0.9 },
-    show: { opacity: 1, y: 0, scale: 1 },
-  };
+  // Duplicate for seamless loop
+  const marqueeItems = [...skills, ...skills];
 
   return (
-    <section id="skills" className="py-20 md:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-24 md:py-36">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
+          label="Expertise"
           title="Skills & Expertise"
           subtitle="A decade of experience across cloud architecture, AI/ML, and engineering leadership."
           align="center"
         />
+      </div>
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-100px' }}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-        >
-          {skills.map((skill, index) => {
+      {/* Marquee */}
+      <div className="marquee-container mb-12">
+        <div className="marquee-track">
+          {marqueeItems.map((skill, index) => {
             const Icon = categoryIcons[skill.category] || Code2;
-            const gradient = categoryColors[skill.category] || 'from-gray-500 to-slate-600';
+            const color = categoryColors[skill.category] || 'text-gray-500';
 
             return (
-              <motion.div
-                key={skill.name}
-                variants={item}
-                whileHover={{
-                  scale: 1.05,
-                  transition: { type: 'spring', stiffness: 400 },
-                }}
-                className="group glass-card rounded-2xl p-5 cursor-default"
+              <div
+                key={`${skill.name}-${index}`}
+                className="flex items-center gap-3 px-6 py-3 mx-2 rounded-full border border-border bg-card/50 backdrop-blur-sm shrink-0 hover:border-primary/30 transition-colors cursor-default"
               >
-                <div className="flex items-start gap-3">
-                  <div
-                    className={`p-2.5 rounded-xl bg-gradient-to-br ${gradient} shadow-lg`}
-                  >
-                    <Icon className="w-5 h-5 text-white" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="font-medium text-sm leading-tight group-hover:text-primary transition-colors">
-                      {skill.name}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
+                <Icon className={`w-4 h-4 ${color} shrink-0`} />
+                <span className="text-sm font-medium whitespace-nowrap">{skill.name}</span>
+              </div>
             );
           })}
-        </motion.div>
+        </div>
+      </div>
 
-        {/* Skill Categories Legend */}
+      {/* Category Grid */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="flex flex-wrap justify-center gap-4 mt-12"
+          transition={{ delay: 0.2 }}
+          className="flex flex-wrap justify-center gap-3"
         >
-          {Object.entries(categoryColors).map(([category, gradient]) => {
+          {Object.entries(categoryColors).map(([category, color]) => {
             const Icon = categoryIcons[category];
+            const count = skills.filter(s => s.category === category).length;
             return (
               <div
                 key={category}
-                className="flex items-center gap-2 text-sm text-muted-foreground"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary/50 border border-border text-sm"
               >
-                <div className={`p-1.5 rounded-md bg-gradient-to-br ${gradient}`}>
-                  <Icon className="w-3 h-3 text-white" />
-                </div>
-                <span className="capitalize">{category}</span>
+                <Icon className={`w-3.5 h-3.5 ${color}`} />
+                <span className="capitalize font-medium">{category}</span>
+                <span className="text-muted-foreground text-xs">({count})</span>
               </div>
             );
           })}

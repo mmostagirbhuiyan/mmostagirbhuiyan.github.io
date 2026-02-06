@@ -8,7 +8,6 @@ import {
   FileText,
   ArrowUpRight,
   Send,
-  Linkedin,
 } from 'lucide-react';
 import { SectionHeader } from './section-header';
 import { siteConfig } from '@/data/portfolio';
@@ -19,67 +18,65 @@ const socialLinks = [
     href: `mailto:${siteConfig.email}`,
     icon: Mail,
     description: 'Get in touch directly',
-    color: 'from-red-500 to-orange-500',
   },
   {
     name: 'GitHub',
     href: `https://github.com/${siteConfig.github}`,
     icon: Github,
     description: 'Check out my code',
-    color: 'from-gray-600 to-gray-800',
   },
   {
     name: 'Medium',
     href: siteConfig.social.medium,
     icon: BookOpen,
     description: 'Read my articles',
-    color: 'from-green-500 to-emerald-600',
   },
   {
     name: 'Google Scholar',
     href: siteConfig.social.googleScholar,
     icon: FileText,
     description: 'Academic research',
-    color: 'from-blue-500 to-indigo-600',
   },
 ];
 
 export function Contact() {
   return (
-    <section id="contact" className="py-20 md:py-32 bg-secondary/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-24 md:py-36">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
+          label="Connect"
           title="Let's Connect"
           subtitle="Open to discussing leadership roles, advisory opportunities, or collaborations in cloud, AI, and platform engineering."
           align="center"
         />
 
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           {/* CTA Card */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="glass-card rounded-3xl p-8 md:p-12 text-center mb-12"
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="glass-card rounded-2xl p-8 md:p-12 text-center mb-10"
           >
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-accent mb-6">
-              <Send className="w-8 h-8 text-white" />
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 mb-6">
+              <Send className="w-7 h-7 text-primary" />
             </div>
 
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight">
               Let's Talk
             </h3>
 
-            <p className="text-muted-foreground max-w-xl mx-auto mb-8">
+            <p className="text-muted-foreground max-w-lg mx-auto mb-8 leading-relaxed">
               Looking for engineering leadership, platform strategy, or AI infrastructure expertise?
               I'd be glad to connect and explore how I can help.
             </p>
 
             <motion.a
               href={`mailto:${siteConfig.email}`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all"
+              whileHover={{ scale: 1.04, y: -1 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-lg shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
             >
               <Mail className="w-5 h-5" />
               Send Me an Email
@@ -88,13 +85,7 @@ export function Contact() {
           </motion.div>
 
           {/* Social Links Grid */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4"
-          >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {socialLinks.map((link, index) => {
               const Icon = link.icon;
               return (
@@ -103,26 +94,24 @@ export function Contact() {
                   href={link.href}
                   target={link.name !== 'Email' ? '_blank' : undefined}
                   rel={link.name !== 'Email' ? 'noopener noreferrer' : undefined}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="glass-card rounded-2xl p-6 text-center group"
+                  transition={{ delay: index * 0.06, duration: 0.5 }}
+                  whileHover={{ y: -4 }}
+                  className="glass-card rounded-xl p-5 text-center group"
                 >
-                  <div
-                    className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${link.color} mb-4 group-hover:scale-110 transition-transform`}
-                  >
-                    <Icon className="w-6 h-6 text-white" />
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 mb-3 group-hover:bg-primary/20 transition-colors">
+                    <Icon className="w-5 h-5 text-primary" />
                   </div>
-                  <h4 className="font-semibold mb-1 group-hover:text-primary transition-colors">
+                  <h4 className="font-medium text-sm mb-0.5 group-hover:text-primary transition-colors">
                     {link.name}
                   </h4>
                   <p className="text-xs text-muted-foreground">{link.description}</p>
                 </motion.a>
               );
             })}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
