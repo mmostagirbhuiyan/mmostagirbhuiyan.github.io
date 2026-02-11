@@ -13,14 +13,14 @@ export interface PodcastFeed {
   episodes: PodcastEpisode[];
 }
 
-// Anchor/Spotify RSS feed URL (from iTunes API lookup)
+// Anchor/Spotify RSS feed URL
 const PODCAST_RSS_URL = 'https://anchor.fm/s/105702640/podcast/rss';
 
 export async function getPodcastFeed(): Promise<PodcastFeed | null> {
   try {
     const response = await fetch(
       `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(PODCAST_RSS_URL)}`,
-      { next: { revalidate: 600 } } // Cache for 10 minutes
+      { next: { revalidate: 600 } }
     );
 
     if (!response.ok) {

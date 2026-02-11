@@ -61,7 +61,7 @@ export function Hero() {
             </span>
           </motion.div>
 
-          {/* Main Title - Cinematic Typography */}
+          {/* Main Title */}
           <div className="text-display mb-8 overflow-visible" style={{ perspective: '600px' }}>
             {name.split('').map((char, i) => (
               <motion.span

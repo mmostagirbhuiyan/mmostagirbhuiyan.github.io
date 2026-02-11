@@ -18,10 +18,10 @@ const FEATURED_URLS = [
 
 export async function getMediumPosts(): Promise<MediumPost[]> {
   try {
-    // Use rss2json.com to convert Medium RSS to JSON (free tier: 10,000 requests/day)
+    // Fetch Medium RSS as JSON via rss2json
     const response = await fetch(
       `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${siteConfig.github}`,
-      { next: { revalidate: 3600 } } // Cache for 1 hour
+      { next: { revalidate: 3600 } }
     );
 
     if (!response.ok) {
@@ -40,7 +40,7 @@ export async function getMediumPosts(): Promise<MediumPost[]> {
       const imgMatches = item.content?.match(/<img[^>]+src="([^">]+)"/g) || [];
       let thumbnail = item.thumbnail || '';
 
-      // Find first image from cdn-images (actual content image, not tracking pixel)
+      // Find first image from cdn-images
       for (const match of imgMatches) {
         const srcMatch = match.match(/src="([^"]+)"/);
         if (srcMatch && srcMatch[1].includes('cdn-images-1.medium.com')) {
