@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import { SectionHeader } from './section-header';
 import { skills } from '@/data/portfolio';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 
 const categoryIcons: Record<string, typeof Brain> = {
   ai: Brain,
@@ -58,6 +58,17 @@ interface Connection {
 
 export function Skills() {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile devices
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Create skill nodes with positioned coordinates in a constellation pattern
   const skillNodes = useMemo<SkillNode[]>(() => {
@@ -68,23 +79,23 @@ export function Skills() {
       return acc;
     }, {} as Record<string, typeof skills>);
 
-    // Define orbital rings for each category with angular offsets for visual interest
+    // Define orbital rings for each category with angular offsets
     const categoryOrbits: Record<string, { orbit: number; startAngle: number }> = {
-      leadership: { orbit: 1, startAngle: 0 },
-      cloud: { orbit: 2, startAngle: 30 },
-      architecture: { orbit: 3, startAngle: 60 },
-      ai: { orbit: 1.5, startAngle: 180 },
-      security: { orbit: 2.5, startAngle: 210 },
-      development: { orbit: 3.5, startAngle: 240 },
+      leadership: { orbit: 0.8, startAngle: 0 },
+      cloud: { orbit: 1.6, startAngle: 45 },
+      architecture: { orbit: 2.2, startAngle: 90 },
+      ai: { orbit: 1.2, startAngle: 180 },
+      security: { orbit: 2, startAngle: 225 },
+      development: { orbit: 2.6, startAngle: 270 },
     };
 
     Object.entries(categoryGroups).forEach(([category, categorySkills]) => {
       const { orbit, startAngle } = categoryOrbits[category];
-      const angleStep = 360 / categorySkills.length;
+      const angleStep = categorySkills.length > 1 ? 360 / categorySkills.length : 0;
 
       categorySkills.forEach((skill, index) => {
         const angle = startAngle + (index * angleStep);
-        const radius = orbit * 80; // Base radius multiplied by orbit number
+        const radius = orbit * 100; // Base radius
 
         // Convert polar to cartesian coordinates (centered at viewBox center)
         const x = 500 + radius * Math.cos((angle * Math.PI) / 180);
@@ -115,25 +126,24 @@ export function Skills() {
         if (node.category === otherNode.category) {
           // Connect neighboring skills in the same category
           const angleDiff = Math.abs(node.angle - otherNode.angle);
-          if (angleDiff < 100 || angleDiff > 260) {
+          if (angleDiff < 120 || angleDiff > 240) {
             conns.push({
               from: node.id,
               to: otherNode.id,
-              strength: 0.3,
+              strength: 0.25,
             });
           }
         }
       });
     });
 
-    // Add some cross-category connections for visual interest
+    // Add some cross-category connections
     const crossConnections = [
       ['leadership', 'cloud'],
       ['cloud', 'architecture'],
-      ['architecture', 'ai'],
+      ['architecture', 'development'],
       ['ai', 'development'],
       ['security', 'cloud'],
-      ['development', 'architecture'],
     ];
 
     crossConnections.forEach(([cat1, cat2]) => {
@@ -141,14 +151,13 @@ export function Skills() {
       const nodes2 = skillNodes.filter(n => n.category === cat2);
 
       if (nodes1.length && nodes2.length) {
-        // Connect one random node from each category
-        const node1 = nodes1[Math.floor(Math.random() * nodes1.length)];
-        const node2 = nodes2[Math.floor(Math.random() * nodes2.length)];
+        const node1 = nodes1[0];
+        const node2 = nodes2[0];
 
         conns.push({
           from: node1.id,
           to: node2.id,
-          strength: 0.15,
+          strength: 0.12,
         });
       }
     });
@@ -165,13 +174,11 @@ export function Skills() {
     );
   }, [hoveredSkill, connections]);
 
-  // Determine which nodes should be highlighted
+  // Determine node opacity
   const getNodeOpacity = (nodeId: string) => {
     if (!hoveredSkill) return 1;
-
     if (nodeId === hoveredSkill) return 1;
 
-    // Check if connected to hovered node
     const isConnected = connections.some(
       conn =>
         (conn.from === hoveredSkill && conn.to === nodeId) ||
@@ -179,6 +186,16 @@ export function Skills() {
     );
 
     return isConnected ? 0.6 : 0.2;
+  };
+
+  const handleNodeInteraction = (nodeId: string) => {
+    if (isMobile) {
+      // On mobile, toggle the hovered state
+      setHoveredSkill(hoveredSkill === nodeId ? null : nodeId);
+    } else {
+      // On desktop, set hover
+      setHoveredSkill(nodeId);
+    }
   };
 
   return (
@@ -197,7 +214,7 @@ export function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
+          className="flex flex-wrap justify-center gap-3 md:gap-4 mb-8 md:mb-12"
         >
           {Object.entries(categoryTitles).map(([category, title]) => {
             const Icon = categoryIcons[category];
@@ -206,10 +223,10 @@ export function Skills() {
             return (
               <div
                 key={category}
-                className="flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 backdrop-blur-sm"
+                className="flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full border border-border bg-card/50 backdrop-blur-sm"
               >
-                <Icon className={`w-4 h-4 ${color.text}`} />
-                <span className="text-xs font-medium">{title}</span>
+                <Icon className={`w-3 md:w-4 h-3 md:h-4 ${color.text}`} />
+                <span className="text-[10px] md:text-xs font-medium">{title}</span>
               </div>
             );
           })}
@@ -221,15 +238,15 @@ export function Skills() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="relative w-full overflow-hidden rounded-2xl border border-border bg-card/30 backdrop-blur-sm p-4 md:p-8"
-          style={{ minHeight: '600px' }}
+          className="relative w-full overflow-hidden rounded-2xl border border-border bg-card/30 backdrop-blur-sm p-2 md:p-8"
+          style={{ minHeight: isMobile ? '400px' : '600px' }}
         >
           <svg
             viewBox="0 0 1000 800"
             className="w-full h-full"
-            style={{ maxHeight: '700px' }}
+            style={{ maxHeight: isMobile ? '500px' : '700px' }}
           >
-            {/* Define glow filters for each category */}
+            {/* Define glow filters */}
             <defs>
               {Object.entries(categoryColors).map(([category, { glow }]) => (
                 <filter key={category} id={`glow-${category}`} x="-50%" y="-50%" width="200%" height="200%">
@@ -241,7 +258,6 @@ export function Skills() {
                 </filter>
               ))}
 
-              {/* Stronger glow for hover */}
               {Object.entries(categoryColors).map(([category, { glow }]) => (
                 <filter key={`${category}-hover`} id={`glow-${category}-hover`} x="-100%" y="-100%" width="300%" height="300%">
                   <feGaussianBlur stdDeviation="6" result="coloredBlur" />
@@ -285,7 +301,6 @@ export function Skills() {
                       opacity: { duration: 0.3 },
                       strokeWidth: { duration: 0.3 },
                     }}
-                    className="transition-all duration-300"
                   />
                 );
               })}
@@ -295,9 +310,10 @@ export function Skills() {
             <g className="constellation-nodes">
               {skillNodes.map((node, index) => {
                 const color = categoryColors[node.category];
-                const Icon = categoryIcons[node.category];
                 const isHovered = hoveredSkill === node.id;
                 const opacity = getNodeOpacity(node.id);
+                const nodeSize = isMobile ? 6 : 7;
+                const hoverSize = isMobile ? 9 : 10;
 
                 return (
                   <motion.g
@@ -312,15 +328,17 @@ export function Skills() {
                       duration: 0.3,
                       scale: { duration: 0.2 },
                     }}
-                    onMouseEnter={() => setHoveredSkill(node.id)}
-                    onMouseLeave={() => setHoveredSkill(null)}
-                    className="cursor-pointer"
+                    onClick={() => handleNodeInteraction(node.id)}
+                    onMouseEnter={() => !isMobile && setHoveredSkill(node.id)}
+                    onMouseLeave={() => !isMobile && setHoveredSkill(null)}
+                    className="cursor-pointer touch-manipulation"
+                    style={{ WebkitTapHighlightColor: 'transparent' }}
                   >
                     {/* Outer glow circle */}
                     <circle
                       cx={node.x}
                       cy={node.y}
-                      r={isHovered ? 16 : 12}
+                      r={isHovered ? (isMobile ? 14 : 16) : (isMobile ? 10 : 12)}
                       fill={color.hex}
                       fillOpacity={0.2}
                       filter={`url(#glow-${node.category}${isHovered ? '-hover' : ''})`}
@@ -331,7 +349,7 @@ export function Skills() {
                     <circle
                       cx={node.x}
                       cy={node.y}
-                      r={isHovered ? 10 : 7}
+                      r={isHovered ? hoverSize : nodeSize}
                       fill={color.hex}
                       fillOpacity={0.9}
                       stroke={color.hex}
@@ -344,13 +362,13 @@ export function Skills() {
                       <motion.circle
                         cx={node.x}
                         cy={node.y}
-                        r={10}
+                        r={hoverSize}
                         fill="none"
                         stroke={color.hex}
                         strokeWidth={2}
                         strokeOpacity={0}
                         animate={{
-                          r: [10, 20],
+                          r: [hoverSize, hoverSize + 10],
                           strokeOpacity: [0.6, 0],
                         }}
                         transition={{
@@ -360,58 +378,49 @@ export function Skills() {
                         }}
                       />
                     )}
-
-                    {/* Skill label (shown on hover) */}
-                    {isHovered && (
-                      <motion.g
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        {/* Label background */}
-                        <rect
-                          x={node.x - 80}
-                          y={node.y - 40}
-                          width={160}
-                          height={30}
-                          rx={6}
-                          fill="hsl(var(--card))"
-                          fillOpacity={0.95}
-                          stroke="hsl(var(--border))"
-                          strokeWidth={1}
-                          filter={`url(#glow-${node.category})`}
-                        />
-
-                        {/* Label text */}
-                        <text
-                          x={node.x}
-                          y={node.y - 21}
-                          textAnchor="middle"
-                          fill="hsl(var(--foreground))"
-                          fontSize="11"
-                          fontWeight="600"
-                          className="select-none"
-                        >
-                          {node.name.length > 28
-                            ? node.name.substring(0, 25) + '...'
-                            : node.name}
-                        </text>
-                      </motion.g>
-                    )}
                   </motion.g>
                 );
               })}
             </g>
           </svg>
 
-          {/* Hover instruction */}
+          {/* HTML-based label overlay (fixes mobile rendering) */}
+          {hoveredSkill && skillNodes.find(n => n.id === hoveredSkill) && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.2 }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10"
+            >
+              <div className="px-4 md:px-6 py-2 md:py-3 rounded-lg border border-border bg-card shadow-lg backdrop-blur-sm">
+                <div className="flex items-center gap-2">
+                  {(() => {
+                    const node = skillNodes.find(n => n.id === hoveredSkill)!;
+                    const Icon = categoryIcons[node.category];
+                    const color = categoryColors[node.category];
+                    return (
+                      <>
+                        <Icon className={`w-4 h-4 ${color.text} shrink-0`} />
+                        <p className="text-xs md:text-sm font-semibold text-foreground whitespace-nowrap">
+                          {node.name}
+                        </p>
+                      </>
+                    );
+                  })()}
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Instruction text */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: hoveredSkill ? 0 : 0.6 }}
             transition={{ duration: 0.3 }}
-            className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs text-muted-foreground text-center pointer-events-none"
+            className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 text-[10px] md:text-xs text-muted-foreground text-center pointer-events-none px-4"
           >
-            Hover over nodes to explore connections
+            {isMobile ? 'Tap nodes to explore connections' : 'Hover over nodes to explore connections'}
           </motion.div>
         </motion.div>
 
@@ -421,7 +430,7 @@ export function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="mt-8 text-center text-sm text-muted-foreground"
+          className="mt-6 md:mt-8 text-center text-xs md:text-sm text-muted-foreground"
         >
           <span className="font-mono">{skills.length}</span> skills across{' '}
           <span className="font-mono">{Object.keys(categoryTitles).length}</span> domains
