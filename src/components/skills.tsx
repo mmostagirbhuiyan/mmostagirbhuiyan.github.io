@@ -30,6 +30,17 @@ const categoryColors: Record<string, string> = {
   leadership: 'text-pink-500',
 };
 
+const categoryTitles: Record<string, string> = {
+  leadership: 'Leadership & Strategy',
+  cloud: 'Cloud & Infrastructure',
+  architecture: 'Architecture & Design',
+  ai: 'AI & Machine Learning',
+  security: 'Security & Compliance',
+  development: 'Development & Engineering',
+};
+
+const categoryOrder = ['leadership', 'cloud', 'architecture', 'ai', 'security', 'development'];
+
 export function Skills() {
   // Duplicate for seamless loop
   const marqueeItems = [...skills, ...skills];
@@ -46,7 +57,7 @@ export function Skills() {
       </div>
 
       {/* Marquee */}
-      <div className="marquee-container mb-12">
+      <div className="marquee-container mb-16">
         <div className="marquee-track">
           {marqueeItems.map((skill, index) => {
             const Icon = categoryIcons[skill.category] || Code2;
@@ -65,30 +76,47 @@ export function Skills() {
         </div>
       </div>
 
-      {/* Category Grid */}
+      {/* Professional Skill Categories */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-3"
-        >
-          {Object.entries(categoryColors).map(([category, color]) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {categoryOrder.map((category, index) => {
             const Icon = categoryIcons[category];
-            const count = skills.filter(s => s.category === category).length;
+            const color = categoryColors[category];
+            const categorySkills = skills.filter(s => s.category === category);
+
             return (
-              <div
+              <motion.div
                 key={category}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary/50 border border-border text-sm"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group relative rounded-lg border border-border bg-card/50 backdrop-blur-sm p-6 hover:border-primary/30 transition-all duration-300"
               >
-                <Icon className={`w-3.5 h-3.5 ${color}`} />
-                <span className="capitalize font-medium">{category}</span>
-                <span className="text-muted-foreground text-xs">({count})</span>
-              </div>
+                {/* Category Header */}
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`p-2 rounded-lg bg-secondary/50 ${color}`}>
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg font-semibold">{categoryTitles[category]}</h3>
+                </div>
+
+                {/* Skills List */}
+                <ul className="space-y-2">
+                  {categorySkills.map((skill) => (
+                    <li
+                      key={skill.name}
+                      className="text-sm text-muted-foreground flex items-start gap-2"
+                    >
+                      <span className={`mt-1.5 w-1 h-1 rounded-full ${color} bg-current shrink-0`}></span>
+                      <span>{skill.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
