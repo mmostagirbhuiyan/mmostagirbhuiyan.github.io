@@ -16,18 +16,50 @@ export const siteConfig = {
 };
 
 export const skills = [
+  // Leadership & Strategy
   { name: 'Platform Strategy & Governance', category: 'leadership' },
-  { name: 'Cloud & DevOps Leadership', category: 'leadership' },
-  { name: 'AI/ML Infrastructure & MLOps', category: 'ai' },
-  { name: 'Distributed Systems Design', category: 'architecture' },
-  { name: 'Kubernetes & Container Orchestration', category: 'cloud' },
-  { name: 'AWS / Azure / GCP', category: 'cloud' },
-  { name: 'CI/CD & GitOps', category: 'cloud' },
-  { name: 'Cost Governance & FinOps', category: 'leadership' },
-  { name: 'SOC 2 / FedRAMP Compliance', category: 'security' },
-  { name: 'Observability & Reliability', category: 'architecture' },
-  { name: 'Python, Go, Java, C++', category: 'development' },
+  { name: 'Engineering Leadership', category: 'leadership' },
   { name: 'Team Enablement & Advocacy', category: 'leadership' },
+  { name: 'Cross-functional Collaboration', category: 'leadership' },
+  { name: 'Stakeholder Management', category: 'leadership' },
+  { name: 'Cost Governance & FinOps', category: 'leadership' },
+
+  // Cloud & Infrastructure
+  { name: 'AWS / Azure / GCP', category: 'cloud' },
+  { name: 'Kubernetes & Container Orchestration', category: 'cloud' },
+  { name: 'Terraform & Infrastructure as Code', category: 'cloud' },
+  { name: 'CI/CD & GitOps', category: 'cloud' },
+  { name: 'Docker & Containerization', category: 'cloud' },
+  { name: 'Serverless Architecture', category: 'cloud' },
+
+  // Architecture & Design
+  { name: 'Distributed Systems Design', category: 'architecture' },
+  { name: 'Microservices Architecture', category: 'architecture' },
+  { name: 'Event-Driven Architecture', category: 'architecture' },
+  { name: 'API Design & Integration', category: 'architecture' },
+  { name: 'Observability & Reliability', category: 'architecture' },
+  { name: 'System Scalability & Performance', category: 'architecture' },
+
+  // AI & Machine Learning
+  { name: 'AI/ML Infrastructure & MLOps', category: 'ai' },
+  { name: 'LLM Integration & Fine-tuning', category: 'ai' },
+  { name: 'Vector Databases & Embeddings', category: 'ai' },
+  { name: 'PyTorch & TensorFlow', category: 'ai' },
+  { name: 'Model Deployment & Monitoring', category: 'ai' },
+
+  // Security & Compliance
+  { name: 'SOC 2 / FedRAMP Compliance', category: 'security' },
+  { name: 'IAM & Access Management', category: 'security' },
+  { name: 'Security Architecture', category: 'security' },
+  { name: 'Secrets Management', category: 'security' },
+  { name: 'Network Security & VPC Design', category: 'security' },
+
+  // Development & Engineering
+  { name: 'Python, Go, Java, C++', category: 'development' },
+  { name: 'TypeScript & JavaScript', category: 'development' },
+  { name: 'React & Next.js', category: 'development' },
+  { name: 'SQL & NoSQL Databases', category: 'development' },
+  { name: 'GraphQL & REST APIs', category: 'development' },
 ];
 
 export const education = [
